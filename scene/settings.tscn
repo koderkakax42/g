@@ -1,0 +1,76 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnnecrqk4wa64"]
+
+[ext_resource type="Script" path="res://scene/skript/settings.cs" id="1_ebuwc"]
+
+[node name="settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ebuwc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -47.0
+offset_top = -31.0
+offset_right = 1177.0
+offset_bottom = 689.0
+color = Color(0.0196078, 0.231373, 0.231373, 1)
+
+[node name="CheckButton" type="CheckButton" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -21.0
+offset_right = -1049.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "звук"
+
+[node name="CheckButton" type="CheckButton" parent="CheckButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.022
+anchor_bottom = 1.045
+offset_left = 8.0
+offset_top = 56.0
+offset_right = -29.992
+offset_bottom = 52.515
+theme_override_font_sizes/font_size = 25
+text = "хп бар"
+
+[node name="CheckButton" type="CheckButton" parent="CheckButton/CheckButton"]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 110.0
+offset_right = 107.0
+offset_bottom = 155.0
+theme_override_font_sizes/font_size = 25
+text = "ии бот у врага  "
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 161.0
+offset_top = 41.0
+offset_right = 992.0
+offset_bottom = 89.0
+theme_override_font_sizes/font_size = 50
+text = "настройки"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 235
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 519.0
+offset_top = 153.0
+offset_right = 610.0
+offset_bottom = 222.0
+text = "поддержи
+автора"

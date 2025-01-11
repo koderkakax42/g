@@ -1,0 +1,153 @@
+[gd_scene load_steps=2 format=3 uid="uid://6v7fht1kpyce"]
+
+[ext_resource type="Script" path="res://scene/skript/inventory.cs" id="1_xltxg"]
+
+[node name="inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xltxg")
+
+[node name="TouchScreenButton3" type="TouchScreenButton" parent="."]
+position = Vector2(1033, 420)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 649.0
+offset_bottom = 108.0
+color = Color(0.481789, 0.481789, 0.481789, 1)
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 0
+offset_left = 541.0
+offset_top = -2.0
+offset_right = 647.0
+offset_bottom = 106.0
+text = "5"
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 394.0
+offset_top = 4.0
+offset_right = 500.0
+offset_bottom = 112.0
+text = "4"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 104.0
+offset_bottom = 109.0
+text = "1"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 266.0
+offset_top = 7.0
+offset_right = 372.0
+offset_bottom = 115.0
+text = "3"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 4.0
+offset_right = 247.0
+offset_bottom = 112.0
+text = "2"
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2(907, 562)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 996.0
+offset_top = 386.0
+offset_right = 1071.0
+offset_bottom = 467.0
+color = Color(0.616785, 0.402978, 0.54072, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 865.0
+offset_top = 532.0
+offset_right = 942.0
+offset_bottom = 595.0
+color = Color(0.481789, 0.481789, 0.481789, 1)
+
+[node name="TouchScreenButton5" type="TouchScreenButton" parent="."]
+position = Vector2(128, 607)
+
+[node name="TouchScreenButton6" type="TouchScreenButton" parent="."]
+position = Vector2(126, 512)
+
+[node name="TouchScreenButton7" type="TouchScreenButton" parent="."]
+position = Vector2(71, 564)
+
+[node name="TouchScreenButton8" type="TouchScreenButton" parent="."]
+position = Vector2(192, 562)
+
+[node name="ColorRect6" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 592.0
+offset_right = 135.0
+offset_bottom = 624.0
+color = Color(0.215962, 0.563166, 0.312699, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 494.0
+offset_right = 136.0
+offset_bottom = 532.0
+color = Color(0.616785, 0.402978, 0.54072, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 553.0
+offset_right = 206.0
+offset_bottom = 570.0
+color = Color(0.626944, 0.441136, 0.15968, 1)
+
+[node name="ColorRect9" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 556.0
+offset_right = 88.0
+offset_bottom = 577.0
+color = Color(0.481789, 0.481789, 0.481789, 1)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 735.0
+offset_top = 40.0
+offset_right = 855.0
+offset_bottom = 67.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1058.0
+offset_top = 2.0
+offset_right = 1152.0
+offset_bottom = 125.0
+text = "no, stoping
+horni.
+give me
+your
+morax"
+
+[node name="Button" type="Button" parent="Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 0.277
+offset_left = -153.0
+offset_top = 43.0
+offset_right = -44.0
+offset_bottom = 16.929
+text = "shild trake"

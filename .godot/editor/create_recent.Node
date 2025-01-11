@@ -1,0 +1,15 @@
+CharacterBody2D
+NavigationAgent2D
+Node
+NavigationRegion2D
+GraphEdit
+CollisionShape2D
+Area2D
+AnimatedSprite2D
+StaticBody2D
+ColorRect
+Button
+ProgressBar
+TextureProgressBar
+TouchScreenButton
+Panel
