@@ -1,29 +1,29 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1736594976
+::res://::1737213988
 README.txt::TextFile::-1::1735324959::0::1::::<><>::
 ::res://ost/::1734629114
 gaim.mp3::AudioStreamMP3::6221163414547678383::1734623544::1734629114::1::::<><>::
-::res://scene/::1736592293
-appdait.tscn::PackedScene::7078070116808482552::1736592274::0::1::::<><>::res://scene/skript/appdait.cs
-arena.tscn::PackedScene::8147987428372178967::1736592274::0::1::::<><>::res://scene/skript/arena.cs<>uid://djuwpel1ysljv::::res://scene/plyer.tscn
-attak.tscn::PackedScene::8321562614420476452::1736592274::0::1::::<><>::uid://bppnav1k3fwqx::::res://sprait/Без названия73_20241218230041.png<>res://scene/skript/attak.cs
-enemy.tscn::PackedScene::1186133071598578366::1736592275::0::1::::<><>::res://scene/skript/enemy.cs<>uid://ch6ooeij3pyo::::res://sprait/Без названия73_20241218230050.png
-inventory.tscn::PackedScene::2221158356562347200::1736592274::0::1::::<><>::res://scene/skript/inventory.cs
-meny.tscn::PackedScene::1755307527030284913::1736592274::0::1::::<><>::res://scene/skript/meny.cs
-money.tscn::PackedScene::3114782727502192242::1736592274::0::1::::<><>::res://scene/skript/money.cs<>uid://oq84l6pxtnw::::res://sprait/Без названия73_20241218230059.png
-plyer.tscn::PackedScene::7833611987952588547::1736592293::0::1::::<><>::uid://fwais77b05mu::::res://sprait/Без названия73_20241218230115.png<>res://scene/skript/Player.cs<>uid://bppnav1k3fwqx::::res://sprait/Без названия73_20241218230041.png<>uid://6v7fht1kpyce::::res://scene/inventory.tscn
-settings.tscn::PackedScene::5712380603150072699::1736592274::0::1::::<><>::res://scene/skript/settings.cs
-shest.tscn::PackedScene::8894838821281084149::1736592274::0::1::::<><>::res://scene/skript/shest.cs
-speed_settings.tscn::PackedScene::6684966380047276800::1736592274::0::1::::<><>::res://scene/skript/speed_settings.cs
-::res://scene/skript/::1736592293
+::res://scene/::1737201705
+appdait.tscn::PackedScene::7078070116808482552::1737200725::0::1::::<><>::res://scene/skript/appdait.cs
+arena.tscn::PackedScene::8147987428372178967::1737200722::0::1::::<><>::res://scene/skript/arena.cs<>uid://djuwpel1ysljv::::res://scene/plyer.tscn
+attak.tscn::PackedScene::8321562614420476452::1737200726::0::1::::<><>::uid://bppnav1k3fwqx::::res://sprait/Без названия73_20241218230041.png<>res://scene/skript/attak.cs
+enemy.tscn::PackedScene::1186133071598578366::1737200727::0::1::::<><>::res://scene/skript/enemy.cs<>uid://ch6ooeij3pyo::::res://sprait/Без названия73_20241218230050.png
+inventory.tscn::PackedScene::2221158356562347200::1737200726::0::1::::<><>::res://scene/skript/inventory.cs
+meny.tscn::PackedScene::1755307527030284913::1737200725::0::1::::<><>::res://scene/skript/meny.cs
+money.tscn::PackedScene::3114782727502192242::1737200726::0::1::::<><>::res://scene/skript/money.cs<>uid://oq84l6pxtnw::::res://sprait/Без названия73_20241218230059.png
+plyer.tscn::PackedScene::7833611987952588547::1737201705::0::1::::<><>::uid://fwais77b05mu::::res://sprait/Без названия73_20241218230115.png<>res://scene/skript/Player.cs<>uid://bppnav1k3fwqx::::res://sprait/Без названия73_20241218230041.png<>uid://6v7fht1kpyce::::res://scene/inventory.tscn
+settings.tscn::PackedScene::5712380603150072699::1737200725::0::1::::<><>::res://scene/skript/settings.cs
+shest.tscn::PackedScene::8894838821281084149::1737200726::0::1::::<><>::res://scene/skript/shest.cs
+speed_settings.tscn::PackedScene::6684966380047276800::1737200726::0::1::::<><>::res://scene/skript/speed_settings.cs
+::res://scene/skript/::1737201990
 appdait.cs::CSharpScript::-1::1735483161::0::1::::<>Control<>::
 arena.cs::CSharpScript::-1::1735483504::0::1::::<>Node2D<>::
 attak.cs::CSharpScript::-1::1735483222::0::1::::<>RigidBody2D<>::
-enemy.cs::CSharpScript::-1::1736524776::0::1::::<>CharacterBody2D<>::
+enemy.cs::CSharpScript::-1::1736683392::0::1::::<>CharacterBody2D<>::
 inventory.cs::CSharpScript::-1::1735483179::0::1::::<>Control<>::
 meny.cs::CSharpScript::-1::1735483095::0::1::::<>Control<>::
 money.cs::CSharpScript::-1::1735483362::0::1::::<>Area2D<>::
-Player.cs::CSharpScript::-1::1736592293::0::1::::<>CharacterBody2D<>::
+Player.cs::CSharpScript::-1::1737201990::0::1::::<>CharacterBody2D<>::
 settings.cs::CSharpScript::-1::1735483135::0::1::::<>Control<>::
 shest.cs::CSharpScript::-1::1735483316::0::1::::<>Control<>::
 speed_settings.cs::CSharpScript::-1::1735483346::0::1::::<>Button<>::

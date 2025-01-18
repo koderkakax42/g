@@ -1,6 +1,8 @@
 using Godot;
 using System;
 
+
+
 public partial class Player : CharacterBody2D
 {
 	Vector2	velocity = new Vector2();

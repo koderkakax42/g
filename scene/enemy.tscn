@@ -270,7 +270,7 @@ shape = SubResource("RectangleShape2D_jk8j1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.182434, 0.167114)
 sprite_frames = SubResource("SpriteFrames_tjpvq")
-animation = &"run"
+animation = &"dead"
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(20, 20)
