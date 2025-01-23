@@ -1,35 +1,38 @@
 using Godot;
-using System;
 
-
-
-public partial class Player : CharacterBody2D
+public partial class Player: CharacterBody2D
 {
-	Vector2	velocity = new Vector2();
-	
-	 int speed = 200;
-	
-	public void _PhysicsProcess(float delta)
-	{
-		  velocity = Vector2.Zero;
-		if (Input.IsActionPressed("ui_right"))
-		{
-			velocity.X += 1;
-		}
-		if (Input.IsActionPressed("ui_left"))
-		{
-			velocity.X -= 1;
-		}
-		if (Input.IsActionPressed("ui_down"))
-		{
-			velocity.Y += 1;
-		}
-		if (Input.IsActionPressed("ui_up"))
-		{
-			velocity.Y -= 1;
-		}
+    [Export]
+    public int Speed { get; set; } = 400;
+     
+     private AnimatedSprite2D _animatedSprite;
+     
+    public override void _Ready ()
+    {
 
-		velocity = velocity.Normalized() * speed;
-		MoveAndSlide();
-	}
+       _animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+
+    }
+
+    public void GetInput()
+    {
+
+        Vector2 inputDirection = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+        Velocity = inputDirection * Speed;
+    }
+
+    public override void _PhysicsProcess(double delta)
+    {
+
+         if(Input.IsActionPressed("ui_right")
+         ||Input.IsActionPressed("ui_left")
+         ||Input.IsActionPressed("ui_up")
+         ||Input.IsActionPressed("ui_down") )
+         _animatedSprite.Play("run");
+         else
+         _animatedSprite.Stop();
+
+        GetInput();
+        MoveAndSlide();
+    }
 }

@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://doc7fr4jg1kvv"]
+[gd_scene load_steps=14 format=3 uid="uid://doc7fr4jg1kvv"]
 
 [ext_resource type="Script" path="res://scene/skript/arena.cs" id="1_p7bwh"]
 [ext_resource type="PackedScene" uid="uid://djuwpel1ysljv" path="res://scene/plyer.tscn" id="2_yhhmo"]
+[ext_resource type="PackedScene" uid="uid://q5to51umwgje" path="res://scene/enemy.tscn" id="3_g0y0l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e47wk"]
 size = Vector2(57984, 1631)
@@ -217,3 +218,15 @@ shape = SubResource("RectangleShape2D_gyc1u")
 
 [node name="plyer" parent="." instance=ExtResource("2_yhhmo")]
 position = Vector2(247, 77)
+
+[node name="enemy" parent="." instance=ExtResource("3_g0y0l")]
+position = Vector2(1133, 2959)
+
+[node name="enemy2" parent="." instance=ExtResource("3_g0y0l")]
+position = Vector2(-1850, -1313)
+
+[node name="enemy3" parent="." instance=ExtResource("3_g0y0l")]
+position = Vector2(-194, 376)
+
+[node name="enemy4" parent="." instance=ExtResource("3_g0y0l")]
+position = Vector2(998, -1109)
