@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3fXnAOy9+AQ=",
+  "dgSpecHash": "Pahyg226HmE=",
   "success": true,
-  "projectFilePath": "D:\\мифолор\\мифолор.csproj",
+  "projectFilePath": "D:\\мифолор\\Мифолор.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Владелец\\.nuget\\packages\\godot.sourcegenerators\\4.2.2\\godot.sourcegenerators.4.2.2.nupkg.sha512",
     "C:\\Users\\Владелец\\.nuget\\packages\\godotsharp\\4.2.2\\godotsharp.4.2.2.nupkg.sha512",

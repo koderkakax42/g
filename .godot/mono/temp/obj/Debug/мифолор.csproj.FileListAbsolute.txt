@@ -49,4 +49,3 @@ D:\мифолор\.godot\mono\temp\bin\Debug\GodotSharpEditor.dll
 D:\мифолор\.godot\mono\temp\obj\Debug\мифолор.csproj.Up2Date
 D:\мифолор\.godot\mono\temp\obj\Debug\мифолор.genruntimeconfig.cache
 D:\мифолор\.godot\mono\temp\obj\Debug\ref\мифолор.dll
-D:\мифолор\.godot\mono\temp\obj\Debug\мифолор.sourcelink.json
