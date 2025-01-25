@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://q5to51umwgje"]
+[gd_scene load_steps=39 format=3 uid="uid://q5to51umwgje"]
 
 [ext_resource type="Script" path="res://scene/skript/enemy.cs" id="1_q5ka2"]
 [ext_resource type="Texture2D" uid="uid://ch6ooeij3pyo" path="res://sprait/Без названия73_20241218230050.png" id="2_v3n80"]
@@ -255,14 +255,11 @@ animations = [{
 radius = 26.0352
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ocmar"]
-radius = 35.0143
+radius = 39.0128
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_ll20x"]
-outlines = Array[PackedVector2Array]([PackedVector2Array(-7.7, -25.55, 4.5, -26.75, 15.9, -21.55, 24.3, -11.55, 26.5, 0.45, 24.9, 8.05, 20.5, 16.25, 9.9, 23.45, -0.3, 25.85, -12.1, 23.25, -21.5, 14.85, -26.5, 2.85, -24.1, -11.35, -16.1, -21.15)])
-source_geometry_group_name = &"navigation_polygon_source_group"
-
-[node name="enemy" type="CharacterBody2D"]
+[node name="enemy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_q5ka2")
+Speed = 129
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_jk8j1")
@@ -270,23 +267,17 @@ shape = SubResource("RectangleShape2D_jk8j1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.182434, 0.167114)
 sprite_frames = SubResource("SpriteFrames_tjpvq")
-animation = &"dead"
+animation = &"run"
+frame = 7
+frame_progress = 0.0914149
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="obiym" type="Area2D" parent="."]
 scale = Vector2(20, 20)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obiym"]
 shape = SubResource("CircleShape2D_yt5xc")
 
-[node name="Area2D2" type="Area2D" parent="."]
+[node name="hitbox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-position = Vector2(-4, 5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 shape = SubResource("CircleShape2D_ocmar")
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-position = Vector2(2, 10)
-scale = Vector2(20, 20)
-navigation_polygon = SubResource("NavigationPolygon_ll20x")
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="NavigationRegion2D"]
