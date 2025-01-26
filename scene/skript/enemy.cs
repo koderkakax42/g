@@ -1,5 +1,4 @@
 using Godot;
-using System;
 using System.Threading.Tasks;
 
 
@@ -64,7 +63,7 @@ public partial class _enemy : Area2D
   [Export]
   public int xp = 100;
 
-  public string TargetGroup = "Player";
+  public string TargetGroup = "Atack";
 
    private AnimatedSprite2D _animatedSprite;
     public override void _Ready()
@@ -75,7 +74,7 @@ public partial class _enemy : Area2D
 
     private void _OnBodyEntered(Node2D body)
     {
-       if (TargetGroup != "Player" && body.IsInGroup(TargetGroup))
+       if (TargetGroup != "Atack" && body.IsInGroup(TargetGroup))
        return;
 
 
@@ -110,7 +109,7 @@ public partial class _enemy : Area2D
 
       }
        
-       if (TargetGroup != "Player" && body.IsInGroup(TargetGroup))
+       if (TargetGroup != "Atack" && body.IsInGroup(TargetGroup))
        return;
 
      }

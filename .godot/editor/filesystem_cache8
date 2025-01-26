@@ -1,21 +1,21 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1737823882
+::res://::1737886653
 icon.svg::CompressedTexture2D::6536303543193136467::1737284174::1737284190::1::::<><>::
 README.txt::TextFile::-1::1735324959::0::1::::<><>::
 ::res://ost/::1734629114
 gaim.mp3::AudioStreamMP3::6221163414547678383::1734623544::1734629114::1::::<><>::
-::res://scene/::1737815317
-appdait.tscn::PackedScene::7078070116808482552::1737729842::0::1::::<><>::res://scene/skript/appdait.cs
-arena.tscn::PackedScene::8147987428372178967::1737729842::0::1::::<><>::res://scene/skript/arena.cs<>uid://djuwpel1ysljv::::res://scene/plyer.tscn<>uid://q5to51umwgje::::res://scene/enemy.tscn
-attak.tscn::PackedScene::8321562614420476452::1737729842::0::1::::<><>::uid://bppnav1k3fwqx::::res://sprait/Без названия73_20241218230041.png<>res://scene/skript/attak.cs
-enemy.tscn::PackedScene::1186133071598578366::1737815316::0::1::::<><>::res://scene/skript/enemy.cs<>uid://ch6ooeij3pyo::::res://sprait/Без названия73_20241218230050.png
-inventory.tscn::PackedScene::2221158356562347200::1737729842::0::1::::<><>::res://scene/skript/inventory.cs
-meny.tscn::PackedScene::1755307527030284913::1737729842::0::1::::<><>::res://scene/skript/meny.cs
-money.tscn::PackedScene::3114782727502192242::1737729843::0::1::::<><>::res://scene/skript/money.cs<>uid://oq84l6pxtnw::::res://sprait/Без названия73_20241218230059.png
-plyer.tscn::PackedScene::7833611987952588547::1737729843::0::1::::<><>::uid://fwais77b05mu::::res://sprait/Без названия73_20241218230115.png<>res://scene/skript/Player.cs<>uid://bppnav1k3fwqx::::res://sprait/Без названия73_20241218230041.png<>uid://6v7fht1kpyce::::res://scene/inventory.tscn
-settings.tscn::PackedScene::5712380603150072699::1737729842::0::1::::<><>::res://scene/skript/settings.cs
-shest.tscn::PackedScene::8894838821281084149::1737729843::0::1::::<><>::res://scene/skript/shest.cs
-speed_settings.tscn::PackedScene::6684966380047276800::1737729843::0::1::::<><>::res://scene/skript/speed_settings.cs
+::res://scene/::1737824792
+appdait.tscn::PackedScene::7078070116808482552::1737824352::0::1::::<><>::res://scene/skript/appdait.cs
+arena.tscn::PackedScene::8147987428372178967::1737824792::0::1::::<><>::res://scene/skript/arena.cs<>uid://djuwpel1ysljv::::res://scene/plyer.tscn<>uid://q5to51umwgje::::res://scene/enemy.tscn
+attak.tscn::PackedScene::8321562614420476452::1737824352::0::1::::<><>::uid://bppnav1k3fwqx::::res://sprait/Без названия73_20241218230041.png<>res://scene/skript/attak.cs
+enemy.tscn::PackedScene::1186133071598578366::1737824353::0::1::::<><>::res://scene/skript/enemy.cs<>uid://ch6ooeij3pyo::::res://sprait/Без названия73_20241218230050.png
+inventory.tscn::PackedScene::2221158356562347200::1737824352::0::1::::<><>::res://scene/skript/inventory.cs
+meny.tscn::PackedScene::1755307527030284913::1737824352::0::1::::<><>::res://scene/skript/meny.cs
+money.tscn::PackedScene::3114782727502192242::1737824353::0::1::::<><>::res://scene/skript/money.cs<>uid://oq84l6pxtnw::::res://sprait/Без названия73_20241218230059.png
+plyer.tscn::PackedScene::7833611987952588547::1737824353::0::1::::<><>::uid://fwais77b05mu::::res://sprait/Без названия73_20241218230115.png<>res://scene/skript/Player.cs<>uid://bppnav1k3fwqx::::res://sprait/Без названия73_20241218230041.png<>uid://6v7fht1kpyce::::res://scene/inventory.tscn
+settings.tscn::PackedScene::5712380603150072699::1737824352::0::1::::<><>::res://scene/skript/settings.cs
+shest.tscn::PackedScene::8894838821281084149::1737824353::0::1::::<><>::res://scene/skript/shest.cs
+speed_settings.tscn::PackedScene::6684966380047276800::1737824353::0::1::::<><>::res://scene/skript/speed_settings.cs
 ::res://scene/skript/::1737201990
 appdait.cs::CSharpScript::-1::1735483161::0::1::::<>Control<>::
 arena.cs::CSharpScript::-1::1735483504::0::1::::<>Node2D<>::

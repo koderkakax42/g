@@ -1,0 +1,144 @@
+[gd_scene load_steps=21 format=3 uid="uid://biqsefkkddpb5"]
+
+[ext_resource type="Script" path="res://scene/skript/Atack.cs" id="1_qbx4a"]
+[ext_resource type="Texture2D" uid="uid://bppnav1k3fwqx" path="res://sprait/Без названия73_20241218230041.png" id="2_yusbr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k237o"]
+size = Vector2(202.5, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwqjx"]
+atlas = ExtResource("2_yusbr")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jffws"]
+atlas = ExtResource("2_yusbr")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyoi6"]
+atlas = ExtResource("2_yusbr")
+region = Rect2(1024, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hphjs"]
+atlas = ExtResource("2_yusbr")
+region = Rect2(1536, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kunye"]
+atlas = ExtResource("2_yusbr")
+region = Rect2(1024, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgk3d"]
+atlas = ExtResource("2_yusbr")
+region = Rect2(512, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cd7lj"]
+atlas = ExtResource("2_yusbr")
+region = Rect2(0, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdnhv"]
+atlas = ExtResource("2_yusbr")
+region = Rect2(512, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8jry"]
+atlas = ExtResource("2_yusbr")
+region = Rect2(0, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocobj"]
+atlas = ExtResource("2_yusbr")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8135"]
+atlas = ExtResource("2_yusbr")
+region = Rect2(1536, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0trn"]
+atlas = ExtResource("2_yusbr")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsdiq"]
+atlas = ExtResource("2_yusbr")
+region = Rect2(1536, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcm16"]
+atlas = ExtResource("2_yusbr")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5hc7"]
+atlas = ExtResource("2_yusbr")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bd44p"]
+atlas = ExtResource("2_yusbr")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wvjel"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwqjx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jffws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyoi6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hphjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kunye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgk3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cd7lj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdnhv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8jry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocobj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8135")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0trn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsdiq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcm16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5hc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bd44p")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="Atack" type="Area2D" groups=["Atack"]]
+script = ExtResource("1_qbx4a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.25, -1.5)
+shape = SubResource("RectangleShape2D_k237o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.361328)
+sprite_frames = SubResource("SpriteFrames_wvjel")
+animation = &"run"
+frame = 4
+frame_progress = 0.53283
+
+[node name="Marker2D" type="Marker2D" parent="."]
+gizmo_extents = 79.0
