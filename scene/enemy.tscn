@@ -259,7 +259,7 @@ radius = 39.0128
 
 [node name="enemy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_q5ka2")
-Speed = 129
+Speed = 300
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_jk8j1")
@@ -282,3 +282,5 @@ shape = SubResource("CircleShape2D_yt5xc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 shape = SubResource("CircleShape2D_ocmar")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

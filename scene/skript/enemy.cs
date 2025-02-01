@@ -3,8 +3,12 @@ using System.Threading.Tasks;
 
 
 
+
+
+
 public partial class enemy : CharacterBody2D 
 {
+   [Export] public int Health = 100;  // Здоров
  
   [Export]
   public int Speed = 350 ;
@@ -30,10 +34,20 @@ public partial class enemy : CharacterBody2D
 
 
     }
+    public void TakeDamage(int damage)
+    {
+        Health -= damage;
+
+        if (Health <= 0)
+        {
+            // Уничтожение врага
+            QueueFree();
+        }
+    }
 
     public override void _PhysicsProcess(double delta)
     {
-
+    
       if (target == null ) return ;
 
       Vector2 direction = (target.GlobalPosition-GlobalPosition).Normalized();
