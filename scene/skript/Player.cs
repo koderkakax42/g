@@ -3,23 +3,17 @@ using Godot;
 public partial class Player: CharacterBody2D
 {
 
-
+  private float _timer = 0.0f;  
     [Export]
     public int Speed { get; set; } = 400;
 
-
-
+  public Node2D targ;
   [Export] public PackedScene BulletScene { get; set; } // Сцена пули
   [Export] public float BulletSpeed = 400.0f;       // Скорость пули
     
   public override void _UnhandledInput(InputEvent @event)
   {
-        if (@event is InputEventMouseButton mouseEvent 
-        && mouseEvent.Pressed 
-        && mouseEvent.ButtonIndex == MouseButton.Left)
-        {
-           Shoot();
-        }
+        
   }
 
   private void Shoot()
@@ -37,12 +31,15 @@ public partial class Player: CharacterBody2D
         bulletInstance.Position = GlobalPosition;
 
       // Получаем направление выстрела от игрока к мыши
-        var direction = (GetGlobalMousePosition() - GlobalPosition).Normalized();
-        bulletInstance.Direction = direction;
-        bulletInstance.Speed = BulletSpeed;
+     
 
-       if(Input.IsActionPressed("bullit"))
-        GetParent().AddChild(bulletInstance);
+       if(Input.IsActionPressed("bullit") )
+       {
+         
+          GetParent().AddChild(bulletInstance);
+          
+       }
+       
     }
 
 
@@ -55,9 +52,8 @@ public partial class Player: CharacterBody2D
      
     public override void _Ready ()
     {
-        var scene = GD.Load<PackedScene>("res://scene/atack.tscn");
-        var instance = scene.Instantiate();
-        AddChild(instance);
+        
+       targ =GetTree().GetFirstNodeInGroup("enemy")as Node2D;
 
        _animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 
@@ -72,6 +68,14 @@ public partial class Player: CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
+          _timer += (float)delta;
+      if (Input.IsActionPressed("bullit"))
+        {
+
+           Shoot();
+          _timer = 0.0f;
+        }
+
         
          
 
@@ -91,20 +95,15 @@ public partial class Player: CharacterBody2D
             Velocity = inputDirection * Speed;
          }
 
+         if (Input.IsActionPressed("bullit")){
+          _animatedSprite.Play("attak");
+
+          
+          Velocity = inputDirection*0;
+
+         }
+
         GetInput();
         MoveAndSlide();
     }
-}
-
-public partial class _Player : Area2D
-{
-  
-  
-    
-    
-
-  
-
-
-
 }

@@ -1,15 +1,62 @@
 using Godot;
 using System;
 
-public partial class inventory : Control
+public partial class inventory : Node
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
+      private float _timer = 0.0f;  
+  private Node2D target;
+  [Export] public PackedScene BulletScene { get; set; }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
+    private TouchScreenButton _attack;     // Кнопка атаки
+    private bool _isAttacking = false;           // Состояние атаки
+
+    public override void _Ready()
+    {
+        target = GetTree().GetFirstNodeInGroup("Player")as Node2D;
+
+
+
+        _attack = GetNode<TouchScreenButton>("attak");
+        if (_attack == null)
+        {
+            GD.PrintErr("Ошибка: Кнопка атаки не найдена!");
+            return;
+        }
+        // Подключаемся к сигналам pressed и released
+        _attack.Pressed += OnAttackButtonPressed;
+        _attack.Released += OnAttackButtonReleased;
+    }
+
+    public override void _ExitTree()
+    {
+         _attack.Pressed -= OnAttackButtonPressed;
+         _attack.Released -= OnAttackButtonReleased;
+    }
+
+    private void OnAttackButtonPressed()
+    {
+        _isAttacking = true;
+        GD.Print("Кнопка атаки нажата!");
+        // Здесь может быть код, который выполняет действие при нажатии кнопки
+    }
+
+    private void OnAttackButtonReleased()
+    {
+        _isAttacking = false;
+        GD.Print("Кнопка атаки отпущена!");
+        // Здесь может быть код, который выполняет действие при отпускании кнопки
+    }
+
+    public override void _Process(double delta)
+    {
+       Atack bulletInstance = BulletScene.Instantiate<Atack>();
+       bulletInstance.Position = target.GlobalPosition; // Получаем ссылку на кнопку атаки
+        if (_isAttacking)
+        {
+            _timer += (float)delta;
+            GetParent().AddChild(bulletInstance);
+        }
+    }
+
+
 }

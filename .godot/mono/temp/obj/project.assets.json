@@ -93,11 +93,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\мифолор\\мифолор.csproj",
+      "projectUniqueName": "D:\\Mifolor\\мифолор.csproj",
       "projectName": "мифолор",
-      "projectPath": "D:\\мифолор\\мифолор.csproj",
+      "projectPath": "D:\\Mifolor\\мифолор.csproj",
       "packagesPath": "C:\\Users\\Владелец\\.nuget\\packages\\",
-      "outputPath": "D:\\мифолор\\.godot\\mono\\temp\\obj\\",
+      "outputPath": "D:\\Mifolor\\.godot\\mono\\temp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Владелец\\AppData\\Roaming\\NuGet\\NuGet.Config",

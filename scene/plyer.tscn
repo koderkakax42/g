@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scene/skript/Player.cs" id="1_ebbni"]
 [ext_resource type="PackedScene" uid="uid://biqsefkkddpb5" path="res://scene/atack.tscn" id="2_e2gy2"]
 [ext_resource type="Texture2D" uid="uid://bppnav1k3fwqx" path="res://sprait/Без названия73_20241218230041.png" id="2_iur55"]
-[ext_resource type="PackedScene" uid="uid://6v7fht1kpyce" path="res://scene/inventory.tscn" id="4_7umxo"]
+[ext_resource type="PackedScene" uid="uid://6v7fht1kpyce" path="res://scene/inventory.tscn" id="5_i4qby"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rq4h4"]
 size = Vector2(176, 157)
@@ -202,7 +202,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 2.0
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m80nn"]
@@ -219,19 +219,18 @@ shape = SubResource("RectangleShape2D_rq4h4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.330078, 0.292969)
 sprite_frames = SubResource("SpriteFrames_rlttn")
-animation = &"attak"
+animation = &"run"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="inventory" parent="." instance=ExtResource("4_7umxo")]
-visible = false
-offset_left = -575.0
-offset_top = -325.0
-offset_right = -575.0
-offset_bottom = -325.0
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(2.5, -1)
 shape = SubResource("RectangleShape2D_m80nn")
+
+[node name="inventory" parent="." instance=ExtResource("5_i4qby")]
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -576.0
+offset_bottom = -324.0

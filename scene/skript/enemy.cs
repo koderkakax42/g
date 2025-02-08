@@ -18,7 +18,7 @@ public partial class enemy : CharacterBody2D
   private NavigationAgent2D _navigationAgent;
   private Node2D target;
 
-       private AnimatedSprite2D _animatedSprite;
+  private AnimatedSprite2D _animatedSprite;
     public override void _Ready()
     {
        

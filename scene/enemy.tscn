@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://q5to51umwgje"]
+[gd_scene load_steps=38 format=3 uid="uid://q5to51umwgje"]
 
 [ext_resource type="Script" path="res://scene/skript/enemy.cs" id="1_q5ka2"]
 [ext_resource type="Texture2D" uid="uid://ch6ooeij3pyo" path="res://sprait/Без названия73_20241218230050.png" id="2_v3n80"]
@@ -251,9 +251,6 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_yt5xc"]
-radius = 26.0352
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_ocmar"]
 radius = 39.0128
 
@@ -270,13 +267,6 @@ sprite_frames = SubResource("SpriteFrames_tjpvq")
 animation = &"run"
 frame = 7
 frame_progress = 0.0914149
-
-[node name="obiym" type="Area2D" parent="."]
-visible = false
-scale = Vector2(20, 20)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obiym"]
-shape = SubResource("CircleShape2D_yt5xc")
 
 [node name="hitbox" type="Area2D" parent="."]
 
