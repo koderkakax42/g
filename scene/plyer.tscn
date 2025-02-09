@@ -1,13 +1,12 @@
-[gd_scene load_steps=34 format=3 uid="uid://djuwpel1ysljv"]
+[gd_scene load_steps=33 format=3 uid="uid://djuwpel1ysljv"]
 
 [ext_resource type="Texture2D" uid="uid://fwais77b05mu" path="res://sprait/Без названия73_20241218230115.png" id="1_7tb5m"]
 [ext_resource type="Script" path="res://scene/skript/Player.cs" id="1_ebbni"]
 [ext_resource type="PackedScene" uid="uid://biqsefkkddpb5" path="res://scene/atack.tscn" id="2_e2gy2"]
 [ext_resource type="Texture2D" uid="uid://bppnav1k3fwqx" path="res://sprait/Без названия73_20241218230041.png" id="2_iur55"]
-[ext_resource type="PackedScene" uid="uid://6v7fht1kpyce" path="res://scene/inventory.tscn" id="5_i4qby"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rq4h4"]
-size = Vector2(176, 157)
+size = Vector2(176, 156)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nwwal"]
 atlas = ExtResource("2_iur55")
@@ -206,14 +205,16 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m80nn"]
-size = Vector2(161, 122)
+size = Vector2(185, 165)
 
 [node name="player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_ebbni")
 BulletScene = ExtResource("2_e2gy2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1.5)
+light_mask = 6
+visibility_layer = 6
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_rq4h4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -226,11 +227,24 @@ animation = &"run"
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(2.5, -1)
+position = Vector2(0.5, 1.5)
 shape = SubResource("RectangleShape2D_m80nn")
 
-[node name="inventory" parent="." instance=ExtResource("5_i4qby")]
-offset_left = -576.0
-offset_top = -324.0
-offset_right = -576.0
-offset_bottom = -324.0
+[node name="ProgressBar" type="ProgressBar" parent="."]
+light_mask = 2
+visibility_layer = 2
+offset_left = 474.0
+offset_top = -322.0
+offset_right = 574.0
+offset_bottom = -280.0
+tooltip_text = "xp
+"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 414.0
+offset_top = -314.0
+offset_right = 478.0
+offset_bottom = -287.0
+text = "xp"
+horizontal_alignment = 1
+vertical_alignment = 1

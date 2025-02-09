@@ -47,16 +47,12 @@ public partial class inventory : Node
         // Здесь может быть код, который выполняет действие при отпускании кнопки
     }
 
-    public override void _Process(double delta)
-    {
-       Atack bulletInstance = BulletScene.Instantiate<Atack>();
-       bulletInstance.Position = target.GlobalPosition; // Получаем ссылку на кнопку атаки
-        if (_isAttacking)
-        {
-            _timer += (float)delta;
-            GetParent().AddChild(bulletInstance);
-        }
-    }
+   // public override void _Process(double delta)
+   // //    {
+//            _timer += (float)delta;
+  //          GetParent().AddChild(bulletInstance);
+   //     }
+   // }
 
 
 }

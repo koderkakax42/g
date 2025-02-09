@@ -3,19 +3,19 @@ using Godot;
 public partial class Player: CharacterBody2D
 {
 
-  private float _timer = 0.0f;  
-    [Export]
-    public int Speed { get; set; } = 400;
-
-  public Node2D targ;
-  [Export] public PackedScene BulletScene { get; set; } // Сцена пули
-  [Export] public float BulletSpeed = 400.0f;       // Скорость пули
+     public int Damage = 10;
+    [Export]public int Speed { get; set; } = 400;
+   [Export] public PackedScene BulletScene { get; set; } // Сцена пули
+    [Export] public float BulletSpeed = 400.0f;       // Скорость пули
     
-  public override void _UnhandledInput(InputEvent @event)
-  {
-        
-  }
+ 
 
+     private AnimatedSprite2D _animatedSprite;
+
+     public int xp = 200 ;
+
+     public Vector2 inputDirection;
+     
   private void Shoot()
     {
         if (BulletScene == null)
@@ -33,30 +33,55 @@ public partial class Player: CharacterBody2D
       // Получаем направление выстрела от игрока к мыши
      
 
-       if(Input.IsActionPressed("bullit") )
-       {
+       
+       
          
           GetParent().AddChild(bulletInstance);
           
-       }
+       
        
     }
 
 
      
-     private AnimatedSprite2D _animatedSprite;
-
-     public int xp = 200 ;
-
-     public Vector2 inputDirection;
-     
     public override void _Ready ()
     {
+       
         
-       targ =GetTree().GetFirstNodeInGroup("enemy")as Node2D;
 
        _animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 
+    }
+    private void OnAreaEntered(Area2D area)
+    {
+        // Проверяем, попала ли пуля во врага
+         if (area.GetParent() is enemy enemy)
+         {
+             // Наносим урон врагу
+             enemy.TakeDamage(Damage);
+
+         }
+
+         
+    }  
+    public void _XPBAR(ProgressBar Value)
+    {
+      Value.Value = xp / 2;
+
+      
+
+    }
+
+
+     public void enamyDemage(int damage)
+    {
+       xp -= damage;
+
+        if (xp <= 0)
+        {
+          
+            QueueFree();
+        }
     }
 
     public void GetInput()
@@ -68,12 +93,12 @@ public partial class Player: CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
-          _timer += (float)delta;
-      if (Input.IsActionPressed("bullit"))
+         
+      if (Input.IsActionPressed("ui_atack"))
         {
 
            Shoot();
-          _timer = 0.0f;
+          
         }
 
         
@@ -95,7 +120,7 @@ public partial class Player: CharacterBody2D
             Velocity = inputDirection * Speed;
          }
 
-         if (Input.IsActionPressed("bullit")){
+         if (Input.IsActionPressed("ui_atack")){
           _animatedSprite.Play("attak");
 
           

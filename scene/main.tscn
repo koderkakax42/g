@@ -57,18 +57,26 @@ position = Vector2(28279, 5815)
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+light_mask = 1023
+visibility_layer = 1023
 position = Vector2(-8999, 8317)
 shape = SubResource("RectangleShape2D_dcyqn")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+light_mask = 1023
+visibility_layer = 1023
 position = Vector2(11733, 26693.8)
 shape = SubResource("RectangleShape2D_p541r")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+light_mask = 1023
+visibility_layer = 1023
 position = Vector2(32654, 7460.5)
 shape = SubResource("RectangleShape2D_dcyqn")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+light_mask = 1023
+visibility_layer = 1023
 position = Vector2(11733, -11053)
 shape = SubResource("RectangleShape2D_p541r")
 
@@ -77,3 +85,12 @@ position = Vector2(-3881, 10369)
 
 [node name="spawn" parent="." instance=ExtResource("5_22chl")]
 position = Vector2(7793, 9220)
+
+[node name="spawn2" parent="." instance=ExtResource("5_22chl")]
+position = Vector2(-4636, 11268)
+
+[node name="spawn3" parent="." instance=ExtResource("5_22chl")]
+position = Vector2(-2883, 10227)
+
+[node name="spawn4" parent="." instance=ExtResource("5_22chl")]
+position = Vector2(-4433, 8652)

@@ -6,6 +6,8 @@
 [node name="spawn" type="Node2D"]
 script = ExtResource("1_mbs6q")
 EnemyScene = ExtResource("2_4ygb7")
+SpawnInterval = 2.0
+MaxEnemies = 200
 
 [node name="Timer" type="Timer" parent="."]
 

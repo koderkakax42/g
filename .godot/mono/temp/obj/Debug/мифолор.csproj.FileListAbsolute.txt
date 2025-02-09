@@ -67,3 +67,4 @@ D:\Mifolor\.godot\mono\temp\bin\Debug\GodotSharpEditor.dll
 D:\Mifolor\.godot\mono\temp\obj\Debug\мифолор.csproj.Up2Date
 D:\Mifolor\.godot\mono\temp\obj\Debug\мифолор.genruntimeconfig.cache
 D:\Mifolor\.godot\mono\temp\obj\Debug\ref\мифолор.dll
+D:\Mifolor\.godot\mono\temp\obj\Debug\мифолор.sourcelink.json
