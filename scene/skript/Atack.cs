@@ -1,11 +1,43 @@
 using Godot;
-using System;
 
-public partial class Atacked : Area2D
+namespace Atack
 {
+ public partial class Atack :CharacterBody2D
+  {
+   [Export] public  int Speed = 350 ;
+  private Node2D target;
 
-    [Export] public int Damage = 10;      
+
+    public override void _Ready()
+    {
+       
+
+        target = GetTree().GetFirstNodeInGroup("enemy")as Node2D;
+        if(target == null)
+        {
+            GD.PrintErr("plaer error 404");
+        
+        }
+    }
+
+   public  override void _PhysicsProcess(double delta)
+    {
+       
+    
+
+      Vector2 direction = (target.GlobalPosition-GlobalPosition).Normalized();
+      
+       Velocity = direction*Speed;
+       MoveAndSlide();
+    }
+  }
+
+  public partial class AtackDirection : Area2D
+ {
   
+ 
+    [Export] public int Damage = 10;      
+   
 
     private void OnAreaEntered(Area2D area)
     {
@@ -23,33 +55,20 @@ public partial class Atacked : Area2D
     {
       AreaEntered += OnAreaEntered;
 
-    
+   
     }
 
      public override void _ExitTree()
     {
       AreaEntered -= OnAreaEntered;
     }
-
+   
     
 
-}
-public partial class Atack : CharacterBody2D{
-[Export]public int speed = 300;
-[Export] public Node2D enemy;
 
-    public override void _Ready()
-    {
-          enemy = GetTree().GetFirstNodeInGroup("enemy")as Node2D;
-    }
-
-    public override void _PhysicsProcess(double delta)
-    {
-        Vector2 ttt =(enemy.GlobalPosition-GlobalPosition).Normalized();
-        Velocity = ttt * speed;
-        MoveAndSlide();
-    }
+ }
+    
 
 
-}
 
+} 

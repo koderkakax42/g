@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Mifolor\\мифолор.csproj": {}
+    "D:\\mfty\\мифолор.csproj": {}
   },
   "projects": {
-    "D:\\Mifolor\\мифолор.csproj": {
+    "D:\\mfty\\мифолор.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Mifolor\\мифолор.csproj",
+        "projectUniqueName": "D:\\mfty\\мифолор.csproj",
         "projectName": "мифолор",
-        "projectPath": "D:\\Mifolor\\мифолор.csproj",
+        "projectPath": "D:\\mfty\\мифолор.csproj",
         "packagesPath": "C:\\Users\\Владелец\\.nuget\\packages\\",
-        "outputPath": "D:\\Mifolor\\.godot\\mono\\temp\\obj\\",
+        "outputPath": "D:\\mfty\\.godot\\mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Владелец\\AppData\\Roaming\\NuGet\\NuGet.Config",
