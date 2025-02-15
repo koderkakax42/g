@@ -90,7 +90,7 @@ public partial class _enemy : Area2D
   [Export]
   public int xp = 100;
 
-  public string TargetGroup = "Atack";
+  public string TargetGroup = "Attack";
 
    private AnimatedSprite2D _animatedSprite;
     public override void _Ready()
@@ -101,7 +101,7 @@ public partial class _enemy : Area2D
 
     private void _OnBodyEntered(Node2D body)
     {
-       if (TargetGroup != "Atack" && body.IsInGroup(TargetGroup))
+       if (TargetGroup != "Attack" && body.IsInGroup(TargetGroup))
        return;
 
 
@@ -136,7 +136,7 @@ public partial class _enemy : Area2D
 
       }
        
-       if (TargetGroup != "Atack" && body.IsInGroup(TargetGroup))
+       if (TargetGroup != "Attack" && body.IsInGroup(TargetGroup))
        return;
 
      }

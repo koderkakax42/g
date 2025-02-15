@@ -6,7 +6,7 @@ public partial class Player: CharacterBody2D
      public int Damage = 10;
     [Export]public int Speed { get; set; } = 400;
    [Export] public PackedScene BulletScene { get; set; } // Сцена пули
-    [Export] public float BulletSpeed = 400.0f;       // Скорость пули
+    
     
  
 
@@ -24,18 +24,11 @@ public partial class Player: CharacterBody2D
             return;
         }
 
-      // Инстанцируем сцену пули
-        Atack bulletInstance = BulletScene.Instantiate<Atack>();
 
-       // Устанавливаем позицию пули
+        Atack.Atack bulletInstance = BulletScene.Instantiate<Atack.Atack>();
+
         bulletInstance.Position = GlobalPosition;
 
-      // Получаем направление выстрела от игрока к мыши
-     
-
-       
-       
-         
           GetParent().AddChild(bulletInstance);
           
        
@@ -99,11 +92,20 @@ public partial class Player: CharacterBody2D
 
            Shoot();
           
+         
+          _animatedSprite.Play("attak");
+
+          
+          Velocity = inputDirection*50;
         }
 
+
+
+
+         
         
          
-
+      
          if(Input.IsActionPressed("ui_right")
          ||Input.IsActionPressed("ui_left")
          ||Input.IsActionPressed("ui_up")
@@ -120,13 +122,6 @@ public partial class Player: CharacterBody2D
             Velocity = inputDirection * Speed;
          }
 
-         if (Input.IsActionPressed("ui_atack")){
-          _animatedSprite.Play("attak");
-
-          
-          Velocity = inputDirection*0;
-
-         }
 
         GetInput();
         MoveAndSlide();
