@@ -29,6 +29,8 @@ public partial class Player: CharacterBody2D
 
         bulletInstance.Position = GlobalPosition;
 
+      //  bulletInstance.GlobalPosition = bulletInstance.Position   ;
+
           GetParent().AddChild(bulletInstance);
           
        
@@ -87,17 +89,18 @@ public partial class Player: CharacterBody2D
     public override void _PhysicsProcess(double delta)
     {
          
-      if (Input.IsActionPressed("ui_atack"))
+      for (int i = 0; i <2; i++)
+      {
+        if (Input.IsActionPressed("ui_atack") )
         {
-
            Shoot();
-          
-         
-          _animatedSprite.Play("attak");
+           _animatedSprite.Play("attac");
+           
+           Velocity = inputDirection * 90;
+           break;
 
-          
-          Velocity = inputDirection*50;
         }
+      }
 
 
 

@@ -3,7 +3,8 @@
 [ext_resource type="Script" path="res://scene/skript/Atack.cs" id="1_qbx4a"]
 [ext_resource type="Texture2D" uid="uid://bppnav1k3fwqx" path="res://sprait/Без названия73_20241218230041.png" id="2_yusbr"]
 
-[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_sxrbe"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hguus"]
+size = Vector2(11, 62)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mrdgh"]
 size = Vector2(156, 105)
@@ -195,18 +196,16 @@ animations = [{
 script = ExtResource("1_qbx4a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -1)
-shape = SubResource("SeparationRayShape2D_sxrbe")
+position = Vector2(70.5, 0)
+shape = SubResource("RectangleShape2D_hguus")
 
-[node name="Area2D" type="Area2D" parent="CollisionShape2D"]
-position = Vector2(-0.5, 1)
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(3, 0.5)
 shape = SubResource("RectangleShape2D_mrdgh")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D/Area2D/CollisionShape2D"]
-position = Vector2(-3, -0.5)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.368582, 0.25)
 sprite_frames = SubResource("SpriteFrames_2mu1l")
 autoplay = "default"

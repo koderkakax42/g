@@ -2,73 +2,48 @@ using Godot;
 
 namespace Atack
 {
- public partial class Atack :CharacterBody2D
-  {
-   [Export] public  int Speed = 350 ;
-  private Node2D target;
-
-
-    public override void _Ready()
+    public partial class Atack : CharacterBody2D
     {
-       
+        [Export] public int Speed = 350;
+        [Export] public int Damage = 10; // Урон теперь передается через Atack
 
-        target = GetTree().GetFirstNodeInGroup("enemy")as Node2D;
-        if(target == null)
+        private Node2D target;
+
+        public override void _Ready()
         {
-            GD.PrintErr("plaer error 404");
-        
+            target = GetTree().GetFirstNodeInGroup("enemy") as Node2D;
+            if (target == null)
+            {
+                GD.PrintErr("enemy error 404");
+            }
+        }
+
+        public override void _PhysicsProcess(double delta)
+        {
+            if (target == null) return; // Exit если нет врага.
+
+            Vector2 direction = (target.GlobalPosition - GlobalPosition).Normalized();
+            Velocity = direction * Speed;
+            MoveAndSlide();
+
+            // Проверяем столкновения после MoveAndSlide()
+            for (int i = 0; i < GetSlideCollisionCount(); i++)
+            {
+                KinematicCollision2D collision = GetSlideCollision(i);
+                if (collision.GetCollider() is Node2D colliderNode)
+                {
+                    if (colliderNode is enemy enemy)
+                    {
+                        // Наносим урон врагу при столкновении. Damage берется из класса Atack
+                        enemy.TakeDamage(Damage);
+                        QueueFree(); // Уничтожаем пулю после попадания
+                        break; // Прекращаем цикл, чтобы не нанести урон несколько раз за кадр
+                    }
+                }
+            }
         }
     }
 
-   public  override void _PhysicsProcess(double delta)
-    {
-       
-    
-
-      Vector2 direction = (target.GlobalPosition-GlobalPosition).Normalized();
-      
-       Velocity = direction*Speed;
-       MoveAndSlide();
-    }
-  }
-
-  public partial class AtackDirection : Area2D
- {
-  
- 
-    [Export] public int Damage = 10;      
-   
-
-    private void OnAreaEntered(Area2D area)
-    {
-        // Проверяем, попала ли пуля во врага
-         if (area.GetParent() is enemy enemy)
-         {
-             // Наносим урон врагу
-             enemy.TakeDamage(Damage);
-              // Удаляем пулю
-             QueueFree();
-         }
-
-    }
-    public override void _Ready()
-    {
-      AreaEntered += OnAreaEntered;
-
-   
-    }
-
-     public override void _ExitTree()
-    {
-      AreaEntered -= OnAreaEntered;
-    }
-   
-    
-
-
- }
-    
-
-
-
-} 
+    // Больше не нужен класс AtackDirection
+    // Удалите этот класс.  Вся логика перемещена в Atack.
+}
