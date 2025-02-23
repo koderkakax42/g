@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bppnav1k3fwqx" path="res://sprait/Без названия73_20241218230041.png" id="2_iur55"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rq4h4"]
-size = Vector2(176, 156)
+size = Vector2(56, 51)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nwwal"]
 atlas = ExtResource("2_iur55")
@@ -134,7 +134,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"attak",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -205,46 +205,61 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m80nn"]
-size = Vector2(185, 165)
+size = Vector2(68.5, 63.5)
 
 [node name="player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_ebbni")
 BulletScene = ExtResource("2_e2gy2")
+MoveSpeed = 500.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-light_mask = 6
-visibility_layer = 6
-position = Vector2(0, 2)
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_rq4h4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.330078, 0.292969)
+position = Vector2(3.8147e-06, -1)
+scale = Vector2(0.116211, 0.113281)
 sprite_frames = SubResource("SpriteFrames_rlttn")
 animation = &"run"
+frame_progress = 0.103196
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.5, 1.5)
+position = Vector2(2, -1)
 shape = SubResource("RectangleShape2D_m80nn")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -577.0
+offset_top = -328.0
+offset_right = 569.0
+offset_bottom = 313.0
+grow_horizontal = 0
+
+[node name="ProgressBar" type="ProgressBar" parent="Control"]
 light_mask = 2
 visibility_layer = 2
-offset_left = 474.0
-offset_top = -322.0
-offset_right = 574.0
-offset_bottom = -280.0
+layout_mode = 0
+offset_left = 1001.0
+offset_right = 1149.0
+offset_bottom = 27.0
+size_flags_horizontal = 10
+size_flags_vertical = 6
 tooltip_text = "xp
 "
 
-[node name="Label" type="Label" parent="."]
-offset_left = 414.0
-offset_top = -314.0
-offset_right = 478.0
-offset_bottom = -287.0
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 951.0
+offset_top = 11.0
+offset_right = 1015.0
+offset_bottom = 38.0
 text = "xp"
 horizontal_alignment = 1
 vertical_alignment = 1

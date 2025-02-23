@@ -1,114 +1,167 @@
 using Godot;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
-public partial class Player: CharacterBody2D
+public partial class Player : CharacterBody2D
 {
 
-     public int Damage = 10;
-    [Export]public int Speed { get; set; } = 400;
-   [Export] public PackedScene BulletScene { get; set; } // Сцена пули
-    
-    
+    private int xp = 400;
+     public Vector2 inputDirection;
+    [Export] public PackedScene BulletScene; // Сцена пули
+    [Export] public float Speed = 900;
+    [Export] public float FireRate = 1f; // Выстрелов в секунду
+    [Export] public float BulletSpeed = 400f;
+
+    private float _timeSinceLastFire = 0f;
+    private List<Vector2> _targetMarkers = new List<Vector2>(); // Список меток
+    private List<enemy> _markedEnemies = new List<enemy>(); // Список врагов с метками
+    public AnimatedSprite2D _animatedSprite;
+    public override void _Ready()
+    {
+        GD.Print("Hello from C#!");
+    }
+
+    public void DamageEnemys(int damage)
+    {
+       xp -= damage;
+       if(xp <= 0)
+       {QueueFree();}
+    }
+   
+
+    public override void _Process(double delta)
+    {
+        _timeSinceLastFire += (float)delta;
+
+       
+
+        // Стрельба
+        if (Input.IsActionPressed("ui_atack") && _timeSinceLastFire >= 1f / FireRate)
+        {
+            Fire();
+            _timeSinceLastFire = 0f;
+        }
+       
+     
+       
+
+        // Установка метки
+        if (Input.IsActionJustPressed("mark"))
+        {
+            Vector2 mousePos = GetGlobalMousePosition();
+            MarkTarget(mousePos);
+        }
+
+       
+    }
+
  
 
-     private AnimatedSprite2D _animatedSprite;
+    private void Fire()
+    {
+        // Если есть враги с метками, стреляем по ним
+        if (_markedEnemies.Count > 0)
+        {
+            foreach (var enemy in _markedEnemies)
+            {
+                if (IsInstanceValid(enemy)) // Проверяем, что враг еще существует
+                {
+                    ShootAtTarget(enemy.GlobalPosition);
+                }
+            }
+            // Очищаем список помеченных врагов после выстрела
+        }
+        // Иначе, ищем ближайшего врага и стреляем по нему
+        else
+        {
+            enemy nearestEnemy = FindNearestEnemy();
+            if (nearestEnemy != null)
+            {
+                ShootAtTarget(nearestEnemy.GlobalPosition);
+            }
+        }
 
-     public int xp = 200 ;
+    }
 
-     public Vector2 inputDirection;
-     
-  private void Shoot()
+    private void ShootAtTarget(Vector2 targetPosition)
     {
         if (BulletScene == null)
         {
-            GD.PrintErr("Ошибка: Сцена пули не задана!");
+            GD.PrintErr("BulletScene is not assigned!");
             return;
         }
 
-
-        Atack.Atack bulletInstance = BulletScene.Instantiate<Atack.Atack>();
-
-        bulletInstance.Position = GlobalPosition;
-
-      //  bulletInstance.GlobalPosition = bulletInstance.Position   ;
-
-          GetParent().AddChild(bulletInstance);
-          
-       
-       
+        var bullet = (Atack)BulletScene.Instantiate();
+        GetParent().AddChild(bullet);
+        bullet.GlobalPosition = GlobalPosition;
+        bullet.SetDirection(targetPosition);
+        bullet.Speed = BulletSpeed;
+        bullet.Player = this; //  Добавляем ссылку на игрока, чтобы пуля знала, кто ее выпустил
     }
 
-
-     
-    public override void _Ready ()
+    private enemy FindNearestEnemy()
     {
-       
-        
-
-       _animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-
-    }
-    private void OnAreaEntered(Area2D area)
-    {
-        // Проверяем, попала ли пуля во врага
-         if (area.GetParent() is enemy enemy)
-         {
-             // Наносим урон врагу
-             enemy.TakeDamage(Damage);
-
-         }
-
-         
-    }  
-    public void _XPBAR(ProgressBar Value)
-    {
-      Value.Value = xp / 2;
-
-      
-
-    }
-
-
-     public void enamyDemage(int damage)
-    {
-       xp -= damage;
-
-        if (xp <= 0)
+        var enemies = GetTree().GetNodesInGroup("enemy").OfType<enemy>().ToList();
+        if (enemies.Count == 0)
         {
-          
-            QueueFree();
+            return null;
         }
+
+        enemy nearest = null;
+        float minDistance = float.MaxValue;
+
+        foreach (var enemy in enemies)
+        {
+            if (IsInstanceValid(enemy)) // Проверяем, что враг еще существует
+            {
+                float distance = GlobalPosition.DistanceTo(enemy.GlobalPosition);
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                    nearest = enemy;
+                }
+            }
+        }
+
+        return nearest;
     }
 
-    public void GetInput()
+    private void MarkTarget(Vector2 position)
+    {
+        // Ищем врага в небольшом радиусе от клика мыши
+        var enemies = GetTree().GetNodesInGroup("enemy").OfType<enemy>().ToList();
+        foreach (var enemy in enemies)
+        {
+            if (IsInstanceValid(enemy) && enemy.GlobalPosition.DistanceTo(position) < 50)
+            {
+                // Добавляем врага в список помеченных, если он еще не там
+                if (!_markedEnemies.Contains(enemy))
+                {
+                    _markedEnemies.Add(enemy);
+                    // TODO: Добавьте визуальную индикацию, что враг помечен (например, спрайт над головой)
+                    GD.Print($"Enemy marked: {enemy.Name}");
+                }
+                return; // Нашли врага, больше не ищем
+            }
+        }
+        GD.Print("No enemy found to mark.");
+
+        //TODO: если не найден враг, то ставить "метку" просто на земле
+        //_targetMarkers.Add(position);
+    }
+     public void GetInput()
     {
          
-        Vector2 inputDirection = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+        inputDirection = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
         Velocity = inputDirection * Speed;
     }
 
     public override void _PhysicsProcess(double delta)
     {
-         
-      for (int i = 0; i <2; i++)
-      {
-        if (Input.IsActionPressed("ui_atack") )
-        {
-           Shoot();
-           _animatedSprite.Play("attac");
-           
-           Velocity = inputDirection * 90;
-           break;
-
-        }
-      }
-
-
-
-
-         
+       
         
-         
-      
+              
          if(Input.IsActionPressed("ui_right")
          ||Input.IsActionPressed("ui_left")
          ||Input.IsActionPressed("ui_up")
@@ -122,7 +175,7 @@ public partial class Player: CharacterBody2D
             _animatedSprite.Play("dead");
 
             Speed=0;
-            Velocity = inputDirection * Speed;
+            Velocity = inputDirection  * Speed;
          }
 
 
