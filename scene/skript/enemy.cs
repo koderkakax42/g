@@ -14,7 +14,7 @@ public partial class enemy : CharacterBody2D
   [Export]
   public int Speed = 350 ;
 
-  public int Damage = 10 ;
+  public int Damage = 500 ;
   
   private NavigationAgent2D _navigationAgent;
   private Node2D target;
@@ -41,7 +41,8 @@ public partial class enemy : CharacterBody2D
          if (area.GetParent() is Player player)
          {
              // Наносим урон врагу
-             player.enamyDemage(Damage);
+             player.DamageEnemys(Damage);
+             GD.Print("uuuuuuuwwwwwuuuuuu");
 
          }
     }     
