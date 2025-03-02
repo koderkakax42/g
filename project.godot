@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Mifolor"
-run/main_scene="res://scene/main.tscn"
+run/main_scene="res://scene/meny.tscn"
 config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
 boot_splash/bg_color=Color(0.188371, 0.188371, 0.188371, 1)
 config/icon="res://sprait/Без названия46.jpg"

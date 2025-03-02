@@ -1,7 +1,6 @@
-[gd_scene load_steps=32 format=3 uid="uid://dqta6kb6fy8ou"]
+[gd_scene load_steps=31 format=3 uid="uid://dqta6kb6fy8ou"]
 
 [ext_resource type="Texture2D" uid="uid://bppnav1k3fwqx" path="res://sprait/Без названия73_20241218230041.png" id="1_ekyry"]
-[ext_resource type="Script" path="res://scene/skript/attak.cs" id="1_kalny"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2kst2"]
 size = Vector2(67, 37)
@@ -215,7 +214,6 @@ animations = [{
 size = Vector2(75, 34)
 
 [node name="attak" type="RigidBody2D"]
-script = ExtResource("1_kalny")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(23.5, 8.5)
@@ -225,8 +223,9 @@ shape = SubResource("RectangleShape2D_2kst2")
 position = Vector2(28, 13)
 scale = Vector2(0.16748, 0.132324)
 sprite_frames = SubResource("SpriteFrames_i6oyu")
-animation = &"sun hit"
-frame_progress = 0.262138
+animation = &"de-integration"
+frame = 6
+frame_progress = 0.474261
 
 [node name="Area2D" type="Area2D" parent="."]
 
