@@ -1,3 +1,6 @@
+AnimationPlayer
+ColorRect
+CanvasLayer
 Control
 AnimatedSprite2D
 CollisionShape2D
@@ -9,7 +12,3 @@ NavigationAgent2D
 Node2D
 Timer
 Polygon2D
-CollisionPolygon2D
-StaticBody2D
-NavigationRegion2D
-TileMap

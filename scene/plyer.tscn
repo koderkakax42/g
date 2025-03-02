@@ -205,12 +205,11 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m80nn"]
-size = Vector2(68.5, 63.5)
+size = Vector2(66, 59)
 
 [node name="player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_ebbni")
 BulletScene = ExtResource("2_e2gy2")
-MoveSpeed = 500.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
@@ -221,34 +220,31 @@ position = Vector2(3.8147e-06, -1)
 scale = Vector2(0.116211, 0.113281)
 sprite_frames = SubResource("SpriteFrames_rlttn")
 animation = &"run"
-frame_progress = 0.103196
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(2, -1)
+position = Vector2(-1, -0.5)
 shape = SubResource("RectangleShape2D_m80nn")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -577.0
-offset_top = -328.0
-offset_right = 569.0
-offset_bottom = 313.0
-grow_horizontal = 0
+anchors_preset = 0
+offset_left = -580.0
+offset_top = -324.0
+offset_right = 577.0
+offset_bottom = 324.0
 
 [node name="ProgressBar" type="ProgressBar" parent="Control"]
 light_mask = 2
 visibility_layer = 2
 layout_mode = 0
-offset_left = 1001.0
-offset_right = 1149.0
-offset_bottom = 27.0
+offset_left = 998.0
+offset_top = 12.0
+offset_right = 1146.0
+offset_bottom = 39.0
 size_flags_horizontal = 10
 size_flags_vertical = 6
 tooltip_text = "xp
@@ -256,10 +252,10 @@ tooltip_text = "xp
 
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 951.0
-offset_top = 11.0
-offset_right = 1015.0
-offset_bottom = 38.0
+offset_left = 936.0
+offset_top = 13.0
+offset_right = 1000.0
+offset_bottom = 40.0
 text = "xp"
 horizontal_alignment = 1
 vertical_alignment = 1

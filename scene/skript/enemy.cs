@@ -11,18 +11,38 @@ public partial class enemy : CharacterBody2D
 {
    [Export] public int Health = 100;  // Здоров
  
+    [Export] public PackedScene moneyscene;
   [Export]
   public int Speed = 350 ;
 
-  public int Damage = 500 ;
+  public int Damage = 10 ;
   
   private NavigationAgent2D _navigationAgent;
   private Node2D target;
 
+public Area2D Body;
+  public Atack atack;
+
   private AnimatedSprite2D _animatedSprite;
+
+  private void SpavnMoney()
+  {
+    var money = (money)moneyscene.Instantiate();
+    GetParent().AddChild(money);
+    money.GlobalPosition = GlobalPosition;
+    
+  }
     public override void _Ready()
     {
+
+      Body = GetNode<Area2D>("hitbox");
+
        
+       if (Body == null)
+        {GD.PrintErr("ytytyyty");}
+
+        Body.BodyEntered += OnBodyEntered;
+
 
         target = GetTree().GetFirstNodeInGroup("Player")as Node2D;
         if(target == null)
@@ -35,16 +55,16 @@ public partial class enemy : CharacterBody2D
 
 
     }
-    private void OnAreaEntered(Area2D area)
+   private void OnBodyEntered(Node2D body)
     {
-        // Проверяем, попала ли пуля во врага
-         if (area.GetParent() is Player player)
-         {
-             // Наносим урон врагу
-             player.DamageEnemys(Damage);
-             GD.Print("uuuuuuuwwwwwuuuuuu");
-
-         }
+       GD.Print(Damage +"   "+Speed+"   "+body+"    ");
+        // Проверяем, что столкнулись с врагом и что это не сам игрок
+        if (body is Player player )
+        {
+          GD.Print(Damage +"  ee "+Speed+"   www"+body+"   rr ");
+            player.DamageEnemys(Damage);
+        }
+    
     }     
     public void TakeDamage(int damage)
     {
@@ -52,8 +72,9 @@ public partial class enemy : CharacterBody2D
 
         if (Health <= 0)
         {
-            // Уничтожение врага
+          
             QueueFree();
+            SpavnMoney();
         }
     }
 
@@ -61,7 +82,10 @@ public partial class enemy : CharacterBody2D
     
     public override void _PhysicsProcess(double delta)
     {
-    
+      if (Health <= 0 )
+      {
+        SpavnMoney();
+      }
       if (target == null ) return ;
 
       Vector2 direction = (target.GlobalPosition-GlobalPosition).Normalized();
@@ -86,61 +110,3 @@ public partial class enemy : CharacterBody2D
 
 
 
-public partial class _enemy : Area2D
-{
-  [Export]
-  public int xp = 100;
-
-  public string TargetGroup = "Attack";
-
-   private AnimatedSprite2D _animatedSprite;
-    public override void _Ready()
-    {
-        BodyEntered += _OnBodyEntered;
-        BodyExited += _OnBodyExited; 
-    }
-
-    private void _OnBodyEntered(Node2D body)
-    {
-       if (TargetGroup != "Attack" && body.IsInGroup(TargetGroup))
-       return;
-
-
-       if(xp > 0)
-       {
-        
-        Task.Delay(500);
-
-        xp = xp - 50;
-       }
-       
-      
-
-        if(xp <= 0)
-        {
-          _animatedSprite.Play("dead");
-          
-          QueueFree();
-        }
-
-      
-      
-    }
-     
-     private void _OnBodyExited(Node2D body) 
-     {
-      if (xp > 0 && xp < 100 )
-      {
-         Task.Delay(500);
-
-        xp = xp + 1;
-
-      }
-       
-       if (TargetGroup != "Attack" && body.IsInGroup(TargetGroup))
-       return;
-
-     }
-
-
-}

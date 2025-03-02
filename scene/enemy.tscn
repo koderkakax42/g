@@ -252,7 +252,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ocmar"]
-radius = 65.2533
+radius = 42.45
 
 [node name="enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 3

@@ -3,13 +3,19 @@ using System;
 
 public partial class money : Area2D
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
+	public Player Player { get; set; } // Ссылка на игрока, выпустившего пулю
+     private Timer timetolive; 
+	 public float time = 60f;
+	 private void live_bullet()
+    {
+      timetolive = new Timer();
+      AddChild(timetolive);
+      timetolive.WaitTime = time;
+      timetolive.OneShot= true;
+      timetolive.Timeout += _QueueFree;
+      timetolive.Start(); 
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
+    }
+	 private void _QueueFree(){QueueFree();}
+
 }

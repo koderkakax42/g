@@ -6,11 +6,14 @@ using System.Linq;
 public partial class Player : CharacterBody2D
 {
 
+    [Export]
+    public String TargetScenePath = "res://scene/meny.tscn";
+
     private int xp = 400;
      public Vector2 inputDirection;
     [Export] public PackedScene BulletScene; // Сцена пули
     [Export] public float Speed = 900;
-    [Export] public float FireRate = 1f; // Выстрелов в секунду
+    [Export] public float FireRate = 2f; // Выстрелов в секунду
     [Export] public float BulletSpeed = 400f;
 
     private float _timeSinceLastFire = 0f;
@@ -20,18 +23,44 @@ public partial class Player : CharacterBody2D
     public override void _Ready()
     {
         GD.Print("Hello from C#!");
+        _animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
     }
 
     public void DamageEnemys(int damage)
     {
        xp -= damage;
        if(xp <= 0)
-       {QueueFree();}
+       {
+        QueueFree();
+
+         LoadNewScene();
+       }
+    }
+     private void LoadNewScene()
+    {
+        // Получаем SceneTree
+        SceneTree tree = GetTree();
+
+        // Останавливаем текущую сцену.  Это ВАЖНО.
+        tree.ChangeSceneToFile(TargetScenePath);
     }
    
 
     public override void _Process(double delta)
     {
+               
+        if(Input.IsActionPressed("ui_right")
+         ||Input.IsActionPressed("ui_left")
+         ||Input.IsActionPressed("ui_up")
+         ||Input.IsActionPressed("ui_down") )
+         {
+         _animatedSprite.Play("run");
+         }
+         else
+         {
+         _animatedSprite.Stop();
+         }
+
         _timeSinceLastFire += (float)delta;
 
        
@@ -54,6 +83,20 @@ public partial class Player : CharacterBody2D
         }
 
        
+       
+        
+       
+
+        /* if(xp <= 0)
+         {
+            _animatedSprite.Play("dead");
+
+            Speed=0;
+            Velocity = inputDirection  * Speed;
+         }
+
+*/ GetInput();
+        MoveAndSlide();
     }
 
  
@@ -148,7 +191,7 @@ public partial class Player : CharacterBody2D
         GD.Print("No enemy found to mark.");
 
         //TODO: если не найден враг, то ставить "метку" просто на земле
-        //_targetMarkers.Add(position);
+        _targetMarkers.Add(position);
     }
      public void GetInput()
     {
@@ -157,29 +200,5 @@ public partial class Player : CharacterBody2D
         Velocity = inputDirection * Speed;
     }
 
-    public override void _PhysicsProcess(double delta)
-    {
-       
-        
-              
-         if(Input.IsActionPressed("ui_right")
-         ||Input.IsActionPressed("ui_left")
-         ||Input.IsActionPressed("ui_up")
-         ||Input.IsActionPressed("ui_down") )
-         _animatedSprite.Play("run");
-         else
-         _animatedSprite.Stop();
-
-         if(xp <= 0)
-         {
-            _animatedSprite.Play("dead");
-
-            Speed=0;
-            Velocity = inputDirection  * Speed;
-         }
-
-
-        GetInput();
-        MoveAndSlide();
-    }
+    
 }

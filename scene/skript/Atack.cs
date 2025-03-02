@@ -6,9 +6,10 @@ public partial class Atack : Area2D
     public Vector2 Direction { get; set; }
     public float Speed = 900;
     public Player Player { get; set; } // Ссылка на игрока, выпустившего пулю
-    private Timer _collisionTimer; // Таймер для задержки коллизии
+    private Timer _collisionTimer;
+    private Timer timetolive; 
     private CollisionShape2D _collisionShape;
-
+      public float time_bul = 7f;
     [Export] public float CollisionDelay = 0.05f; // Задержка в секундах
 
     public override void _Ready()
@@ -24,7 +25,26 @@ public partial class Atack : Area2D
         _collisionTimer.Timeout += EnableCollision; // Подписываемся на событие окончания таймера
         DisableCollision(); // Отключаем коллизию при создании пули
         _collisionTimer.Start();
+        if(_collisionTimer.OneShot == true)
+        {
+            live_bullet();
+
+        }
+
     }
+
+    private void live_bullet()
+    {
+      timetolive = new Timer();
+      AddChild(timetolive);
+      timetolive.WaitTime = time_bul;
+      timetolive.OneShot= true;
+      timetolive.Timeout += _QueueFree;
+      timetolive.Start(); 
+
+    }
+    private void _QueueFree(){QueueFree();}
+
 
     public override void _PhysicsProcess(double delta)
     {
