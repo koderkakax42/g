@@ -228,34 +228,3 @@ animation = &"run"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-1, -0.5)
 shape = SubResource("RectangleShape2D_m80nn")
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -580.0
-offset_top = -324.0
-offset_right = 577.0
-offset_bottom = 324.0
-
-[node name="ProgressBar" type="ProgressBar" parent="Control"]
-light_mask = 2
-visibility_layer = 2
-layout_mode = 0
-offset_left = 998.0
-offset_top = 12.0
-offset_right = 1146.0
-offset_bottom = 39.0
-size_flags_horizontal = 10
-size_flags_vertical = 6
-tooltip_text = "xp
-"
-
-[node name="Label" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 936.0
-offset_top = 13.0
-offset_right = 1000.0
-offset_bottom = 40.0
-text = "xp"
-horizontal_alignment = 1
-vertical_alignment = 1

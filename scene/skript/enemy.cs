@@ -1,6 +1,7 @@
 using Godot;
 using System.Threading.Tasks;
 using System.Xml.XPath;
+using System;
 
 
 
@@ -10,10 +11,9 @@ using System.Xml.XPath;
 public partial class enemy : CharacterBody2D 
 {
    [Export] public int Health = 100;  // Здоров
- 
-    [Export] public PackedScene moneyscene;
-  [Export]
-  public int Speed = 350 ;
+
+  [Export]public int Speed = 350 ;
+
 
   public int Damage = 10 ;
   
@@ -22,24 +22,21 @@ public partial class enemy : CharacterBody2D
 
 public Area2D Body;
   public Atack atack;
+[Export]public PackedScene moneyscene;
+ 
 
+ [Export] public int CoinSpawnChance = 100;
   private AnimatedSprite2D _animatedSprite;
-
-  private void SpavnMoney()
-  {
-    var money = (money)moneyscene.Instantiate();
-    GetParent().AddChild(money);
-    money.GlobalPosition = GlobalPosition;
-    
-  }
-    public override void _Ready()
+  
+       public override void _Ready()
     {
-
+     
+     
       Body = GetNode<Area2D>("hitbox");
 
        
        if (Body == null)
-        {GD.PrintErr("ytytyyty");}
+        {GD.PrintErr("null body enemy");}
 
         Body.BodyEntered += OnBodyEntered;
 
@@ -47,21 +44,31 @@ public Area2D Body;
         target = GetTree().GetFirstNodeInGroup("Player")as Node2D;
         if(target == null)
         {
-            GD.PrintErr("plaer error 404");
+            GD.PrintErr("player error 404");
         
         }
 
        _animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+     
 
 
     }
+    private void spawnmoney()
+{
+
+     var bullet = (money)moneyscene.Instantiate() as money;
+        GetParent().AddChild(bullet);
+        bullet.GlobalPosition = GlobalPosition;
+   
+}
+    
    private void OnBodyEntered(Node2D body)
     {
-       GD.Print(Damage +"   "+Speed+"   "+body+"    ");
+     
         // Проверяем, что столкнулись с врагом и что это не сам игрок
         if (body is Player player )
         {
-          GD.Print(Damage +"  ee "+Speed+"   www"+body+"   rr ");
+  
             player.DamageEnemys(Damage);
         }
     
@@ -69,26 +76,21 @@ public Area2D Body;
     public void TakeDamage(int damage)
     {
         Health -= damage;
-
-        if (Health <= 0)
+        if(Health<=0)
         {
+          spawnmoney();
+        QueueFree();
+         } // SpawnCoin();
           
-            QueueFree();
-            SpavnMoney();
-        }
     }
-
-
-    
+       
     public override void _PhysicsProcess(double delta)
     {
-      if (Health <= 0 )
-      {
-        SpavnMoney();
-      }
+      
       if (target == null ) return ;
 
       Vector2 direction = (target.GlobalPosition-GlobalPosition).Normalized();
+
       
        Velocity = direction*Speed;
 
@@ -97,12 +99,8 @@ public Area2D Body;
        _animatedSprite.Play("run");
        else
        _animatedSprite.Stop();
-       
-
-        
-       
-
-       MoveAndSlide();
+               
+            MoveAndSlide();
     }
     
 

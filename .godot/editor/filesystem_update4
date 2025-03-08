@@ -1,10 +1,10 @@
+res://scene/enemy.tscn
 res://scene/meny.tscn
 res://scene/settings.tscn
 res://scene/appdait.tscn
 res://scene/shest.tscn
 res://scene/speed_settings.tscn
 res://scene/money.tscn
-res://scene/enemy.tscn
 res://scene/plyer.tscn
 res://scene/atack.tscn
 res://scene/main.tscn
@@ -24,3 +24,4 @@ res://scene/skript/Player.cs
 res://scene/skript/shest.cs
 res://scene/skript/main.cs
 res://scene/skript/meny.cs
+res://scene/ui_pc_player.tscn

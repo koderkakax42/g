@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cjusv6ja3wq1"]
+[gd_scene load_steps=11 format=3 uid="uid://cjusv6ja3wq1"]
 
 [ext_resource type="Script" path="res://scene/skript/main.cs" id="1_bk52j"]
 [ext_resource type="PackedScene" uid="uid://cld0qsa3k4bu4" path="res://scene/yuor_got.tscn" id="2_i4m0v"]
 [ext_resource type="PackedScene" uid="uid://c7f21gd7i2l2r" path="res://scene/air_got.tscn" id="3_6uejf"]
 [ext_resource type="PackedScene" uid="uid://djuwpel1ysljv" path="res://scene/plyer.tscn" id="4_y62lj"]
 [ext_resource type="PackedScene" uid="uid://cchtg3som5fuk" path="res://scene/spawn.tscn" id="5_22chl"]
+[ext_resource type="PackedScene" uid="uid://bkm3ataocejck" path="res://scene/money.tscn" id="6_w6ckg"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_0jhyp"]
 vertices = PackedVector2Array(-4801, 5483, -4384, 1983, -4052, 5098, -4052, 7960, -4801, 8726, -3240, 10825, -4162, 11841, -2242, 15209, -2172, 12961, -1236, 14873, -364, 21421, 40, 15607, 4232, 11900, 9741, 16767, 12172, 26282, 25115, 9593, 26395, 3829, 30099, -1302, 32231, 7533, 30404, 17079, 24474, -1806, 26038, -7292, 21912, -6034, 17613, -10236, 16787, -7956, -1114, 12336, 1927, 5495, 22424, 15358, 24838, 24619, 9283, -10540, 11406, -7956, -3031, 8980, -3606, 2749, 2567, 755, 16786, 17792, -2278, 16187, -5866, 15151, -4489, 12919, -8486, 5703, -5640, 7833, -4969, 3612, -7268, 427, -4392, 632, -3814, -5262, -4377, 630, 5642, -4369, 1563, -8712)
@@ -83,14 +84,20 @@ shape = SubResource("RectangleShape2D_p541r")
 [node name="player" parent="." instance=ExtResource("4_y62lj")]
 position = Vector2(-3881, 10369)
 
-[node name="spawn" parent="." instance=ExtResource("5_22chl")]
-position = Vector2(7793, 9220)
-
-[node name="spawn2" parent="." instance=ExtResource("5_22chl")]
-position = Vector2(-4636, 11268)
-
-[node name="spawn3" parent="." instance=ExtResource("5_22chl")]
-position = Vector2(-2883, 10227)
-
 [node name="spawn4" parent="." instance=ExtResource("5_22chl")]
 position = Vector2(-4433, 8652)
+
+[node name="money" parent="." instance=ExtResource("6_w6ckg")]
+position = Vector2(-3481, 10416)
+
+[node name="money2" parent="." instance=ExtResource("6_w6ckg")]
+position = Vector2(-3171, 10330)
+
+[node name="money3" parent="." instance=ExtResource("6_w6ckg")]
+position = Vector2(-3255, 10560)
+
+[node name="money4" parent="." instance=ExtResource("6_w6ckg")]
+position = Vector2(-4401, 10709)
+
+[node name="money5" parent="." instance=ExtResource("6_w6ckg")]
+position = Vector2(-4549, 10269)
