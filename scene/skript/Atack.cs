@@ -10,7 +10,9 @@ public partial class Atack : Area2D
     private Timer timetolive; 
     private CollisionShape2D _collisionShape;
       public float time_bul = 7f;
-    [Export] public float CollisionDelay = 0.05f; // Задержка в секундах
+  
+    
+   
 
     public override void _Ready()
     {
@@ -20,10 +22,7 @@ public partial class Atack : Area2D
         // Создаем и настраиваем таймер
         _collisionTimer = new Timer();
         AddChild(_collisionTimer);
-        _collisionTimer.WaitTime = CollisionDelay;
         _collisionTimer.OneShot = true; // Запускаем только один раз
-        _collisionTimer.Timeout += EnableCollision; // Подписываемся на событие окончания таймера
-        DisableCollision(); // Отключаем коллизию при создании пули
         _collisionTimer.Start();
         if(_collisionTimer.OneShot == true)
         {
@@ -32,6 +31,8 @@ public partial class Atack : Area2D
         }
 
     }
+    
+ 
 
     private void live_bullet()
     {
@@ -67,18 +68,12 @@ public partial class Atack : Area2D
         if (body is enemy enemy && Player != null)
         {
              // GD.Print(Direction +"   "+Speed+"   "+body+"    "+Player);
-            enemy.TakeDamage(115111); // Наносим урон врагу (значение урона можно настроить)
+            enemy.TakeDamage(20); // Наносим урон врагу (значение урона можно настроить)
             QueueFree(); // Удаляем пулю после столкновения
         }
     }
 
-    private void EnableCollision()
-    {
-        _collisionShape.Disabled = false; // Включаем коллизию
-    }
+    
 
-    private void DisableCollision()
-    {
-        _collisionShape.Disabled = true; // Отключаем коллизию
-    }
+    
 }

@@ -197,7 +197,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="money" type="Area2D"]
+[node name="money" type="Area2D" groups=["money"]]
 script = ExtResource("1_4e4cd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -207,5 +207,7 @@ shape = SubResource("CircleShape2D_gy15b")
 position = Vector2(-9.53674e-07, 4)
 scale = Vector2(0.0917969, 0.0869141)
 sprite_frames = SubResource("SpriteFrames_wnjr1")
-animation = &"alt+f4"
-frame_progress = 0.555583
+animation = &"1f"
+autoplay = "1f"
+frame = 2
+frame_progress = 0.0880578

@@ -14,8 +14,7 @@ public partial class spawn : Node2D
 	public int MaxEnemies = 10; 
 
 
-    [Export]
-	 public bool SpawnRandomly = true; 
+   
 
 
     [Export]
@@ -27,11 +26,15 @@ public partial class spawn : Node2D
 
     private float _timer = 0.0f;                      // Таймер
     private int _enemyCount = 0;                      // Количество врагов на сцене
-    private Random _random = new Random();
+   
 
     public override void _Process(double delta)
     {
         _timer += (float)delta;
+        if (_enemyCount==0)
+        {
+            SpawnEnemy();
+        }
 
         if (_timer >= SpawnInterval && _enemyCount < MaxEnemies)
         {
@@ -51,32 +54,12 @@ public partial class spawn : Node2D
         // Инстанцируем сцену врага
         Node2D enemyInstance = EnemyScene.Instantiate<Node2D>();
 
-        // Устанавливаем позицию врага
-        if (SpawnRandomly)
-        {
-            // Спавн в случайной точке в области
-            Vector2 spawnPosition = Position + new Vector2(
-                (float)_random.NextDouble() * SpawnAreaSize.X - SpawnAreaSize.X / 2f,
-                (float)_random.NextDouble() * SpawnAreaSize.Y - SpawnAreaSize.Y / 2f);
+         
+                
 
-            enemyInstance.Position = spawnPosition;
-        }
-        else
-        {
-            // Спавн в заданной точке
-            if (SpawnPoints.Length > 0)
-            {
-                int spawnPointIndex = _random.Next(SpawnPoints.Length);
-                enemyInstance.Position = SpawnPoints[spawnPointIndex];
-            }
-            else
-            {
-                // Если точек спавна нет
-                enemyInstance.Position = Position;
-                 GD.PrintErr("Ошибка: Точки спавна не заданы!");
-            }
-           
-        }
+            enemyInstance.Position = GlobalPosition;
+      
+        
         
         // Добавляем врага на сцену
         AddChild(enemyInstance);

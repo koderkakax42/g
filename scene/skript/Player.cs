@@ -15,7 +15,7 @@ public partial class Player : CharacterBody2D
     [Export] public float Speed = 900;
     [Export] public float FireRate = 2f; // Выстрелов в секунду
     [Export] public float BulletSpeed = 400f;
-
+  private int Value = 0;
     private float _timeSinceLastFire = 0f;
     private List<Vector2> _targetMarkers = new List<Vector2>(); // Список меток
     private List<enemy> _markedEnemies = new List<enemy>(); // Список врагов с метками
@@ -200,5 +200,11 @@ public partial class Player : CharacterBody2D
         Velocity = inputDirection * Speed;
     }
 
+    public void moneyvalue()
+    {
+     
+       Value++;
+       GD.Print(Value+" money");
+    }
     
 }
