@@ -4,13 +4,15 @@
 
 [node name="shest" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_right = 0.165
+anchor_bottom = 0.965
+offset_right = -8.39001
+offset_bottom = 26.88
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_it1uv")
 metadata/_edit_vertical_guides_ = [0.0]
+metadata/_edit_use_anchors_ = true
 
 [node name="ItemList" type="ItemList" parent="."]
 layout_mode = 1
@@ -20,98 +22,98 @@ offset_right = 225.0
 offset_bottom = -23.0
 grow_vertical = 2
 
-[node name="Container6" type="Container" parent="."]
-layout_mode = 2
-offset_left = 13.0
-offset_top = 366.0
-offset_right = 117.0
-offset_bottom = 450.0
-
-[node name="Container7" type="Container" parent="."]
-layout_mode = 2
-offset_left = 117.0
-offset_top = 282.0
-offset_right = 221.0
-offset_bottom = 366.0
-
-[node name="Container8" type="Container" parent="."]
-layout_mode = 2
-offset_left = 13.0
-offset_top = 282.0
-offset_right = 117.0
-offset_bottom = 366.0
-
-[node name="Container9" type="Container" parent="."]
-layout_mode = 2
-offset_left = 117.0
-offset_top = 198.0
-offset_right = 221.0
-offset_bottom = 282.0
-
-[node name="Container10" type="Container" parent="."]
-layout_mode = 2
-offset_left = 13.0
-offset_top = 198.0
-offset_right = 117.0
-offset_bottom = 282.0
-
-[node name="Container5" type="Container" parent="."]
-layout_mode = 2
-offset_left = 117.0
-offset_top = 366.0
-offset_right = 221.0
-offset_bottom = 450.0
-
-[node name="Container4" type="Container" parent="."]
-layout_mode = 2
-offset_left = 117.0
-offset_top = 110.0
-offset_right = 221.0
-offset_bottom = 194.0
-
-[node name="Container3" type="Container" parent="."]
+[node name="Container3" type="Container" parent="ItemList"]
 layout_mode = 2
 offset_left = 13.0
 offset_top = 110.0
 offset_right = 117.0
 offset_bottom = 194.0
 
-[node name="Container" type="Container" parent="."]
+[node name="Container4" type="Container" parent="ItemList"]
+layout_mode = 2
+offset_left = 117.0
+offset_top = 110.0
+offset_right = 221.0
+offset_bottom = 194.0
+
+[node name="Container10" type="Container" parent="ItemList"]
+layout_mode = 2
+offset_left = 13.0
+offset_top = 198.0
+offset_right = 117.0
+offset_bottom = 282.0
+
+[node name="Container9" type="Container" parent="ItemList"]
+layout_mode = 2
+offset_left = 117.0
+offset_top = 198.0
+offset_right = 221.0
+offset_bottom = 282.0
+
+[node name="Container6" type="Container" parent="ItemList"]
+layout_mode = 2
+offset_left = 13.0
+offset_top = 366.0
+offset_right = 117.0
+offset_bottom = 450.0
+
+[node name="Container7" type="Container" parent="ItemList"]
+layout_mode = 2
+offset_left = 117.0
+offset_top = 282.0
+offset_right = 221.0
+offset_bottom = 366.0
+
+[node name="Container8" type="Container" parent="ItemList"]
+layout_mode = 2
+offset_left = 13.0
+offset_top = 282.0
+offset_right = 117.0
+offset_bottom = 366.0
+
+[node name="Container5" type="Container" parent="ItemList"]
+layout_mode = 2
+offset_left = 117.0
+offset_top = 366.0
+offset_right = 221.0
+offset_bottom = 450.0
+
+[node name="Container" type="Container" parent="ItemList"]
 layout_mode = 0
 offset_left = 117.0
 offset_top = 26.0
 offset_right = 221.0
 offset_bottom = 110.0
 
-[node name="Container2" type="Container" parent="."]
+[node name="Container2" type="Container" parent="ItemList"]
 layout_mode = 2
 offset_left = 13.0
 offset_top = 26.0
 offset_right = 117.0
 offset_bottom = 110.0
 
-[node name="Container11" type="Container" parent="."]
+[node name="Container11" type="Container" parent="ItemList"]
 layout_mode = 0
 offset_left = 117.0
 offset_top = 534.0
 offset_right = 221.0
 offset_bottom = 618.0
 
-[node name="Container12" type="Container" parent="."]
+[node name="Container12" type="Container" parent="ItemList"]
 layout_mode = 0
 offset_left = 13.0
 offset_top = 534.0
 offset_right = 117.0
 offset_bottom = 618.0
 
-[node name="Container13" type="Container" parent="."]
+[node name="Container13" type="Container" parent="ItemList"]
 layout_mode = 0
 offset_left = 117.0
 offset_top = 450.0
 offset_right = 221.0
 offset_bottom = 534.0
 
-[node name="Container14" type="Container" parent="."]
+[node name="Container14" type="Container" parent="ItemList"]
 layout_mode = 0
 offset_left = 13.0
 offset_top = 450.0

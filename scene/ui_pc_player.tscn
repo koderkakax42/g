@@ -1,14 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0uci3mtfjl75"]
+[gd_scene load_steps=3 format=3 uid="uid://d0uci3mtfjl75"]
+
+[ext_resource type="Script" path="res://scene/skript/ui_pc_player.cs" id="1_ua7q1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ls732"]
 
 [node name="ui_pc_player" type="Control"]
+light_mask = 512
+visibility_layer = 512
 layout_mode = 3
-anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.137
+offset_bottom = 0.223984
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ua7q1")
 metadata/_edit_use_anchors_ = true
 
 [node name="xp" type="ProgressBar" parent="."]
@@ -20,21 +25,24 @@ anchor_bottom = 0.042
 offset_left = 0.0239868
 offset_bottom = -0.216002
 grow_horizontal = 2
+max_value = 400.0
+value = 400.0
 metadata/_edit_use_anchors_ = true
 
 [node name="chest" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.972
-anchor_top = 0.042
+anchor_top = 0.260854
 anchor_right = 1.0
-anchor_bottom = 0.099
+anchor_bottom = 0.60845
 offset_left = 0.255981
 offset_top = -0.216002
 offset_bottom = -0.152008
 grow_horizontal = 0
 grow_vertical = 2
 text = "on"
+metadata/_edit_use_anchors_ = true
 
 [node name="meny" type="Button" parent="."]
 layout_mode = 1
@@ -44,6 +52,7 @@ anchor_bottom = 0.042
 offset_right = -0.104
 offset_bottom = -0.216002
 text = "meny"
+metadata/_edit_use_anchors_ = true
 
 [node name="money" type="Label" parent="."]
 layout_mode = 1
@@ -55,6 +64,7 @@ offset_right = 4.46393
 offset_bottom = -0.104
 grow_horizontal = 2
 text = "money"
+metadata/_edit_use_anchors_ = true
 
 [node name="vale" type="Label" parent="money"]
 layout_mode = 1
@@ -67,63 +77,72 @@ offset_right = 67.358
 offset_bottom = 21.915
 text = "         0"
 label_settings = SubResource("LabelSettings_ls732")
+metadata/_edit_use_anchors_ = true
 
 [node name="ch1" type="Container" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.153
 anchor_right = 0.204
-anchor_bottom = 0.062
+anchor_bottom = 0.608719
 offset_left = -0.256012
 offset_right = -0.00801086
 offset_bottom = -0.176003
+metadata/_edit_use_anchors_ = true
 
 [node name="ch2" type="Container" parent="."]
 layout_mode = 2
 anchor_left = 0.204
 anchor_right = 0.255
-anchor_bottom = 0.062
+anchor_bottom = 0.608719
 offset_left = -0.00801086
 offset_right = 0.23996
 offset_bottom = -0.176003
+metadata/_edit_use_anchors_ = true
 
 [node name="ch3" type="Container" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.255
 anchor_right = 0.306
-anchor_bottom = 0.062
+anchor_bottom = 0.608719
 offset_left = 0.23996
 offset_right = 0.487976
 offset_bottom = -0.176003
+metadata/_edit_use_anchors_ = true
 
 [node name="ch4" type="Container" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.306
 anchor_right = 0.363
-anchor_bottom = 0.062
+anchor_bottom = 0.608719
 offset_left = 0.487976
 offset_right = -6.17599
 offset_bottom = -0.176003
+metadata/_edit_use_anchors_ = true
 
 [node name="ch5" type="Container" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.358
 anchor_right = 0.409
-anchor_bottom = 0.062
+anchor_bottom = 0.608719
 offset_left = -0.416016
 offset_right = -0.167999
 offset_bottom = -0.176003
+metadata/_edit_use_anchors_ = true
 
 [node name="nomber ch" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.153
 anchor_right = 0.409
-anchor_bottom = 0.035
+anchor_bottom = 0.254832
 offset_left = -0.256012
 offset_right = -0.167999
 offset_bottom = 0.32
 text = "1            2             3           4            5"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="value_changed" from="xp" to="." method="_on_xp"]

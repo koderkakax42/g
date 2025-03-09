@@ -9,7 +9,8 @@ public partial class Player : CharacterBody2D
     [Export]
     public String TargetScenePath = "res://scene/meny.tscn";
 
-    private int xp = 400;
+[Export]ui_pc_player UI{get;set;}
+    public static int xp = 400;
      public Vector2 inputDirection;
     [Export] public PackedScene BulletScene; // Сцена пули
     [Export] public float Speed = 900;
@@ -24,11 +25,19 @@ public partial class Player : CharacterBody2D
     {
         GD.Print("Hello from C#!");
         _animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        if(UI==null)
+        {
+            GD.Print("null UI ");
+           
+        } 
     }
 
     public void DamageEnemys(int damage)
     {
        xp -= damage;
+
+       UI._on_xp();
+
        if(xp <= 0)
        {
         QueueFree();
