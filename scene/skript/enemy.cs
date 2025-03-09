@@ -21,7 +21,7 @@ public partial class enemy : CharacterBody2D
   private Node2D target;
 
 public Area2D Body;
-  public Atack atack;
+
 [Export]public PackedScene moneyscene;
  
 
@@ -50,7 +50,7 @@ public Area2D Body;
 
        _animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
      
-
+      Damage = 10;
 
     }
     private void spawnmoney()

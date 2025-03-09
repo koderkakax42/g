@@ -20,7 +20,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(11866, -4037, 8950, -18
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dcyqn"]
-size = Vector2(928, 37825)
+size = Vector2(928, 37809.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p541r"]
 size = Vector2(42364, 821)
@@ -60,7 +60,7 @@ position = Vector2(28279, 5815)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 light_mask = 1023
 visibility_layer = 1023
-position = Vector2(-8999, 8317)
+position = Vector2(-8999, 8324.75)
 shape = SubResource("RectangleShape2D_dcyqn")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
@@ -85,7 +85,8 @@ shape = SubResource("RectangleShape2D_p541r")
 position = Vector2(-3881, 10369)
 
 [node name="spawn4" parent="." instance=ExtResource("5_22chl")]
-position = Vector2(-4433, 8652)
+position = Vector2(-4478, 10295)
+SpawnInterval = 0.0
 
 [node name="money" parent="." instance=ExtResource("6_w6ckg")]
 position = Vector2(-3481, 10416)

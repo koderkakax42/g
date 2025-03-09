@@ -14,8 +14,8 @@ TargetScenePath = "res://scene/fader.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_right = 1154.0
-offset_bottom = 649.0
+offset_right = 1370.0
+offset_bottom = 776.0
 color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="."]
@@ -34,28 +34,28 @@ justification_flags = 235
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 471.0
-offset_top = 273.0
-offset_right = 619.0
-offset_bottom = 323.0
+offset_left = 646.0
+offset_top = 270.0
+offset_right = 794.0
+offset_bottom = 320.0
 theme_override_font_sizes/font_size = 25
 text = "старт"
 
 [node name="Button2" type="Button" parent="."]
 layout_mode = 0
-offset_left = 454.0
-offset_top = 369.0
-offset_right = 722.0
-offset_bottom = 478.0
+offset_left = 410.0
+offset_top = 509.0
+offset_right = 678.0
+offset_bottom = 618.0
 theme_override_font_sizes/font_size = 25
 text = "настройки"
 
 [node name="Button3" type="Button" parent="."]
 layout_mode = 0
-offset_left = 901.0
-offset_top = 114.0
-offset_right = 978.0
-offset_bottom = 419.0
+offset_left = 1126.0
+offset_top = 152.0
+offset_right = 1238.0
+offset_bottom = 457.0
 theme_override_font_sizes/font_size = 25
 text = "апгрейд"
 
