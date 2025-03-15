@@ -7,7 +7,7 @@ public partial class Player : CharacterBody2D
 {
 
     [Export]
-    public String TargetScenePath = "res://scene/meny.tscn";
+    public String TargetScenePath = "res://scene/fader.tscn";
 
 [Export]ui_pc_player UI{get;set;}
     public static int xp = 400;
@@ -21,6 +21,7 @@ public partial class Player : CharacterBody2D
     private List<Vector2> _targetMarkers = new List<Vector2>(); // Список меток
     private List<enemy> _markedEnemies = new List<enemy>(); // Список врагов с метками
     public AnimatedSprite2D _animatedSprite;
+    public string money;
     public override void _Ready()
     {
         GD.Print("Hello from C#!");
@@ -40,8 +41,10 @@ public partial class Player : CharacterBody2D
 
        if(xp <= 0)
        {
+        fader.ScenePath="res://scene/meny.tscn";
+        
         QueueFree();
-
+         
          LoadNewScene();
        }
     }
@@ -211,9 +214,10 @@ public partial class Player : CharacterBody2D
 
     public void moneyvalue()
     {
-     
        Value++;
        GD.Print(Value+" money");
+       money= Value.ToString();
+       UI._on_vale_text(money);
     }
     
 }
