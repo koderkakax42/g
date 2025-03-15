@@ -52,10 +52,10 @@ text = "настройки"
 
 [node name="Button3" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1126.0
-offset_top = 152.0
-offset_right = 1238.0
-offset_bottom = 457.0
+offset_left = 996.0
+offset_top = 145.0
+offset_right = 1108.0
+offset_bottom = 450.0
 theme_override_font_sizes/font_size = 25
 text = "апгрейд"
 

@@ -18,8 +18,6 @@ config/icon="res://sprait/Без названия46.jpg"
 
 [display]
 
-window/size/viewport_width=1366
-window/size/viewport_height=768
 window/stretch/aspect="expand"
 mouse_cursor/custom_image="res://sprait/maus.png"
 

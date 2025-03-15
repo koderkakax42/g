@@ -7,7 +7,7 @@
 script = ExtResource("1_mbs6q")
 EnemyScene = ExtResource("2_4ygb7")
 SpawnInterval = 2.0
-MaxEnemies = 150
+MaxEnemies = 20
 SpawnAreaSize = Vector2(10, 10)
 
 [node name="Timer" type="Timer" parent="."]

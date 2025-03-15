@@ -4,10 +4,9 @@ using System.Threading.Tasks;
 
 public partial class fader : CanvasLayer
 {
-    [Signal]
-    public delegate void FadeFinishedEventHandler();
+   
 
-    [Export] public String TargetScenePath = "res://scene/main.tscn";
+     [Export]public static String ScenePath {get;set;}
 
     private AnimationPlayer _animationPlayer;
 
@@ -25,7 +24,7 @@ public partial class fader : CanvasLayer
         _animationPlayer.AnimationFinished += OnAnimationFinished;
         _animationPlayer.Play("FadeIn");
     }
-
+    
     //Этот метод вызывается AnimationPlayer, когда анимация заканчивается
     private void OnAnimationFinished(StringName animName)
     {
@@ -42,6 +41,7 @@ public partial class fader : CanvasLayer
             //Отписываемся от сигнала
             _animationPlayer.AnimationFinished -= OnAnimationFinished;
             //Как только FadeOut закончился, загружаем новую сцену
+
             LoadNewScene();
         }
     }
@@ -49,7 +49,7 @@ public partial class fader : CanvasLayer
     private void LoadNewScene()
     {
         SceneTree tree = GetTree();
-        tree.ChangeSceneToFile(TargetScenePath);
+        tree.ChangeSceneToFile(ScenePath);
     }
 
     

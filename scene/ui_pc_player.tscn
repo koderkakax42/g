@@ -1,10 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0uci3mtfjl75"]
+[gd_scene load_steps=4 format=3 uid="uid://d0uci3mtfjl75"]
 
 [ext_resource type="Script" path="res://scene/skript/ui_pc_player.cs" id="1_ua7q1"]
+[ext_resource type="PackedScene" uid="uid://dyyyxwncnymm4" path="res://scene/shest.tscn" id="2_4mdsy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ls732"]
 
-[node name="ui_pc_player" type="Control"]
+[node name="ui_pc_player" type="Control" node_paths=PackedStringArray("text", "value")]
 light_mask = 512
 visibility_layer = 512
 layout_mode = 3
@@ -14,6 +15,9 @@ offset_bottom = 0.223984
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ua7q1")
+chest = ExtResource("2_4mdsy")
+text = NodePath("money/vale")
+value = NodePath("xp")
 metadata/_edit_use_anchors_ = true
 
 [node name="xp" type="ProgressBar" parent="."]
@@ -146,3 +150,6 @@ text = "1            2             3           4            5"
 metadata/_edit_use_anchors_ = true
 
 [connection signal="value_changed" from="xp" to="." method="_on_xp"]
+[connection signal="pressed" from="chest" to="." method="_open_chest"]
+[connection signal="pressed" from="meny" to="." method="_meny_on"]
+[connection signal="resized" from="money/vale" to="." method="_on_vale_text"]

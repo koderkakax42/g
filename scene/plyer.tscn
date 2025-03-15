@@ -1,11 +1,10 @@
-[gd_scene load_steps=35 format=3 uid="uid://djuwpel1ysljv"]
+[gd_scene load_steps=34 format=3 uid="uid://djuwpel1ysljv"]
 
 [ext_resource type="Texture2D" uid="uid://fwais77b05mu" path="res://sprait/Без названия73_20241218230115.png" id="1_7tb5m"]
 [ext_resource type="Script" path="res://scene/skript/Player.cs" id="1_ebbni"]
 [ext_resource type="PackedScene" uid="uid://biqsefkkddpb5" path="res://scene/atack.tscn" id="2_e2gy2"]
 [ext_resource type="Texture2D" uid="uid://bppnav1k3fwqx" path="res://sprait/Без названия73_20241218230041.png" id="2_iur55"]
 [ext_resource type="PackedScene" uid="uid://d0uci3mtfjl75" path="res://scene/ui_pc_player.tscn" id="5_5vbje"]
-[ext_resource type="PackedScene" uid="uid://6v7fht1kpyce" path="res://scene/inventory.tscn" id="6_ny6ro"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rq4h4"]
 size = Vector2(56, 51)
@@ -236,15 +235,11 @@ position = Vector2(-1, -0.5)
 shape = SubResource("RectangleShape2D_m80nn")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-offset_left = -683.0
-offset_top = -376.0
-offset_right = 683.0
-offset_bottom = -302.0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = -238.0
 
-[node name="ui_pc_player" parent="PanelContainer" instance=ExtResource("5_5vbje")]
+[node name="ui_pc_player" parent="PanelContainer" node_paths=PackedStringArray("player") instance=ExtResource("5_5vbje")]
 layout_mode = 2
-
-[node name="inventory" parent="." instance=ExtResource("6_ny6ro")]
-visible = false
-offset_left = -578.0
-offset_top = -323.0
+player = NodePath("../..")

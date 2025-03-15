@@ -3,8 +3,9 @@ using System;
 
 public partial class meny : Node
 {
+  
     [Export]
-    public String TargetScenePath = "res://scene/main.tscn"; // Путь к сцене, которую нужно загрузить
+    public String TargetScenePath ; // Путь к сцене, которую нужно загрузить
 
 
     public void _on_button_pressed()
@@ -14,7 +15,7 @@ public partial class meny : Node
             GD.PrintErr("TargetScenePath is not assigned!");
             return; // Важно: выйти из функции, если путь не задан
         }
-
+       fader.ScenePath = "res://scene/main.tscn";
        LoadNewScene();
     }
 
@@ -23,7 +24,7 @@ public partial class meny : Node
     {
         // Получаем SceneTree
         SceneTree tree = GetTree();
-
+        
         // Останавливаем текущую сцену.  Это ВАЖНО.
         tree.ChangeSceneToFile(TargetScenePath);
     }
