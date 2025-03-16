@@ -208,7 +208,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m80nn"]
 size = Vector2(66, 59)
 
-[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("UI") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("UI") groups=["Player"]]
 position = Vector2(686, 383)
 script = ExtResource("1_ebbni")
 UI = NodePath("PanelContainer/ui_pc_player")

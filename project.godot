@@ -13,7 +13,8 @@ config_version=5
 config/name="Mifolor"
 run/main_scene="res://scene/meny.tscn"
 config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
-boot_splash/bg_color=Color(0.188371, 0.188371, 0.188371, 1)
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://sprait/Без названия73_20241218230041.png"
 config/icon="res://sprait/Без названия46.jpg"
 
 [display]
@@ -37,6 +38,10 @@ mark={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(171, 7),"global_position":Vector2(174, 39),"factor":1.0,"button_index":2,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+
+[input_devices]
+
+pointing/emulate_mouse_from_touch=false
 
 [physics]
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0uci3mtfjl75"]
+[gd_scene load_steps=5 format=3 uid="uid://d0uci3mtfjl75"]
 
 [ext_resource type="Script" path="res://scene/skript/ui_pc_player.cs" id="1_ua7q1"]
 [ext_resource type="PackedScene" uid="uid://dyyyxwncnymm4" path="res://scene/shest.tscn" id="2_4mdsy"]
+[ext_resource type="PackedScene" uid="uid://csd157x481h6e" path="res://scene/slot.tscn" id="3_l1tst"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ls732"]
 
@@ -83,70 +84,41 @@ text = "         0"
 label_settings = SubResource("LabelSettings_ls732")
 metadata/_edit_use_anchors_ = true
 
-[node name="ch1" type="Container" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.153
-anchor_right = 0.204
-anchor_bottom = 0.608719
-offset_left = -0.256012
-offset_right = -0.00801086
-offset_bottom = -0.176003
-metadata/_edit_use_anchors_ = true
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 161.0
+offset_right = 497.0
+offset_bottom = 57.0
 
-[node name="ch2" type="Container" parent="."]
+[node name="GridContainer" type="GridContainer" parent="PanelContainer"]
 layout_mode = 2
-anchor_left = 0.204
-anchor_right = 0.255
-anchor_bottom = 0.608719
-offset_left = -0.00801086
-offset_right = 0.23996
-offset_bottom = -0.176003
-metadata/_edit_use_anchors_ = true
+columns = 5
 
-[node name="ch3" type="Container" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.255
-anchor_right = 0.306
-anchor_bottom = 0.608719
-offset_left = 0.23996
-offset_right = 0.487976
-offset_bottom = -0.176003
-metadata/_edit_use_anchors_ = true
+[node name="slot2" parent="PanelContainer/GridContainer" instance=ExtResource("3_l1tst")]
+layout_mode = 2
 
-[node name="ch4" type="Container" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.306
-anchor_right = 0.363
-anchor_bottom = 0.608719
-offset_left = 0.487976
-offset_right = -6.17599
-offset_bottom = -0.176003
-metadata/_edit_use_anchors_ = true
+[node name="slot3" parent="PanelContainer/GridContainer" instance=ExtResource("3_l1tst")]
+layout_mode = 2
 
-[node name="ch5" type="Container" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.358
-anchor_right = 0.409
-anchor_bottom = 0.608719
-offset_left = -0.416016
-offset_right = -0.167999
-offset_bottom = -0.176003
-metadata/_edit_use_anchors_ = true
+[node name="slot4" parent="PanelContainer/GridContainer" instance=ExtResource("3_l1tst")]
+layout_mode = 2
+
+[node name="slot5" parent="PanelContainer/GridContainer" instance=ExtResource("3_l1tst")]
+layout_mode = 2
+
+[node name="slot" parent="PanelContainer/GridContainer" instance=ExtResource("3_l1tst")]
+layout_mode = 2
 
 [node name="nomber ch" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.153
-anchor_right = 0.409
+anchor_left = 0.18859
+anchor_right = 0.430701
 anchor_bottom = 0.254832
 offset_left = -0.256012
 offset_right = -0.167999
 offset_bottom = 0.32
-text = "1            2             3           4            5"
+text = "1              2              3              4              5"
 metadata/_edit_use_anchors_ = true
 
 [connection signal="value_changed" from="xp" to="." method="_on_xp"]

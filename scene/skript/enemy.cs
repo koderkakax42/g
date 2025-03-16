@@ -56,7 +56,7 @@ public Area2D Body;
     private void spawnmoney()
 {
 
-     var bullet = (money)moneyscene.Instantiate() as money;
+     var bullet = (money)moneyscene.Instantiate();
         GetParent().AddChild(bullet);
         bullet.GlobalPosition = GlobalPosition;
    
