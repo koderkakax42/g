@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://csd157x481h6e"]
+
+[ext_resource type="Script" path="res://scene/skript/slot.cs" id="1_0h87w"]
+[ext_resource type="Texture2D" uid="uid://bxm2ubs5q6s18" path="res://sprait/луна.png" id="2_vxbhk"]
+
+[node name="slot" type="PanelContainer"]
+offset_right = 64.0
+offset_bottom = 57.0
+script = ExtResource("1_0h87w")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_vxbhk")
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 2
+anchor_left = 0.734375
+anchor_top = 0.578702
+anchor_right = 1.0
+anchor_bottom = 0.982
+offset_top = 0.0139999
+offset_bottom = 0.0259972
+text = "  1"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="resized" from="TextureRect" to="." method="_on_texture"]
