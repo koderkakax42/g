@@ -6,14 +6,14 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "Мифолор/1.0.0": {
+      "мифолор/1.0.0": {
         "dependencies": {
           "Godot.SourceGenerators": "4.2.2",
           "GodotSharp": "4.2.2",
           "GodotSharpEditor": "4.2.2"
         },
         "runtime": {
-          "Мифолор.dll": {}
+          "мифолор.dll": {}
         }
       },
       "Godot.SourceGenerators/4.2.2": {},
@@ -39,7 +39,7 @@
     }
   },
   "libraries": {
-    "Мифолор/1.0.0": {
+    "мифолор/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

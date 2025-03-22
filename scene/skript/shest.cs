@@ -12,4 +12,9 @@ public partial class shest : Control
 	public override void _Process(double delta)
 	{
 	}
+
+	public void _on_button() 
+	{
+       QueueFree();
+	}
 }

@@ -1,4 +1,5 @@
 using Godot;
+using SaveGame;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,15 +9,15 @@ public partial class Player : CharacterBody2D
 
     [Export]
     public String TargetScenePath = "res://scene/fader.tscn";
-
-[Export]ui_pc_player UI{get;set;}
+    GameData savedata = new GameData();
+    [Export]ui_pc_player UI{get;set;}
     public static int xp = 400;
      public Vector2 inputDirection;
     [Export] public PackedScene BulletScene; // Сцена пули
     [Export] public float Speed = 900;
     [Export] public float FireRate = 2f; // Выстрелов в секунду
     [Export] public float BulletSpeed = 400f;
-  private int Value = 0;
+     private int ValueMoney = 0;
     private float _timeSinceLastFire = 0f;
     private List<Vector2> _targetMarkers = new List<Vector2>(); // Список меток
     private List<enemy> _markedEnemies = new List<enemy>(); // Список врагов с метками
@@ -38,6 +39,8 @@ public partial class Player : CharacterBody2D
        xp -= damage;
 
        UI._on_xp();
+
+       SaveGamePlayer();
 
        if(xp <= 0)
        {
@@ -214,10 +217,17 @@ public partial class Player : CharacterBody2D
 
     public void moneyvalue()
     {
-       Value++;
-       GD.Print(Value+" money");
-       money= Value.ToString();
+       ValueMoney++;
+       GD.Print(ValueMoney +" money");
+       money= ValueMoney .ToString();
        UI._on_vale_text(money);
     }
     
+    private void SaveGamePlayer()
+    {
+        GD.Print("xp = "+ xp + "position"+ Position + "money =" + ValueMoney);
+        savedata.Health = xp;
+        savedata.PlayerPosition = Position;
+        savedata.Score = ValueMoney ;
+    }
 }

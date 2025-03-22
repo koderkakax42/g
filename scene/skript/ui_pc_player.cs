@@ -35,4 +35,6 @@ public partial class ui_pc_player : Control
 	   time = true;
 	   
 	}
+
+	
 }
