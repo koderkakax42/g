@@ -72,8 +72,7 @@ size_flags_vertical = 3
 color = Color(0.423529, 0, 0, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="."]
-offset_right = 2015.0
-offset_bottom = 19.0
+offset_bottom = 680.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 

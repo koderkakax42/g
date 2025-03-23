@@ -2,8 +2,9 @@ using Godot;
 using System;
 using System.Xml.XPath;
 
-public partial class ui_pc_player : Control
+public partial class ui_pc_player :PanelContainer
 {
+	
 	public static int nomber_open_chest = 0;
 	private int chest_nomber=0;
 	[Export] public PackedScene chest {get;set;}
@@ -11,17 +12,19 @@ public partial class ui_pc_player : Control
 	[Export]Label text{get;set;}
 	[Export]private ProgressBar value{get;set;}
 	[Export]Player player ;
+	enemy enemy = new enemy();
+	spawn spawn = new spawn();
     public void _on_xp()
 	{
 	  GD.Print("player xp =" +Player.xp);
 	  value.Value=Player.xp;
 	}
 
-	public void _on_vale_text(string money)
+	public void _on_vale(string money)
 	{
 		text.Text = money;
 	}
-	private void _open_chest()
+	private void _on_chest()
 	{
       switch (chest_nomber)
 	  {
@@ -42,10 +45,32 @@ public partial class ui_pc_player : Control
     private void Openchest()
 	{
 		var cheste = (shest)chest.Instantiate() as shest;
-	  AddChild(cheste);
+	  GetParent().AddChild(cheste);
 	  cheste.GlobalPosition = player.GlobalPosition;
 
 	  nomber_open_chest++;
 	}
-	
+
+    public override void _Ready()
+    {
+      GetWindow().MinSize = new Vector2I(480, 320);
+        GetWindow().MaxSize = new Vector2I(1920, 1080);
+
+        // Подключаемся к сигналу size_changed
+        GetWindow().Connect("size_changed", new Callable(this, nameof(OnWindowSizeChanged)));
+    }
+
+    private void OnWindowSizeChanged()
+    {
+        Vector2 newSize = GetWindow().Size;
+ 
+    }
+
+	public void _on_button()
+	{
+      player.SaveGamePlayer();
+      enemy.savedata();
+	  spawn.savegame();
+	  GD.Print(" save is truy . ");
+	}
 }

@@ -19,3 +19,15 @@ offset_right = 512.0
 offset_bottom = 329.0
 theme_override_font_sizes/font_size = 50
 text = "resume"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = -330.0
+offset_top = -69.0
+offset_right = -100.0
+offset_bottom = 92.0
+theme_override_font_sizes/font_size = 50
+text = "save"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scene/skript/Player.cs" id="1_ebbni"]
 [ext_resource type="PackedScene" uid="uid://biqsefkkddpb5" path="res://scene/atack.tscn" id="2_e2gy2"]
 [ext_resource type="Texture2D" uid="uid://bppnav1k3fwqx" path="res://sprait/Без названия73_20241218230041.png" id="2_iur55"]
-[ext_resource type="PackedScene" uid="uid://d0uci3mtfjl75" path="res://scene/ui_pc_player.tscn" id="5_5vbje"]
+[ext_resource type="PackedScene" uid="uid://bcapmv1en338j" path="res://scene/ui_pc_plaer.tscn" id="5_wbgah"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rq4h4"]
 size = Vector2(56, 51)
@@ -211,7 +211,7 @@ size = Vector2(66, 59)
 [node name="player" type="CharacterBody2D" node_paths=PackedStringArray("UI") groups=["Player"]]
 position = Vector2(686, 383)
 script = ExtResource("1_ebbni")
-UI = NodePath("PanelContainer/ui_pc_player")
+UI = NodePath("ui_pc_plaer")
 BulletScene = ExtResource("2_e2gy2")
 
 [node name="Camera2D2" type="Camera2D" parent="."]
@@ -234,12 +234,9 @@ animation = &"run"
 position = Vector2(-1, -0.5)
 shape = SubResource("RectangleShape2D_m80nn")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="ui_pc_plaer" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_wbgah")]
 offset_left = -576.0
-offset_top = -324.0
-offset_right = 576.0
-offset_bottom = -238.0
-
-[node name="ui_pc_player" parent="PanelContainer" node_paths=PackedStringArray("player") instance=ExtResource("5_5vbje")]
-layout_mode = 2
-player = NodePath("../..")
+offset_top = -328.0
+offset_right = 577.0
+offset_bottom = -237.0
+player = NodePath("..")

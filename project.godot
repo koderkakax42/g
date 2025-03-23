@@ -18,7 +18,7 @@ config/icon="res://sprait/Без названия46.jpg"
 
 [display]
 
-window/stretch/aspect="expand"
+window/stretch/aspect="keep_width"
 mouse_cursor/custom_image="res://sprait/maus.png"
 
 [dotnet]

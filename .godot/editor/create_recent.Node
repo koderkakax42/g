@@ -1,8 +1,8 @@
-Button
 Control
 Label
 GridContainer
 PanelContainer
+Button
 TextEdit
 TextureRect
 SpinBox

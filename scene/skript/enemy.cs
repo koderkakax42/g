@@ -14,6 +14,7 @@ public partial class enemy : CharacterBody2D
 
   [Export]public int Speed = 350 ;
 
+  GameData gameData = new GameData();
 
   public int Damage = 10 ;
   
@@ -102,7 +103,12 @@ public Area2D Body;
                
             MoveAndSlide();
     }
-    
+  public void savedata()
+  {
+    gameData.enemyhp = Health;
+    gameData.enemyposition = Position;
+    GD.Print("save enemy is truy");
+  }    
 
 }
 

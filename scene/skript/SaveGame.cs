@@ -61,6 +61,10 @@ namespace SaveGame
     public  class GameData
     {
     public Vector2 PlayerPosition { get; set; }
-    public int Health ;
+    public int Health {get;set;}
     public int Score { get; set; }
+    public Vector2 enemyposition {get;set;}
+    public int enemyhp{get;set;}
+    public int  enemynamber{get;set;}
+
     }

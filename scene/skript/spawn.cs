@@ -23,6 +23,7 @@ public partial class spawn : Node2D
 
     [Export]
 	 public Vector2 SpawnAreaSize = Vector2.One * 100f;
+     GameData gameData = new GameData();
 
     private float _timer = 0.0f;                      // Таймер
     private int _enemyCount = 0;                      // Количество врагов на сцене
@@ -67,5 +68,10 @@ public partial class spawn : Node2D
         // Инкрементируем счетчик врагов
         _enemyCount++;
         enemyInstance.TreeExited += () => { _enemyCount--; }; //Уменьшаем счётчик врагов при удалении
+    }
+    public void savegame()
+    {
+      gameData.enemynamber = _enemyCount;
+      GD.Print("save nomber enemy is truy");
     }
 }

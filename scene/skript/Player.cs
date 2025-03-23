@@ -33,6 +33,7 @@ public partial class Player : CharacterBody2D
            
         } 
     }
+    
 
     public void DamageEnemys(int damage)
     {
@@ -40,7 +41,7 @@ public partial class Player : CharacterBody2D
 
        UI._on_xp();
 
-       SaveGamePlayer();
+    
 
        if(xp <= 0)
        {
@@ -220,14 +221,14 @@ public partial class Player : CharacterBody2D
        ValueMoney++;
        GD.Print(ValueMoney +" money");
        money= ValueMoney .ToString();
-       UI._on_vale_text(money);
+       UI._on_vale(money);
     }
     
-    private void SaveGamePlayer()
+    public  void SaveGamePlayer()
     {
-        GD.Print("xp = "+ xp + "position"+ Position + "money =" + ValueMoney);
         savedata.Health = xp;
         savedata.PlayerPosition = Position;
         savedata.Score = ValueMoney ;
+        GD.Print("save game player is truy");
     }
 }
