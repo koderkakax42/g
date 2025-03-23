@@ -16,5 +16,6 @@ public partial class shest : Control
 	public void _on_button() 
 	{
        QueueFree();
+	   ui_pc_player.nomber_open_chest--;
 	}
 }

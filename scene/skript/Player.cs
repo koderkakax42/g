@@ -73,7 +73,7 @@ public partial class Player : CharacterBody2D
          }
          else
          {
-         _animatedSprite.Stop();
+         _animatedSprite.Pause();
          }
 
         _timeSinceLastFire += (float)delta;

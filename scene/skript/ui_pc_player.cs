@@ -4,6 +4,7 @@ using System.Xml.XPath;
 
 public partial class ui_pc_player : Control
 {
+	public static int nomber_open_chest = 0;
 	private int chest_nomber=0;
 	[Export] public PackedScene chest {get;set;}
 	public static bool time = false;
@@ -22,19 +23,29 @@ public partial class ui_pc_player : Control
 	}
 	private void _open_chest()
 	{
-		if (chest_nomber == 1)
-		{
-			return;
-		}
-		chest_nomber= 1;
+      switch (chest_nomber)
+	  {
+		case 1 : 
+		         chest_nomber++;
+		         Openchest();
+		break;		 
+		default:
+		        chest_nomber = 1;
 
+				if (nomber_open_chest <= 0)
+				{
+					Openchest();
+				} 
+		break;
+	  }
+	}
+    private void Openchest()
+	{
 		var cheste = (shest)chest.Instantiate() as shest;
 	  AddChild(cheste);
 	  cheste.GlobalPosition = player.GlobalPosition;
 
-	   time = true;
-	   
+	  nomber_open_chest++;
 	}
-
 	
 }

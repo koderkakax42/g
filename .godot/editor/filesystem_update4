@@ -1,4 +1,3 @@
-res://scene/slot.tscn
 res://scene/meny.tscn
 res://scene/settings.tscn
 res://scene/appdait.tscn
@@ -11,6 +10,7 @@ res://scene/spawn.tscn
 res://scene/fader.tscn
 res://scene/inventory.tscn
 res://scene/ui_pc_player.tscn
+res://scene/slot.tscn
 res://scene/skript/Atack.cs
 res://scene/skript/ui_pc_player.cs
 res://scene/skript/money.cs
