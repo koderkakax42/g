@@ -67,12 +67,3 @@ text = "настройки"
 horizontal_alignment = 1
 vertical_alignment = 1
 justification_flags = 235
-
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 519.0
-offset_top = 153.0
-offset_right = 610.0
-offset_bottom = 222.0
-text = "поддержи
-автора"

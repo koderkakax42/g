@@ -4,7 +4,7 @@ using System;
 public partial class spawn : Node2D
 {
     [Export] 
-	public PackedScene EnemyScene {get;set;}
+	public PackedScene EnemyScene {get;set;} = null!;
 
 
     [Export]
@@ -18,7 +18,7 @@ public partial class spawn : Node2D
 
 
     [Export]
-	 public Vector2[] SpawnPoints; 
+	 public Vector2[] SpawnPoints = null!; 
 
 
     [Export]
@@ -58,7 +58,7 @@ public partial class spawn : Node2D
          
                 
 
-            enemyInstance.Position = GlobalPosition;
+            enemyInstance.Position = new Vector2(0,0);
       
         
         
@@ -73,5 +73,7 @@ public partial class spawn : Node2D
     {
       gameData.enemynamber = _enemyCount;
       GD.Print("save nomber enemy is truy");
+     
     }
+    
 }

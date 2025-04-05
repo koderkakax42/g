@@ -3,29 +3,32 @@ using SaveGame;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using color_massege;
+
+
 
 public partial class Player : CharacterBody2D
 {
-
+    enemy enemy1;
     [Export]
     public String TargetScenePath = "res://scene/fader.tscn";
     GameData savedata = new GameData();
-    [Export]ui_pc_player UI{get;set;}
+    [Export]ui_pc_player UI{get;set;} = null!; 
     public static int xp = 400;
      public Vector2 inputDirection;
-    [Export] public PackedScene BulletScene; // Сцена пули
+    [Export] public PackedScene BulletScene = null!; // Сцена пули
     [Export] public float Speed = 900;
     [Export] public float FireRate = 2f; // Выстрелов в секунду
     [Export] public float BulletSpeed = 400f;
      private int ValueMoney = 0;
     private float _timeSinceLastFire = 0f;
-    private List<Vector2> _targetMarkers = new List<Vector2>(); // Список меток
-    private List<enemy> _markedEnemies = new List<enemy>(); // Список врагов с метками
-    public AnimatedSprite2D _animatedSprite;
-    public string money;
+    public AnimatedSprite2D _animatedSprite = null!;
+    public string money = null!;
+    public enemy enemy2;
+     deteckt deteckt = new deteckt();
     public override void _Ready()
     {
-        GD.Print("Hello from C#!");
+       
         _animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         if(UI==null)
         {
@@ -33,8 +36,6 @@ public partial class Player : CharacterBody2D
            
         } 
     }
-    
-
     public void DamageEnemys(int damage)
     {
        xp -= damage;
@@ -60,11 +61,10 @@ public partial class Player : CharacterBody2D
         // Останавливаем текущую сцену.  Это ВАЖНО.
         tree.ChangeSceneToFile(TargetScenePath);
     }
-   
-
     public override void _Process(double delta)
     {
-               
+      
+
         if(Input.IsActionPressed("ui_right")
          ||Input.IsActionPressed("ui_left")
          ||Input.IsActionPressed("ui_up")
@@ -77,97 +77,90 @@ public partial class Player : CharacterBody2D
          _animatedSprite.Pause();
          }
 
+
         _timeSinceLastFire += (float)delta;
 
-       
 
         // Стрельба
         if (Input.IsActionPressed("ui_atack") && _timeSinceLastFire >= 1f / FireRate)
         {
-            Fire();
+            Shoot();
             _timeSinceLastFire = 0f;
         }
-       
-     
-       
-
-        // Установка метки
-        if (Input.IsActionJustPressed("mark"))
+         if (Input.IsActionPressed("ui_mark_shoot") && _timeSinceLastFire >= 1f / FireRate)
         {
-            Vector2 mousePos = GetGlobalMousePosition();
-            MarkTarget(mousePos);
+            Shoot(1);
+            _timeSinceLastFire = 0f;
+        }
+        if (Input.IsActionPressed("mark"));
+        {
+           
+            var t = deteckt.y;
+            deteckt.MarkTarget();
         }
 
-       
-       
-        
-       
 
-        /* if(xp <= 0)
+        if(xp <= 0)
          {
             _animatedSprite.Play("dead");
 
             Speed=0;
             Velocity = inputDirection  * Speed;
          }
-
-*/ GetInput();
+        GetInput();
         MoveAndSlide();
     }
-
- 
-
-    private void Fire()
-    {
-        // Если есть враги с метками, стреляем по ним
-        if (_markedEnemies.Count > 0)
-        {
-            foreach (var enemy in _markedEnemies)
-            {
-                if (IsInstanceValid(enemy)) // Проверяем, что враг еще существует
-                {
-                    ShootAtTarget(enemy.GlobalPosition);
-                }
-            }
-            // Очищаем список помеченных врагов после выстрела
-        }
-        // Иначе, ищем ближайшего врага и стреляем по нему
-        else
-        {
-            enemy nearestEnemy = FindNearestEnemy();
-            if (nearestEnemy != null)
-            {
-                ShootAtTarget(nearestEnemy.GlobalPosition);
-            }
-        }
-
-    }
-
-    private void ShootAtTarget(Vector2 targetPosition)
+    
+   
+    private void Shoot()
     {
         if (BulletScene == null)
         {
             GD.PrintErr("BulletScene is not assigned!");
             return;
         }
+         enemy1 = FindNearestEnemy();
 
         var bullet = (Atack)BulletScene.Instantiate();
         GetParent().AddChild(bullet);
         bullet.GlobalPosition = GlobalPosition;
-        bullet.SetDirection(targetPosition);
+        bullet.SetDirection(enemy1.GlobalPosition);
         bullet.Speed = BulletSpeed;
         bullet.Player = this; //  Добавляем ссылку на игрока, чтобы пуля знала, кто ее выпустил
     }
-
-    private enemy FindNearestEnemy()
-    {
-        var enemies = GetTree().GetNodesInGroup("enemy").OfType<enemy>().ToList();
-        if (enemies.Count == 0)
+     private void Shoot(int? @int )
+    { 
+        if(deteckt._markedEnemies.Count > 0)
         {
-            return null;
-        }
+            foreach(enemy enemy in deteckt._markedEnemies)
+            {
+                 enemy2 = enemy;
+            }   
 
-        enemy nearest = null;
+        var bullet = (Atack)BulletScene.Instantiate();
+        GetParent().AddChild(bullet);
+        bullet.GlobalPosition = GlobalPosition;
+        bullet.SetDirection(enemy2.GlobalPosition);
+        bullet.Speed = BulletSpeed;
+        bullet.Player = this;
+        }
+        else
+        {
+            GD.Print("not shoot");
+        return;
+        }
+    }
+    private  enemy  FindNearestEnemy()
+    {
+        var enemies = GetTree().GetNodesInGroup("enemy").OfType<enemy>();
+
+        enemy nearest=new enemy();
+        if(nearest == null)
+        {
+            GD.Print("null nerest");
+        }
+       color_massege.color_massege.Error(nearest);
+       GD.Print(nearest);
         float minDistance = float.MaxValue;
 
         foreach (var enemy in enemies)
@@ -182,40 +175,16 @@ public partial class Player : CharacterBody2D
                 }
             }
         }
-
+       
         return nearest;
     }
-
-    private void MarkTarget(Vector2 position)
-    {
-        // Ищем врага в небольшом радиусе от клика мыши
-        var enemies = GetTree().GetNodesInGroup("enemy").OfType<enemy>().ToList();
-        foreach (var enemy in enemies)
-        {
-            if (IsInstanceValid(enemy) && enemy.GlobalPosition.DistanceTo(position) < 50)
-            {
-                // Добавляем врага в список помеченных, если он еще не там
-                if (!_markedEnemies.Contains(enemy))
-                {
-                    _markedEnemies.Add(enemy);
-                    // TODO: Добавьте визуальную индикацию, что враг помечен (например, спрайт над головой)
-                    GD.Print($"Enemy marked: {enemy.Name}");
-                }
-                return; // Нашли врага, больше не ищем
-            }
-        }
-        GD.Print("No enemy found to mark.");
-
-        //TODO: если не найден враг, то ставить "метку" просто на земле
-        _targetMarkers.Add(position);
-    }
+   
      public void GetInput()
     {
          
         inputDirection = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
         Velocity = inputDirection * Speed;
     }
-
     public void moneyvalue()
     {
        ValueMoney++;
@@ -223,7 +192,6 @@ public partial class Player : CharacterBody2D
        money= ValueMoney .ToString();
        UI._on_vale(money);
     }
-    
     public  void SaveGamePlayer()
     {
         savedata.Health = xp;
@@ -232,3 +200,8 @@ public partial class Player : CharacterBody2D
         GD.Print("save game player is truy");
     }
 }
+
+
+
+
+

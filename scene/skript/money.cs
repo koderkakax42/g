@@ -3,34 +3,23 @@ using System;
 
 public partial class money : Area2D
 {
-	public enemy enemy { get; set; } // Ссылка на игрока, выпустившего пулю
-
-  
-
-  
-     private Timer timetolive; 
+	public enemy enemy { get; set; } = null!; // Ссылка на игрока, выпустившего пулю
+      
 	 public float time = 10.0f;
 	 private void live_bullet()
     {
-      timetolive = new Timer();
+      Godot.Timer timetolive = new Godot.Timer();
       AddChild(timetolive);
       timetolive.WaitTime = time;
-      timetolive.OneShot= true;
       timetolive.Timeout += _QueueFree;
       timetolive.Start(); 
 
     }
 	 private void _QueueFree(){QueueFree();}
    
-
-
-  
-
-
-   
-
     public override void _Ready()
     {
+        live_bullet();
         // Добавьте здесь любой код инициализации монеты
         BodyEntered += OnBodyEntered; // Важно подключить сигнал
     }

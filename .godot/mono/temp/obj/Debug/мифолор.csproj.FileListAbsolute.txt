@@ -86,3 +86,4 @@ D:\mfty\.godot\mono\temp\obj\Debug\refint\мифолор.dll
 D:\mfty\.godot\mono\temp\obj\Debug\мифолор.pdb
 D:\mfty\.godot\mono\temp\obj\Debug\мифолор.genruntimeconfig.cache
 D:\mfty\.godot\mono\temp\obj\Debug\ref\мифолор.dll
+D:\mfty\.godot\mono\temp\bin\Debug\Newtonsoft.Json.dll

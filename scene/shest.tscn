@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b7syd56algtq1" path="res://scene/slot.tscn" id="2_sc5dk"]
 
 [node name="PanelContainer" type="PanelContainer"]
+z_index = 1
 anchors_preset = -1
 anchor_right = 0.292
 anchor_bottom = 0.519

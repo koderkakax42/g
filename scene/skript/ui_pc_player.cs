@@ -4,6 +4,7 @@ using System.Xml.XPath;
 
 public partial class ui_pc_player :PanelContainer
 {
+    
 	
 	public static int nomber_open_chest = 0;
 	private int chest_nomber=0;
@@ -14,6 +15,7 @@ public partial class ui_pc_player :PanelContainer
 	[Export]Player player ;
 	enemy enemy = new enemy();
 	spawn spawn = new spawn();
+	[Export] PanelContainer windows;
     public void _on_xp()
 	{
 	  GD.Print("player xp =" +Player.xp);
@@ -53,17 +55,16 @@ public partial class ui_pc_player :PanelContainer
 
     public override void _Ready()
     {
-      GetWindow().MinSize = new Vector2I(480, 320);
-        GetWindow().MaxSize = new Vector2I(1920, 1080);
-
+         GetWindow().MinSize = new Vector2I(480,280 );
+        GetWindow().MaxSize = new Vector2I(1920,960);
         // Подключаемся к сигналу size_changed
+		
         GetWindow().Connect("size_changed", new Callable(this, nameof(OnWindowSizeChanged)));
     }
 
     private void OnWindowSizeChanged()
     {
         Vector2 newSize = GetWindow().Size;
- 
     }
 
 	public void _on_button()

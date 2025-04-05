@@ -1,11 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cjusv6ja3wq1"]
+[gd_scene load_steps=9 format=3 uid="uid://cjusv6ja3wq1"]
 
 [ext_resource type="Script" path="res://scene/skript/main.cs" id="1_bk52j"]
 [ext_resource type="PackedScene" uid="uid://cld0qsa3k4bu4" path="res://scene/yuor_got.tscn" id="2_i4m0v"]
 [ext_resource type="PackedScene" uid="uid://c7f21gd7i2l2r" path="res://scene/air_got.tscn" id="3_6uejf"]
 [ext_resource type="PackedScene" uid="uid://djuwpel1ysljv" path="res://scene/plyer.tscn" id="4_y62lj"]
 [ext_resource type="PackedScene" uid="uid://cchtg3som5fuk" path="res://scene/spawn.tscn" id="5_22chl"]
-[ext_resource type="PackedScene" uid="uid://bkm3ataocejck" path="res://scene/money.tscn" id="6_w6ckg"]
+[ext_resource type="PackedScene" uid="uid://cqpj833338364" path="res://scene/deteckt.tscn" id="6_dnuqa"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_0jhyp"]
 vertices = PackedVector2Array(-4801, 5483, -4384, 1983, -4052, 5098, -4052, 7960, -4801, 8726, -3240, 10825, -4162, 11841, -2242, 15209, -2172, 12961, -1236, 14873, -364, 21421, 40, 15607, 4232, 11900, 9741, 16767, 12172, 26282, 25115, 9593, 26395, 3829, 30099, -1302, 32231, 7533, 30404, 17079, 24474, -1806, 26038, -7292, 21912, -6034, 17613, -10236, 16787, -7956, -1114, 12336, 1927, 5495, 22424, 15358, 24838, 24619, 9283, -10540, 11406, -7956, -3031, 8980, -3606, 2749, 2567, 755, 16786, 17792, -2278, 16187, -5866, 15151, -4489, 12919, -8486, 5703, -5640, 7833, -4969, 3612, -7268, 427, -4392, 632, -3814, -5262, -4377, 630, 5642, -4369, 1563, -8712)
@@ -18,12 +18,6 @@ vertices = PackedVector2Array(-8447, 26235, -8345, 8897, -5223, 18028, -142, 221
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 0), PackedInt32Array(0, 2, 3), PackedInt32Array(5, 6, 7, 8), PackedInt32Array(5, 8, 9, 10), PackedInt32Array(10, 9, 11), PackedInt32Array(12, 13, 14), PackedInt32Array(15, 16, 17), PackedInt32Array(17, 18, 12, 15), PackedInt32Array(12, 14, 15), PackedInt32Array(19, 20, 21), PackedInt32Array(21, 22, 23), PackedInt32Array(19, 21, 23, 24), PackedInt32Array(25, 26, 27, 28, 29, 30), PackedInt32Array(31, 32, 33, 34, 35, 36, 37, 38), PackedInt32Array(39, 40, 41, 42, 43, 44, 37, 36), PackedInt32Array(33, 30, 29, 34), PackedInt32Array(45, 46, 47, 48), PackedInt32Array(28, 27, 45), PackedInt32Array(39, 28, 45, 48, 49, 50, 40)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(11866, -4037, 8950, -1867, 7594, 2066, 11798, 4913, 7662, 2066, 7052, 5252, 7730, 8778, 9764, 11830, 10917, 12779, 12951, 9728, 10849, 12711, 12476, 14067, 16951, 14271, 20003, 12304, 22579, 9117, 22715, 5795, 14171, 5591, 18579, 5659, 17969, 913, 18647, 5727, 22715, 5727, 22579, 1998, 20545, -918, 14917, -3698), PackedVector2Array(-8235, -825, -7510, -9645, 827, -9886, -5697, -8074, -19, -8920, -5093, -6141), PackedVector2Array(21849, -10128, 26681, -7832, 29098, -3966, 31151, 142, 31514, -10128), PackedVector2Array(20278, 25271, 25956, 24546, 31393, 15123, 31151, 24305, 30064, 25513, 18828, 25755), PackedVector2Array(-8355, 8840, -5214, 18022, -137, 22149, 10871, 26245, -8457, 26245)])
 source_geometry_group_name = &"navigation_polygon_source_group"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dcyqn"]
-size = Vector2(928, 37809.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p541r"]
-size = Vector2(42364, 821)
 
 [node name="main" type="Node2D" groups=["main"]]
 script = ExtResource("1_bk52j")
@@ -55,50 +49,11 @@ position = Vector2(-4825, 9922)
 [node name="air got3" parent="." instance=ExtResource("3_6uejf")]
 position = Vector2(28279, 5815)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-light_mask = 1023
-visibility_layer = 1023
-position = Vector2(-8999, 8324.75)
-shape = SubResource("RectangleShape2D_dcyqn")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-light_mask = 1023
-visibility_layer = 1023
-position = Vector2(11733, 26693.8)
-shape = SubResource("RectangleShape2D_p541r")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-light_mask = 1023
-visibility_layer = 1023
-position = Vector2(32654, 7460.5)
-shape = SubResource("RectangleShape2D_dcyqn")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-light_mask = 1023
-visibility_layer = 1023
-position = Vector2(11733, -11053)
-shape = SubResource("RectangleShape2D_p541r")
-
 [node name="player" parent="." instance=ExtResource("4_y62lj")]
 position = Vector2(-3881, 10369)
 
 [node name="spawn4" parent="." instance=ExtResource("5_22chl")]
-position = Vector2(-4478, 10295)
-SpawnInterval = 0.0
+position = Vector2(-4980, 9922)
 
-[node name="money" parent="." instance=ExtResource("6_w6ckg")]
-position = Vector2(-3481, 10416)
-
-[node name="money2" parent="." instance=ExtResource("6_w6ckg")]
-position = Vector2(-3171, 10330)
-
-[node name="money3" parent="." instance=ExtResource("6_w6ckg")]
-position = Vector2(-3255, 10560)
-
-[node name="money4" parent="." instance=ExtResource("6_w6ckg")]
-position = Vector2(-4401, 10709)
-
-[node name="money5" parent="." instance=ExtResource("6_w6ckg")]
-position = Vector2(-4549, 10269)
+[node name="deteckt" parent="." instance=ExtResource("6_dnuqa")]
+position = Vector2(-3763, 10310)

@@ -10,24 +10,24 @@ using System;
 
 public partial class enemy : CharacterBody2D 
 {
-   [Export] public int Health = 100;  // Здоров
-
+   [Export] public int Health = 100;  
   [Export]public int Speed = 350 ;
 
   GameData gameData = new GameData();
 
   public int Damage = 10 ;
+
+  private Node2D? target = null!;
+public Area2D Body = null!;
+ float time = 10;
+[Export]public PackedScene moneyscene{get;set;} = null!;
+ spawn spawn = new spawn();
+   private Texture2D Texture2D ;
+   Sprite2D air = new Sprite2D(); 
+
   
-  private NavigationAgent2D _navigationAgent;
-  private Node2D target;
-
-public Area2D Body;
-
-[Export]public PackedScene moneyscene;
- 
-
  [Export] public int CoinSpawnChance = 100;
-  private AnimatedSprite2D _animatedSprite;
+  private AnimatedSprite2D _animatedSprite = null!;
   
        public override void _Ready()
     {
@@ -36,17 +36,18 @@ public Area2D Body;
       Body = GetNode<Area2D>("hitbox");
 
        
-       if (Body == null)
-        {GD.PrintErr("null body enemy");}
-
         Body.BodyEntered += OnBodyEntered;
-
+       if (Body == null)
+        {
+          GD.PrintErr("null body enemy");
+          return;
+        }
 
         target = GetTree().GetFirstNodeInGroup("Player")as Node2D;
         if(target == null)
         {
             GD.PrintErr("player error 404");
-        
+           return;
         }
 
        _animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
@@ -62,6 +63,40 @@ public Area2D Body;
         bullet.GlobalPosition = GlobalPosition;
    
 }
+private void timer()
+{
+ Godot.Timer timetolive = new Godot.Timer();
+      AddChild(timetolive);
+      timetolive.WaitTime = time;
+      timetolive.Timeout += _QueueFree;
+      timetolive.Start();
+}
+public void mark()
+{
+   if (GodotObject.IsInstanceValid(air))
+   {
+     Texture2D = GD.Load<Texture2D>("res://sprait/mark.png");
+     air.Texture = Texture2D;
+    AddChild(air);
+     air.GlobalPosition = GlobalPosition;
+     
+     timer();
+    
+    }  
+    else
+    {
+      air = new Sprite2D();
+      GD.Print("air delete but restavresion");
+      mark();
+    }
+}
+  
+  private void _QueueFree()
+  {
+    air.QueueFree();
+    GD.Print("time stop");
+    
+  }
     
    private void OnBodyEntered(Node2D body)
     {
@@ -106,8 +141,7 @@ public Area2D Body;
   public void savedata()
   {
     gameData.enemyhp = Health;
-    gameData.enemyposition = Position;
-    GD.Print("save enemy is truy");
+ //   GD.Print("save enemy is truy");
   }    
 
 }

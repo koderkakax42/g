@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "D:\\mfty\\мифолор.csproj": {}
+    "D:\\mfty\\Мифолор.csproj": {}
   },
   "projects": {
-    "D:\\mfty\\мифолор.csproj": {
+    "D:\\mfty\\Мифолор.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\mfty\\мифолор.csproj",
-        "projectName": "мифолор",
-        "projectPath": "D:\\mfty\\мифолор.csproj",
+        "projectUniqueName": "D:\\mfty\\Мифолор.csproj",
+        "projectName": "Мифолор",
+        "projectPath": "D:\\mfty\\Мифолор.csproj",
         "packagesPath": "C:\\Users\\Владелец\\.nuget\\packages\\",
         "outputPath": "D:\\mfty\\.godot\\mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
@@ -30,11 +30,6 @@
             "targetAlias": "net6.0",
             "projectReferences": {}
           }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
         },
         "restoreAuditProperties": {
           "enableAudit": "true",
@@ -57,6 +52,10 @@
             "GodotSharpEditor": {
               "target": "Package",
               "version": "[4.2.2, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             }
           },
           "imports": [

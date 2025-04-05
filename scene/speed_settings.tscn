@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scene/skript/speed_settings.cs" id="1_pf6ki"]
 
 [node name="speed settings" type="Button"]
+z_index = 2
 offset_left = 448.0
 offset_top = 120.0
 offset_right = 804.0
@@ -31,3 +32,4 @@ text = "save"
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2"]

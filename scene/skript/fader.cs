@@ -23,8 +23,19 @@ public partial class fader : CanvasLayer
 
         _animationPlayer.AnimationFinished += OnAnimationFinished;
         _animationPlayer.Play("FadeIn");
+   
+         GetWindow().MinSize = new Vector2I(480,280 );
+        GetWindow().MaxSize = new Vector2I(1920,960);
+        // Подключаемся к сигналу size_changed
+        GetWindow().Connect("size_changed", new Callable(this, nameof(OnWindowSizeChanged)));
     }
-    
+
+    private void OnWindowSizeChanged()
+    {
+        Vector2 newSize = GetWindow().Size;
+        
+	//	windows.Scale = new Vector2(newSize.X , newSize.Y );
+    }
     //Этот метод вызывается AnimationPlayer, когда анимация заканчивается
     private void OnAnimationFinished(StringName animName)
     {
