@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2iiojbx8vxj1"]
+
+[ext_resource type="Script" path="res://skript/UI/setting/speed_settings.cs" id="1_ry0vh"]
+
+[node name="speed settings" type="Button"]
+z_index = 2
+offset_left = 448.0
+offset_top = 120.0
+offset_right = 804.0
+offset_bottom = 214.0
+theme_override_font_sizes/font_size = 50
+text = "exit"
+script = ExtResource("1_ry0vh")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = -157.0
+offset_top = 183.0
+offset_right = 512.0
+offset_bottom = 329.0
+theme_override_font_sizes/font_size = 50
+text = "resume"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = -238.0
+offset_right = -8.0
+offset_bottom = 161.0
+theme_override_font_sizes/font_size = 50
+text = "save"
+
+[connection signal="pressed" from="." to="." method="_on_exsit"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2"]

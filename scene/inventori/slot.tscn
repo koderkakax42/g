@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7syd56algtq1"]
+
+[ext_resource type="Script" path="res://skript/inventori/slot.cs" id="1_bp277"]
+[ext_resource type="Texture2D" uid="uid://bddy2q0ry74ki" path="res://sprait/item/a/air.png" id="2_737yc"]
+
+[node name="slot" type="PanelContainer"]
+anchors_preset = -1
+anchor_right = 0.056
+anchor_bottom = 0.099
+offset_right = -24.512
+offset_bottom = -24.152
+script = ExtResource("1_bp277")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_737yc")
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6875
+anchor_top = 0.640625
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true

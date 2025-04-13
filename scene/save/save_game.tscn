@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmyy3umpmadih"]
+
+[ext_resource type="Script" path="res://skript/save/save_game.cs" id="1_ejmpt"]
+
+[node name="SAVE_GAME" type="Node2D"]
+z_index = 1
+script = ExtResource("1_ejmpt")
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 593.0
+offset_top = 455.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "НАЧАТЬ НОВУЮ ИГРУ"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 21.0
+offset_top = 463.0
+offset_right = 557.0
+offset_bottom = 620.0
+theme_override_font_sizes/font_size = 50
+text = "начать с сохранения"
+
+[node name="Label" type="Label" parent="."]
+offset_right = 1149.0
+offset_bottom = 188.0
+theme_override_font_sizes/font_size = 100
+text = "найденно сохранение"
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 240.0
+offset_top = 174.0
+offset_right = 897.0
+offset_bottom = 369.0
+theme_override_font_sizes/font_size = 50
+text = "0тмена"
+
+[connection signal="pressed" from="Button" to="." method="_on_new_game"]
+[connection signal="pressed" from="Button2" to="." method="_on_save"]
+[connection signal="pressed" from="Button3" to="." method="_on_undo"]

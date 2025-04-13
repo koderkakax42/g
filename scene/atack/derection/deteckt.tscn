@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqpj833338364"]
+
+[ext_resource type="Script" path="res://skript/atacked/direcsion/deteckt.cs" id="1_v5dtv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cow82"]
+radius = 26.0
+
+[node name="deteckt" type="Area2D"]
+z_index = 1
+script = ExtResource("1_v5dtv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cow82")

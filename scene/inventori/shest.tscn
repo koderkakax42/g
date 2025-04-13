@@ -1,0 +1,109 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyyyxwncnymm4"]
+
+[ext_resource type="Script" path="res://skript/inventori/shest.cs" id="1_74l1x"]
+[ext_resource type="PackedScene" uid="uid://b7syd56algtq1" path="res://scene/inventori/slot.tscn" id="2_sc5dk"]
+
+[node name="PanelContainer" type="PanelContainer"]
+z_index = 1
+anchors_preset = -1
+anchor_right = 0.292
+anchor_bottom = 0.519
+offset_right = -0.384033
+offset_bottom = -0.312042
+script = ExtResource("1_74l1x")
+metadata/_edit_use_anchors_ = true
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 5
+
+[node name="slot" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+layout_mode = 2
+
+[node name="slot2" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+layout_mode = 2
+
+[node name="slot3" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+layout_mode = 2
+
+[node name="slot4" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+layout_mode = 2
+
+[node name="slot5" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+layout_mode = 2
+
+[node name="slot6" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+layout_mode = 2
+
+[node name="slot7" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+layout_mode = 2
+
+[node name="slot8" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+layout_mode = 2
+
+[node name="slot9" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+layout_mode = 2
+
+[node name="slot10" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+layout_mode = 2
+
+[node name="slot11" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+layout_mode = 2
+
+[node name="slot12" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+layout_mode = 2
+
+[node name="slot13" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+layout_mode = 2
+
+[node name="slot14" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+layout_mode = 2
+
+[node name="slot15" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+layout_mode = 2
+
+[node name="slot16" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+layout_mode = 2
+
+[node name="slot17" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+layout_mode = 2
+
+[node name="slot18" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+layout_mode = 2
+
+[node name="slot19" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+layout_mode = 2
+
+[node name="slot20" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+layout_mode = 2
+
+[node name="slot21" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+layout_mode = 2
+
+[node name="slot22" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+layout_mode = 2
+
+[node name="slot23" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+layout_mode = 2
+
+[node name="slot24" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+layout_mode = 2
+
+[node name="slot25" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.18452
+anchor_right = 1.5
+anchor_bottom = 0.190262
+offset_bottom = 0.0719986
+grow_horizontal = 0
+text = "off"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button"]

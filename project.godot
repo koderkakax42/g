@@ -11,10 +11,9 @@ config_version=5
 [application]
 
 config/name="Mifolor"
-run/main_scene="res://scene/meny.tscn"
+run/main_scene="res://scene/ui/meny/meny.tscn"
 config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
 boot_splash/bg_color=Color(0.188371, 0.188371, 0.188371, 1)
-config/icon="res://sprait/Без названия46.jpg"
 
 [display]
 
@@ -73,6 +72,11 @@ mark={
 ui_mark_shoot={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":81,"key_label":0,"unicode":113,"echo":false,"script":null)
+]
+}
+god={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194447,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 
