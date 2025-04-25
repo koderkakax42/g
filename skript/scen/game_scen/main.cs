@@ -5,14 +5,6 @@ public partial class main : Node2D
 {    bool time;
     public override void _PhysicsProcess(double delta)
     {
-       /* if(time)
-        {
-            Engine.TimeScale = 0;
-        }
-        else
-        {
-            Engine.TimeScale = 1;
-        }*/
 
     }
     public override void _Ready()

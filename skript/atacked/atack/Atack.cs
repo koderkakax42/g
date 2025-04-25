@@ -11,8 +11,7 @@ public partial class Atack : Area2D
   
     public override void _Ready()
     {
-        BodyEntered += OnBodyEntered;
-
+        BodyEntered += OnBodyEntered;  
         // Создаем и настраиваем таймер
         Godot.Timer _collisionTimer = new Godot.Timer();
         AddChild(_collisionTimer);

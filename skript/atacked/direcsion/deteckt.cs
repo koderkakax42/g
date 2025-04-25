@@ -9,7 +9,6 @@ using System.Linq;
 		public Vector2 enemyglobpos;
     private List<Vector2> _targetMarkers = new List<Vector2>(); // Список меток
     public List<enemy>? _markedEnemies {get;} = new List<enemy>();  // Список врагов с метками
-        Player player = new Player();
 	 
         public override void _Ready()
         {	

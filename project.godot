@@ -19,7 +19,7 @@ boot_splash/bg_color=Color(0.188371, 0.188371, 0.188371, 1)
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_height"
-mouse_cursor/custom_image="res://sprait/maus.png"
+mouse_cursor/custom_image="res://sprait/ui/cursor/maus.png"
 
 [dotnet]
 
@@ -80,9 +80,15 @@ god={
 ]
 }
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [physics]
 
 2d/physics_engine="GodotPhysics2D"
+2d/default_gravity=0.0
+2d/default_gravity_vector=Vector2(0, 0)
 
 [rendering]
 

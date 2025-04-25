@@ -1,11 +1,11 @@
 [gd_scene load_steps=58 format=3 uid="uid://djuwpel1ysljv"]
 
 [ext_resource type="Script" path="res://skript/player/player/Player.cs" id="1_g7tiv"]
+[ext_resource type="PackedScene" uid="uid://cqpj833338364" path="res://scene/atack/derection/deteckt.tscn" id="2_i270c"]
 [ext_resource type="Texture2D" uid="uid://b18ls7md4i1pj" path="res://sprait/drop/money.png" id="2_r74pw"]
 [ext_resource type="Texture2D" uid="uid://5gl1hanq1ffr" path="res://sprait/charecter/atack/atack.png.png" id="3_28ioc"]
 [ext_resource type="Texture2D" uid="uid://cp43e8vnx6yx8" path="res://sprait/charecter/player/player.png.png" id="4_rhijm"]
 [ext_resource type="PackedScene" uid="uid://bcapmv1en338j" path="res://scene/ui/ui_pc_plaer.tscn" id="5_wbgah"]
-[ext_resource type="PackedScene" uid="uid://dmyy3umpmadih" path="res://scene/save/save_game.tscn" id="6_h1hny"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rq4h4"]
 size = Vector2(56, 51)
@@ -367,9 +367,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m80nn"]
 size = Vector2(66, 59)
 
-[node name="player" type="CharacterBody2D" groups=["Player"]]
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("UI", "deteckt") groups=["Player", "save"]]
 position = Vector2(686, 383)
 script = ExtResource("1_g7tiv")
+UI = NodePath("ui_pc_plaer")
+deteckt = NodePath("deteckt")
 
 [node name="Camera2D2" type="Camera2D" parent="."]
 rotation = 6.28319
@@ -392,15 +394,19 @@ frame_progress = 0.983207
 position = Vector2(-1, -0.5)
 shape = SubResource("RectangleShape2D_m80nn")
 
-[node name="ui_pc_plaer" parent="." instance=ExtResource("5_wbgah")]
+[node name="ui_pc_plaer" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_wbgah")]
+light_mask = 514
+visibility_layer = 514
 offset_left = -576.0
 offset_top = -328.0
 offset_right = 577.0
 offset_bottom = -237.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+player = NodePath("..")
 metadata/_edit_use_anchors_ = true
 
-[node name="SAVE_GAME" parent="." instance=ExtResource("6_h1hny")]
-visible = false
-position = Vector2(4147, 3445)
+[node name="deteckt" parent="." instance=ExtResource("2_i270c")]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(-481, -164)

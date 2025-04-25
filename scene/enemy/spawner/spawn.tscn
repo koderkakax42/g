@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://skript/enemy/spavner/spawn.cs" id="1_o3uyj"]
 
-[node name="spawn" type="Node2D" groups=["spv"]]
+[node name="spawn" type="Node2D" groups=["save", "spawner"]]
 script = ExtResource("1_o3uyj")
 
 [node name="Timer" type="Timer" parent="."]

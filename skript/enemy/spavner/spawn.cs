@@ -3,30 +3,30 @@ using System;
 
 public partial class spawn : Node2D
 {
-    [Export] 
 	public PackedScene EnemyScene {get;set;} = null!;
 
     [Export]
-	 public float SpawnInterval = 10.0f;
+	 public float SpawnInterval = 5.0f;
 
     [Export] 
-	public int MaxEnemies = 10; 
+	public int MaxEnemies =  1000;
 
-    [Export]
 	 public Vector2[] SpawnPoints = null!; 
 
-
-    [Export]
-	 public Vector2 SpawnAreaSize = Vector2.One * 100f;
-     SaveGame.GameData gameData = new SaveGame.GameData();
-
     private float _timer = 0.0f;                      // Таймер
-    private int _enemyCount = 0;                      // Количество врагов на сцене
+    public int _enemyCount = 0;  
+    
+    public override void _Ready()
+    {
+       EnemyScene = GD.Load<PackedScene>("res://scene/enemy/enemy/enemy.tscn");
+    }                   
+    
     public override void _Process(double delta)
     {
         _timer += (float)delta;
         if (_enemyCount==0)
         {
+            MaxEnemies =  1000;
             SpawnEnemy();
         }
 
@@ -41,7 +41,7 @@ public partial class spawn : Node2D
     {
         if (EnemyScene == null)
         {
-            GD.PrintErr("Ошибка: Сцена врага не задана!");
+            GD.PrintErr("Ошибка: Сцена врага не задана! spawn");
             return;
         }
         
@@ -62,11 +62,4 @@ public partial class spawn : Node2D
         _enemyCount++;
         enemyInstance.TreeExited += () => { _enemyCount--; }; //Уменьшаем счётчик врагов при удалении
     }
-    public void savegame()
-    {
-      gameData.enemynamber = _enemyCount;
-      GD.Print("save nomber enemy is truy");
-     
-    }
-    
 }

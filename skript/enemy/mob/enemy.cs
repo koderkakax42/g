@@ -23,18 +23,7 @@ public PackedScene moneyscene{get;set;} = null!;
    Sprite2D air; 
   private AnimatedSprite2D _animatedSprite = null!;
   
-  [Export] public string EnemyId { get; set; } = Guid.NewGuid().ToString(); // Уникальный ID
-    
-    public SaveGame.GameData GetSaveData()
-    {
-      GD.Print(EnemyId + " save enemy");
-        return new SaveGame.GameData()
-        {
-            EnemyId = this.EnemyId,
-            enemyposition = this.GlobalPosition,
-            enemyhp = Health
-        };
-    }
+    public string EnemyId { get; set; } = Guid.NewGuid().ToString("N") ;
 
     public void LoadData()
     {
@@ -42,6 +31,7 @@ public PackedScene moneyscene{get;set;} = null!;
     }
     public override void _Ready()
     {
+      EnemyId.Substring(0,5);
       moneyscene=GD.Load<PackedScene>("res://scene/drop/money.tscn");
      
       Body = GetNode<Area2D>("hitbox");

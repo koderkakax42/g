@@ -1,75 +1,66 @@
 using Godot;
-using System.IO;
 using System.Text.Json;
 
 namespace SaveGame 
 {
   public  partial class SaveGame : Node2D
   {
-   public static GameData data = new GameData();
+   public static Dictionary<string,float>? save{get;set;} = null;
+   public static Dictionary<string,JsonElement>? load{get;set;} = null;
+    
+    
    private const string SAVE_PATH = "user://save.json";
+    private static string absolutrath =  ProjectSettings.GlobalizePath(SAVE_PATH);
     public static void Save_data_Game()
     {
-      
-      DirAccess.MakeDirRecursiveAbsolute("user://");
-      using(var File = Godot.FileAccess.Open(SAVE_PATH,Godot.FileAccess.ModeFlags.Write))
-      {
-        File.StoreString("{}");
-      }
-
         
-        var options = new JsonSerializerOptions
+       try
         {
-            WriteIndented = true,  // Читаемый формат
-            IncludeFields = true   // Сохранять поля (не только свойства)
-        };
-        
-        string? json = JsonSerializer.Serialize(data, options);
-       // Получаем абсолютный путь
-        string absolutePath = ProjectSettings.GlobalizePath("user://save.json");
-        File.WriteAllText(absolutePath,json);
-     
-        GD.Print("Игра сохранена!");
+            // Сериализуем данные в JSON (с отступами для читаемости)
+            string json = JsonSerializer.Serialize(save, new JsonSerializerOptions { WriteIndented = true });
+            // Записываем в файл
+            File.WriteAllText(absolutrath, json);
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка сохранения: {ex.Message}");
+        }
+      
     }
     
-    public static GameData LoadGame()
+    public static void delsave()
     {
-        if (!File.Exists(SAVE_PATH))
+         string json = JsonSerializer.Serialize("{}", new JsonSerializerOptions { WriteIndented = true });
+            // Записываем в файл
+            File.WriteAllText(absolutrath, json);
+
+    }
+    public static void LoadGame()
+    {
+        if (!File.Exists(absolutrath))
         {
-            GD.Print("Сохранение не найдено, создаем новое");
-            return new GameData();
+            return ;
         }
-        GD.Print(File.Exists(SAVE_PATH));
-        string json = File.ReadAllText(SAVE_PATH);
+        string json = File.ReadAllText(absolutrath);
+        json.Trim();
         try
         {
-            return JsonSerializer.Deserialize<GameData>(json);
+            load = JsonSerializer.Deserialize<Dictionary<string,JsonElement>>(json);
+          
+            if(load != null)
+            foreach(var person in load)
+            {
+              GD.Print(person.Key + " " + person.Value);
+            }
+
+            return;
         }
-        catch
+        catch(Exception ex)
         {
-            GD.PrintErr("Ошибка загрузки, создаем новое сохранение");
-            return new GameData();
+            GD.Print($"{ex.Message} save game eror");
+            return;
         }
     }
-
-    public override void _Ready()
-    {
-
-    }
-
   }
-
-    public struct GameData
-    {
-    public float PlayerPositionX { get; set; }
-     public float PlayerPositionY { get; set; }
-    public int Health {get;set;}
-    public int money { get; set; }
-    public Vector2 enemyposition {get;set;}
-    public int enemyhp{get;set;}
-    public int  enemynamber{get;set;}
-     public string EnemyId { get; set; }
-
-    }
-    
 }

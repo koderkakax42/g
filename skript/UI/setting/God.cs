@@ -15,7 +15,7 @@ public partial class God : Godot.Button
 
 	private void god_mod()
 	{
-      Player.xp = int.MaxValue;
+     //okh Player.xp = int.MaxValue;
 	  Atack.damage = int.MaxValue;
 	  QueueFree();
 	}

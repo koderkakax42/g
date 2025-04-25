@@ -1,17 +1,41 @@
 using Godot;
-using System;
-using System.Threading.Tasks;
-using System.IO;
+using System.Text.Json;
+using SaveGame;
 
 public partial class fader : CanvasLayer
 {
-    private const string SAVE_PATH = "user://save.json";
+      private const string SAVE_PATH = "user://save.json";
      [Export]public static String ScenePath {get;set;}
 
+   
     private AnimationPlayer _animationPlayer;
 
+
+private void chec_save()
+{
+    try
+    { 
+     string absolutrath =  ProjectSettings.GlobalizePath(SAVE_PATH);
+
+         if(File.ReadAllText(absolutrath) == "{}")
+         {
+            return;
+         }
+
+
+        ScenePath= "res://scene/save/save_game.tscn";
+        meny.saveload -= chec_save;
+
+    }
+    catch(Exception ex)
+    {
+       GD.Print($"{ex.Message} fader.");
+    }
+}
     public override void _Ready()
     {
+        meny.saveload += chec_save;
+
         _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 
         if (_animationPlayer == null)
@@ -33,25 +57,17 @@ public partial class fader : CanvasLayer
     {
         Vector2 newSize = GetWindow().Size;
         
-	//	windows.Scale = new Vector2(newSize.X , newSize.Y );
+		Scale = new Vector2(newSize.X , newSize.Y );
     }
-    //Этот метод вызывается AnimationPlayer, когда анимация заканчивается
+
+
+
     private void OnAnimationFinished(StringName animName)
     {
 
         if (animName.ToString().Equals("FadeIn"))
         {
-            /* string absolutePath = ProjectSettings.GlobalizePath("user://save.json");
-             if (File.Exists(SAVE_PATH) != null && File.Exists(absolutePath)  )
-             {
-               GD.Print("Сохранение найдено");
-
-               ScenePath = "res://scene/save/save_game.tscn" ;
-               LoadNewScene();
-               return;
-             }*/
-             
-            //После того, как FadeIn закончился, воспроизвести FadeOut
+         //   chec_save();
              _animationPlayer.Play("FadeOut");
 
         }
@@ -64,6 +80,7 @@ public partial class fader : CanvasLayer
             LoadNewScene();
         }
     }
+
 
     private void LoadNewScene()
     {
