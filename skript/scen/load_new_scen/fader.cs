@@ -11,20 +11,16 @@ public partial class fader : CanvasLayer
     private AnimationPlayer _animationPlayer;
 
 
-private void chec_save()
+public static void chec_save()
 {
     try
     { 
      string absolutrath =  ProjectSettings.GlobalizePath(SAVE_PATH);
 
-         if(File.ReadAllText(absolutrath) == "{}")
+         if(File.Exists(absolutrath))
          {
-            return;
-         }
-
-
         ScenePath= "res://scene/save/save_game.tscn";
-        meny.saveload -= chec_save;
+         }
 
     }
     catch(Exception ex)
@@ -34,7 +30,6 @@ private void chec_save()
 }
     public override void _Ready()
     {
-        meny.saveload += chec_save;
 
         _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 

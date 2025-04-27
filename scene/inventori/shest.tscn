@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://skript/inventori/shest.cs" id="1_74l1x"]
 [ext_resource type="PackedScene" uid="uid://b7syd56algtq1" path="res://scene/inventori/slot.tscn" id="2_sc5dk"]
 
-[node name="PanelContainer" type="PanelContainer"]
+[node name="PanelContainer" type="PanelContainer" groups=["chest"]]
 z_index = 1
 anchors_preset = -1
 anchor_right = 0.292

@@ -3,13 +3,14 @@
 [ext_resource type="Script" path="res://skript/inventori/slot.cs" id="1_bp277"]
 [ext_resource type="Texture2D" uid="uid://bddy2q0ry74ki" path="res://sprait/item/a/air.png" id="2_737yc"]
 
-[node name="slot" type="PanelContainer"]
+[node name="slot" type="PanelContainer" node_paths=PackedStringArray("texture") groups=["slot"]]
 anchors_preset = -1
 anchor_right = 0.056
 anchor_bottom = 0.099
 offset_right = -24.512
 offset_bottom = -24.152
 script = ExtResource("1_bp277")
+texture = NodePath("TextureRect")
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]

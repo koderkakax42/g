@@ -5,61 +5,61 @@ public partial class spawn : Node2D
 {
 	public PackedScene EnemyScene {get;set;} = null!;
 
-    [Export]
+	[Export]
 	 public float SpawnInterval = 5.0f;
 
-    [Export] 
+	[Export] 
 	public int MaxEnemies =  1000;
 
 	 public Vector2[] SpawnPoints = null!; 
 
-    private float _timer = 0.0f;                      // Таймер
-    public int _enemyCount = 0;  
-    
-    public override void _Ready()
-    {
-       EnemyScene = GD.Load<PackedScene>("res://scene/enemy/enemy/enemy.tscn");
-    }                   
-    
-    public override void _Process(double delta)
-    {
-        _timer += (float)delta;
-        if (_enemyCount==0)
-        {
-            MaxEnemies =  1000;
-            SpawnEnemy();
-        }
+	private float _timer = 0.0f;                      // Таймер
+	public int _enemyCount = 0;  
+	
+	public override void _Ready()
+	{
+	   EnemyScene = GD.Load<PackedScene>("res://scene/enemy/enemy/enemy.tscn");
+	}                   
+	
+	public override void _Process(double delta)
+	{
+		_timer += (float)delta;
+		if (_enemyCount==0)
+		{
+			MaxEnemies =  1000;
+			SpawnEnemy();
+		}
 
-        if (_timer >= SpawnInterval && _enemyCount < MaxEnemies)
-        {
-            SpawnEnemy();
-            _timer = 0.0f;
-        }
-    }
+		if (_timer >= SpawnInterval && _enemyCount < MaxEnemies)
+		{
+			SpawnEnemy();
+			_timer = 0.0f;
+		}
+	}
 
-    private void SpawnEnemy()
-    {
-        if (EnemyScene == null)
-        {
-            GD.PrintErr("Ошибка: Сцена врага не задана! spawn");
-            return;
-        }
-        
-        // Инстанцируем сцену врага
-        Node2D enemyInstance = EnemyScene.Instantiate<Node2D>();
+	private void SpawnEnemy()
+	{
+		if (EnemyScene == null)
+		{
+			GD.PrintErr("Ошибка: Сцена врага не задана! spawn");
+			return;
+		}
+		
+		// Инстанцируем сцену врага
+		Node2D enemyInstance = EnemyScene.Instantiate<Node2D>();
 
-         
-                
+		 
+				
 
-            enemyInstance.Position = new Vector2(0,0);
-      
-        
-        
-        // Добавляем врага на сцену
-        AddChild(enemyInstance);
+			enemyInstance.Position = new Vector2(0,0);
+	  
+		
+		
+		// Добавляем врага на сцену
+		AddChild(enemyInstance);
 
-        // Инкрементируем счетчик врагов
-        _enemyCount++;
-        enemyInstance.TreeExited += () => { _enemyCount--; }; //Уменьшаем счётчик врагов при удалении
-    }
+		// Инкрементируем счетчик врагов
+		_enemyCount++;
+		enemyInstance.TreeExited += () => { _enemyCount--; }; //Уменьшаем счётчик врагов при удалении
+	}
 }

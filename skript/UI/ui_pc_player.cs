@@ -15,22 +15,25 @@ public partial class ui_pc_player :PanelContainer
 
 	spawn spawn = new spawn();
 	 PackedScene meny;
+   [Export]public shest cheste = new shest();
 
-
-    public override void _Ready()
-    {
+	public override void _Ready()
+	{
+	
+		speed_settings.save+=saveplayer;
+		
 		 chest = GD.Load<PackedScene>("res://scene/inventori/shest.tscn");
 		
 		 meny = GD.Load<PackedScene>("res://scene/ui/setting/speed_settings.tscn");
 
-         GetWindow().MinSize = new Vector2I(480,280 );
-        GetWindow().MaxSize = new Vector2I(1920,960);
-        // Подключаемся к сигналу size_changed
+		 GetWindow().MinSize = new Vector2I(480,280 );
+		GetWindow().MaxSize = new Vector2I(1920,960);
+		// Подключаемся к сигналу size_changed
 		
-        GetWindow().Connect("size_changed", new Callable(this, nameof(OnWindowSizeChanged)));
+		GetWindow().Connect("size_changed", new Callable(this, nameof(OnWindowSizeChanged)));
 
-    }
-    public void _on_xp(int healtch)
+	}
+	public void _on_xp(int healtch)
 	{
 	  value.Value= healtch;
 	}
@@ -43,7 +46,7 @@ public partial class ui_pc_player :PanelContainer
 #if DEBUG
 		/*if(Atack.damage != int.MaxValue)
 		{
-		    var i = (God)godmode.Instantiate();
+			var i = (God)godmode.Instantiate();
 			GetParent().AddChild(i);
 	 		i.GlobalPosition = player.GlobalPosition;
 		}*/	
@@ -51,60 +54,54 @@ public partial class ui_pc_player :PanelContainer
 	}
 	private void _on_chest()
 	{
-
-      switch (chest_nomber)
+	  
+	  switch (chest_nomber)
 	  {
 		case 1 : 
-		         chest_nomber--;
-		         Openchest();
+			if(cheste.Visible != true)	 
+			{
+			cheste.Visible=true;
+			nomber_open_chest = 1;
+			time_stop?.Invoke();
+			}
 		break;		 
 		default:
-		        chest_nomber = 1;
-	            _on_chest();
+				chest_nomber = 1;
+				_on_chest();
 		break;
 	  }
 	}
-    private void Openchest()
+	
+		
+
+
+
+	private void OnWindowSizeChanged()
 	{
-		if (nomber_open_chest == 0)
-		{
-		var cheste = (shest)chest.Instantiate() as shest;
-	    GetParent().AddChild(cheste);
-	    cheste.GlobalPosition = player.GlobalPosition;
- 
-	    nomber_open_chest = 1;
-
-		time_stop?.Invoke();
-
-		return;
-		}
+		Vector2 newSize = GetWindow().Size;
 	}
 
-
-    private void OnWindowSizeChanged()
-    {
-        Vector2 newSize = GetWindow().Size;
-    }
-
-public void saveplayer()
+private void saveplayer()
 {
+	speed_settings.save-=saveplayer;
 	if(SaveGame.SaveGame.save != null)
 	{
 		SaveGame.SaveGame.save.Clear();
 	}
-	    foreach (Player player in GetTree().GetNodesInGroup("Player"))
+		foreach (Player player in GetTree().GetNodesInGroup("Player"))
 		{ 
 		  GD.Print(1);	
 
 			if (IsInstanceValid(player))
 			{
+				GD.Print(5);
 				SaveGame.SaveGame.save = new Dictionary<string, float>();
 				
-			      SaveGame.SaveGame.save.TryAdd("player positon x",player.GlobalPosition.X);
+				  SaveGame.SaveGame.save.TryAdd("player positon x",player.GlobalPosition.X);
 				  SaveGame.SaveGame.save.TryAdd("player position y" , player.GlobalPosition.Y);
 				  SaveGame.SaveGame.save.TryAdd("player health",player.xp);
 				  SaveGame.SaveGame.save.TryAdd("player money ", player.money.ToFloat());
-				
+				GD.Print(4);
 				 saveenemy();
 			}
 		}
@@ -112,22 +109,22 @@ public void saveplayer()
 }
 private void saveenemy()
 {
-     foreach (enemy enemy in GetTree().GetNodesInGroup("enemy"))
-     {
+	 foreach (enemy enemy in GetTree().GetNodesInGroup("enemy"))
+	 {
 		GD.Print(3);
-              if (IsInstanceValid(enemy))
-		       {
-				GD.Print(4);
+			  if (IsInstanceValid(enemy))
+			   {
+			GD.Print(4);
 				
 				 SaveGame.SaveGame.save.TryAdd(enemy.EnemyId+"enemy X position", enemy.GlobalPosition.X);
 				 SaveGame.SaveGame.save.TryAdd(enemy.EnemyId+"enemy Y position", enemy.GlobalPosition.Y);
 				 SaveGame.SaveGame.save.TryAdd(enemy.EnemyId+"health enemy",enemy.Health); 
 				
-		       }
+			   }
 	 } 
-
-			       save?.Invoke();
-    
+				   save?.Invoke();
+				GD.Print(7);
+	
 }
 
 	private void _on_button()
@@ -138,10 +135,9 @@ private void saveenemy()
 		GD.Print("null save ");
 	  }
 
-      
+	  
 	   saveplayer();
 
-	   SaveGame.SaveGame.Save_data_Game();
 
 
 	  GD.Print(" save is truy . ");
@@ -150,14 +146,14 @@ private void saveenemy()
 	{
 		if (nomber_open_chest == 0)
 		{
-	    	time_stop?.Invoke();
+			time_stop?.Invoke();
 			if(time_stop == null)
 			{
 				GD.Print("null time stop");
 			}
 
 
-            var i = (speed_settings)meny.Instantiate();
+			var i = (speed_settings)meny.Instantiate();
 			  GetParent().AddChild(i);
 			  i.GlobalPosition = new Vector2(player.GlobalPosition.X-200,player.GlobalPosition.Y-200);
 			  nomber_open_chest = 1;

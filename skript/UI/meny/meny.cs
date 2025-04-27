@@ -3,7 +3,6 @@ using System;
 
 public partial class meny : Node
 {
-    public static event Action saveload = delegate{}; 
     public String TargetScenePath = "res://scene/scen/load_scen/fader.tscn"; // Путь к сцене, которую нужно загрузить
     
 
@@ -16,7 +15,7 @@ public partial class meny : Node
         }
        fader.ScenePath = "res://scene/scen/game_scen/main.tscn";
        LoadNewScene();
-       saveload?.Invoke();
+       fader.chec_save();
     }
 
 

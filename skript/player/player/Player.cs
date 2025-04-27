@@ -128,8 +128,6 @@ public partial class Player : CharacterBody2D
 	{
 	   dead.Invoke();
 		fader.ScenePath="res://scene/ui/meny/meny.tscn";
-		   
-		   SaveGame.SaveGame.delsave();
 
 			Speed=0;
 			Velocity = inputDirection  * Speed;

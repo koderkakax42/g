@@ -12,6 +12,17 @@ public partial class save_game : SaveGame.SaveGame
 	  Player.dead += delsave;
 	  ui_pc_player.save += Save_data_Game;
 	}
+	public override void delsave()
+	{
+		base.delsave();
+		Player.dead -= delsave;
+	}
+
+    public override void Save_data_Game()
+    {
+        base.Save_data_Game();
+		ui_pc_player.save -= Save_data_Game;
+    }
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{

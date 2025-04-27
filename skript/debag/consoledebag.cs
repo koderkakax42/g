@@ -20,18 +20,18 @@ public partial class consoledebag : TextEdit
 		switch(i)
 		{
 			case 1 : 
-			      QueueFree();
+				  QueueFree();
 			break;
 			case 2 :
-			         foreach(Player player in GetTree().GetNodesInGroup("save"))
+					 foreach(Player player in GetTree().GetNodesInGroup("save"))
 					 {
 						player.xp = 0;
 					 }
 			break;
 			default : 
-			      GD.Print("console mode ");
+				  GD.Print("console mode ");
 			break;		  
-			     
+				 
 		}
 	}
 }

@@ -13,10 +13,6 @@ public partial class Atack : Area2D
     {
         BodyEntered += OnBodyEntered;  
         // Создаем и настраиваем таймер
-        Godot.Timer _collisionTimer = new Godot.Timer();
-        AddChild(_collisionTimer);
-        _collisionTimer.OneShot = true; // Запускаем только один раз
-        _collisionTimer.Start();
             live_bullet();
 
 

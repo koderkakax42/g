@@ -1,7 +1,4 @@
 using Godot;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 
 	public partial class deteckt : Area2D
@@ -12,20 +9,23 @@ using System.Linq;
 	 
         public override void _Ready()
         {	
-		  BodyEntered += OnBodyEntered;	
-		  
+		  BodyEntered += OnBodyEntered;
+
         }
+     
      private  void OnBodyEntered(Node node)
 		{
-     
+      GD.Print($"node : {node}");
+    
       if (node is enemy enemy)
 		  {
         enemyglobpos = enemy.GlobalPosition;
 		  }
+    
 		}
     public override void _PhysicsProcess(double delta)
     {
-		GlobalPosition = GetGlobalMousePosition();
+		GlobalPosition = new Vector2(GetGlobalMousePosition().X+15 ,GetGlobalMousePosition().Y+15);
         
     }
 
