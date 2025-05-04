@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://demo8id2u3ta1"]
+
+[ext_resource type="Script" uid="uid://b68ckd63bvu8d" path="res://skript/debag/GodMode.cs" id="1_7w8t5"]
+
+[node name="Button" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 150
+text = "god mod"
+script = ExtResource("1_7w8t5")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="." to="." method="god_mod"]

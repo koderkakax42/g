@@ -1,0 +1,139 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\mtttuiuiy\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D7616DC0-C7FD-451F-A6B7-B1088036AB1E}|mtttuiuiy.csproj|d:\\mtttuiuiy\\skript\\save\\savegame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7616DC0-C7FD-451F-A6B7-B1088036AB1E}|mtttuiuiy.csproj|solutionrelative:skript\\save\\savegame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7616DC0-C7FD-451F-A6B7-B1088036AB1E}|mtttuiuiy.csproj|d:\\mtttuiuiy\\skript\\ui\\ui_pc_player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7616DC0-C7FD-451F-A6B7-B1088036AB1E}|mtttuiuiy.csproj|solutionrelative:skript\\ui\\ui_pc_player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7616DC0-C7FD-451F-A6B7-B1088036AB1E}|mtttuiuiy.csproj|d:\\mtttuiuiy\\skript\\atacked\\direcsion\\deteckt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7616DC0-C7FD-451F-A6B7-B1088036AB1E}|mtttuiuiy.csproj|solutionrelative:skript\\atacked\\direcsion\\deteckt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7616DC0-C7FD-451F-A6B7-B1088036AB1E}|mtttuiuiy.csproj|d:\\mtttuiuiy\\skript\\scen\\load_new_scen\\fader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7616DC0-C7FD-451F-A6B7-B1088036AB1E}|mtttuiuiy.csproj|solutionrelative:skript\\scen\\load_new_scen\\fader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7616DC0-C7FD-451F-A6B7-B1088036AB1E}|mtttuiuiy.csproj|d:\\mtttuiuiy\\skript\\player\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7616DC0-C7FD-451F-A6B7-B1088036AB1E}|mtttuiuiy.csproj|solutionrelative:skript\\player\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7616DC0-C7FD-451F-A6B7-B1088036AB1E}|mtttuiuiy.csproj|d:\\mtttuiuiy\\skript\\enemy\\mob\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7616DC0-C7FD-451F-A6B7-B1088036AB1E}|mtttuiuiy.csproj|solutionrelative:skript\\enemy\\mob\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7616DC0-C7FD-451F-A6B7-B1088036AB1E}|mtttuiuiy.csproj|d:\\mtttuiuiy\\node2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7616DC0-C7FD-451F-A6B7-B1088036AB1E}|mtttuiuiy.csproj|solutionrelative:node2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "fader.cs",
+              "DocumentMoniker": "D:\\mtttuiuiy\\skript\\scen\\load_new_scen\\fader.cs",
+              "RelativeDocumentMoniker": "skript\\scen\\load_new_scen\\fader.cs",
+              "ToolTip": "D:\\mtttuiuiy\\skript\\scen\\load_new_scen\\fader.cs",
+              "RelativeToolTip": "skript\\scen\\load_new_scen\\fader.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T18:22:26.567Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SaveGame.cs",
+              "DocumentMoniker": "D:\\mtttuiuiy\\skript\\save\\SaveGame.cs",
+              "RelativeDocumentMoniker": "skript\\save\\SaveGame.cs",
+              "ToolTip": "D:\\mtttuiuiy\\skript\\save\\SaveGame.cs",
+              "RelativeToolTip": "skript\\save\\SaveGame.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T18:21:22.385Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Player.cs",
+              "DocumentMoniker": "D:\\mtttuiuiy\\skript\\player\\player\\Player.cs",
+              "RelativeDocumentMoniker": "skript\\player\\player\\Player.cs",
+              "ToolTip": "D:\\mtttuiuiy\\skript\\player\\player\\Player.cs",
+              "RelativeToolTip": "skript\\player\\player\\Player.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T18:21:00.399Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "deteckt.cs",
+              "DocumentMoniker": "D:\\mtttuiuiy\\skript\\atacked\\direcsion\\deteckt.cs",
+              "RelativeDocumentMoniker": "skript\\atacked\\direcsion\\deteckt.cs",
+              "ToolTip": "D:\\mtttuiuiy\\skript\\atacked\\direcsion\\deteckt.cs",
+              "RelativeToolTip": "skript\\atacked\\direcsion\\deteckt.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T18:20:41.626Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "enemy.cs",
+              "DocumentMoniker": "D:\\mtttuiuiy\\skript\\enemy\\mob\\enemy.cs",
+              "RelativeDocumentMoniker": "skript\\enemy\\mob\\enemy.cs",
+              "ToolTip": "D:\\mtttuiuiy\\skript\\enemy\\mob\\enemy.cs",
+              "RelativeToolTip": "skript\\enemy\\mob\\enemy.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T18:20:01.559Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ui_pc_player.cs",
+              "DocumentMoniker": "D:\\mtttuiuiy\\skript\\UI\\ui_pc_player.cs",
+              "RelativeDocumentMoniker": "skript\\UI\\ui_pc_player.cs",
+              "ToolTip": "D:\\mtttuiuiy\\skript\\UI\\ui_pc_player.cs",
+              "RelativeToolTip": "skript\\UI\\ui_pc_player.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T18:18:55.857Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Node2d.cs",
+              "DocumentMoniker": "D:\\mtttuiuiy\\Node2d.cs",
+              "RelativeDocumentMoniker": "Node2d.cs",
+              "ToolTip": "D:\\mtttuiuiy\\Node2d.cs",
+              "RelativeToolTip": "Node2d.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T18:04:35.293Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

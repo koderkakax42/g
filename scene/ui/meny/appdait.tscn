@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=3 uid="uid://c73w1sq284kwm"]
+
+[ext_resource type="Script" uid="uid://bwb26wid1rgw5" path="res://skript/UI/setting/Appdait.cs" id="1_u6a7d"]
+
+[node name="appdait" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u6a7d")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1.92523e-07, 0.243454, 0.109489, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 87.0
+offset_right = 190.0
+offset_bottom = 201.0
+theme_override_font_sizes/font_size = 25
+text = "hp"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 223.0
+offset_top = 15.0
+offset_right = 332.0
+offset_bottom = 105.0
+theme_override_font_sizes/font_size = 25
+text = "attak"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 340.0
+offset_top = 255.0
+offset_right = 533.0
+offset_bottom = 352.0
+theme_override_font_sizes/font_size = 25
+text = "speed"
+
+[node name="Button4" type="Button" parent="."]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 353.0
+offset_right = 308.0
+offset_bottom = 527.0
+theme_override_font_sizes/font_size = 25
+text = "intelekt"
+
+[node name="Button5" type="Button" parent="."]
+layout_mode = 0
+offset_left = 790.0
+offset_top = 48.0
+offset_right = 996.0
+offset_bottom = 252.0
+theme_override_font_sizes/font_size = 50
+text = "+ 1 arrow"

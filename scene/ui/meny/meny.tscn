@@ -1,0 +1,83 @@
+[gd_scene load_steps=2 format=3 uid="uid://0ajwnilmv17b"]
+
+[ext_resource type="Script" uid="uid://c8sq0flg3xfja" path="res://skript/UI/meny/Meny.cs" id="1_1xket"]
+
+[node name="Meny" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1xket")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1370.0
+offset_bottom = 776.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 527.0
+offset_top = 79.0
+offset_right = 607.0
+offset_bottom = 146.0
+pivot_offset = Vector2(5, 5)
+theme_override_font_sizes/font_size = 50
+text = "меню"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+justification_flags = 235
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 646.0
+offset_top = 270.0
+offset_right = 794.0
+offset_bottom = 320.0
+theme_override_font_sizes/font_size = 25
+text = "старт"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 410.0
+offset_top = 509.0
+offset_right = 678.0
+offset_bottom = 618.0
+theme_override_font_sizes/font_size = 25
+text = "настройки"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 996.0
+offset_top = 145.0
+offset_right = 1108.0
+offset_bottom = 450.0
+theme_override_font_sizes/font_size = 25
+text = "апгрейд"
+
+[node name="Button4" type="Button" parent="."]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 244.0
+offset_right = 167.0
+offset_bottom = 381.0
+text = "тг автора"
+
+[node name="Button6" type="Button" parent="."]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 35.0
+offset_right = 157.0
+offset_bottom = 172.0
+theme_override_font_sizes/font_size = 0
+text = "ютуб
+автора"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="Button6" to="." method="_on_button_6_pressed"]

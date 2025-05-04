@@ -1,0 +1,31 @@
+<Project Sdk="Godot.NET.Sdk/4.4.1">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+     <RuntimeIdentifier>win-x64</RuntimeIdentifier> <!-- Для Windows -->
+    <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net7.0</TargetFramework>
+    <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'ios' ">net8.0</TargetFramework>
+    
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <Nullable>enable</Nullable> <!-- Включает проверки на null -->
+    <WarningsAsErrors>true</WarningsAsErrors> <!-- Превращает предупреждения в ошибки -->
+    <ImplicitUsings>enable</ImplicitUsings> <!-- Автоматические using-директивы -->
+    
+    <!-- Оптимизации для релизных сборок -->
+    <Optimize Condition="'$(Configuration)' == 'Release'">true</Optimize>
+    <DebugType Condition="'$(Configuration)' == 'Release'">none</DebugType>
+  </PropertyGroup>
+
+  <!-- Дополнительные зависимости -->
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" Condition="'$(GodotTargetPlatform)' != 'android'"/>
+     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <!-- Настройки для Android -->
+  <PropertyGroup Condition="'$(GodotTargetPlatform)' == 'android'">
+    <AndroidEnableProfiler>false</AndroidEnableProfiler>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+</PropertyGroup>
+</Project>
