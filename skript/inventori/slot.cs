@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
-public partial class slot : PanelContainer
+public partial class Slot : PanelContainer
 {
-	public string Qkod ;
+    	public string Qkod ;
 	[Export] TextureRect texture;
 	Texture2D texture2D ;
 	

@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
-public partial class spawn : Node2D
+public partial class Spawn : Node2D
 {
-	public PackedScene EnemyScene {get;set;} = null!;
+    public PackedScene EnemyScene {get;set;} = null!;
 
 	[Export]
 	 public float SpawnInterval = 5.0f;

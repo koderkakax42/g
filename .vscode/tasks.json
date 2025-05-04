@@ -4,6 +4,11 @@
     "version": "2.0.0",
     "tasks": [
         {
+            
+            "godot_tools.editor_path": "D:/idea/godot/Godot_v4.4.1-stable_mono_win64.exe",
+            "godot_tools.lsp.serverPort": 6008,
+            "omnisharp.useModernNet": false,
+              
             "label": "build",
             "command": "dotnet",
             "type": "shell",

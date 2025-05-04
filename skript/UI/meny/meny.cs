@@ -1,9 +1,11 @@
 using Godot;
 using System;
 
-public partial class meny : Node
+
+
+public partial class Meny : Control
 {
-    public String TargetScenePath = "res://scene/scen/load_scen/fader.tscn"; // Путь к сцене, которую нужно загрузить
+        public String TargetScenePath = "res://scene/scen/load_scen/fader.tscn"; // Путь к сцене, которую нужно загрузить
     
 
     public void _on_button_pressed()
@@ -13,9 +15,9 @@ public partial class meny : Node
             GD.PrintErr("TargetScenePath is not assigned!");
             return; // Важно: выйти из функции, если путь не задан
         }
-       fader.ScenePath = "res://scene/scen/game_scen/main.tscn";
+       Fader.ScenePath = "res://scene/scen/game_scen/main.tscn";
        LoadNewScene();
-       fader.chec_save();
+       Fader.chec_save();
     }
 
 
@@ -43,4 +45,3 @@ public partial class meny : Node
 	//	windows.Scale = new Vector2(newSize.X , newSize.Y );
     }
 }
-   

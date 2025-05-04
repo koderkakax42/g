@@ -1,8 +1,9 @@
 using Godot;
+using System;
 
-public partial class enemy : CharacterBody2D 
+public partial class Enemy : CharacterBody2D
 {
-   [Export] public int Health = 100;  
+      [Export] public int Health = 100;  
   [Export]public int Speed = 350 ;
   public int Damage = 10 ;
 public static event Action enemydeads= delegate{}; 
@@ -10,7 +11,7 @@ public static event Action enemydeads= delegate{};
 public Area2D Body = null!;
  float time = 10;
 public PackedScene moneyscene{get;set;} = null!;
- spawn spawn = new spawn();
+ Spawn spawn = new Spawn();
    private Texture2D Texture2D ;
    Sprite2D air; 
   private AnimatedSprite2D _animatedSprite = null!;
@@ -38,7 +39,7 @@ public PackedScene moneyscene{get;set;} = null!;
 	}
 	private void spawnmoney()
 	{
-		var bullet = (money)moneyscene.Instantiate() as money;
+		var bullet = (Money)moneyscene.Instantiate() as Money;
 		GetParent().AddChild(bullet);
 		bullet.GlobalPosition = GlobalPosition;
 	}
@@ -103,6 +104,3 @@ public void mark()
  
 
 }
-
-
-

@@ -1,10 +1,10 @@
 using Godot;
 using System;
 
-public partial class money : Area2D
+public partial class Money : Area2D
 {
      Godot.Timer timetolive;
-	public enemy enemy { get; set; } = null!; // Ссылка на игрока, выпустившего пулю
+	public Enemy enemy { get; set; } = null!; // Ссылка на игрока, выпустившего пулю
       
 	 public float time = 10.0f;
 	 private void live_bullet()
@@ -39,7 +39,7 @@ public partial class money : Area2D
             player.moneyvalue();
 
             // Удаляем монету из сцены, используя CallDeferred
-            CallDeferred(MethodName._QueueFree);
+            _QueueFree();
         }
     }
 

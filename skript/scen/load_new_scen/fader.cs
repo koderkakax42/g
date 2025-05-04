@@ -1,11 +1,13 @@
 using Godot;
 using System.Text.Json;
-using SaveGame;
+using System;
+using System.IO;
 
-public partial class fader : CanvasLayer
+
+public partial class Fader : CanvasLayer
 {
-      private const string SAVE_PATH = "user://save.json";
-     [Export]public static String ScenePath {get;set;}
+          private const string SAVE_PATH = "user://save.json";
+     public static String ScenePath {get;set;}
 
    
     private AnimationPlayer _animationPlayer;
@@ -84,4 +86,5 @@ public static void chec_save()
     }
 
     
+
 }

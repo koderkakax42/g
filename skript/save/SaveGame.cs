@@ -1,8 +1,12 @@
 using Godot;
 using System.Text.Json;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using System.Diagnostics;
 
-namespace SaveGame 
-{
+
   public partial class SaveGame : Node2D
   {
    public static Dictionary<string,float>? save{get;set;}= new Dictionary<string, float> {{"",0f}};
@@ -11,7 +15,9 @@ namespace SaveGame
     
    private const string SAVE_PATH = "user://save.json";
     private static string absolutrath =  ProjectSettings.GlobalizePath(SAVE_PATH);
-    public virtual void Save_data_Game()
+
+
+    public void Save_data_Game()
     {
         
        try
@@ -25,19 +31,19 @@ namespace SaveGame
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Ошибка сохранения: {ex.Message}");
+            GD.Print($"Ошибка сохранения: {ex.Message}");
         }
       
     }
     
-    public virtual void delsave()
+    public void delsave()
     {
          string json = JsonSerializer.Serialize( new JsonSerializerOptions { WriteIndented = true });
             // Записываем в файл
             File.WriteAllText(absolutrath, json);
 
     }
-    public virtual void LoadGame()
+    public void LoadGame()
     {
         if (!File.Exists(absolutrath))
         {
@@ -63,5 +69,40 @@ namespace SaveGame
             return;
         }
     }
+    public static event Action new_game = delegate{};
+	public static event Action save_playe_game=delegate{};
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+	  Player.dead += delsave;
+	  UiPcPlaer.save += Save_data_Game;
+	}
+
+	public override void _Process(double delta)
+	{
+	}
+	public void _on_new_game()
+	{
+	   Fader.ScenePath = "res://scene/scen/game_scen/main.tscn";
+
+       new_game?.Invoke();
+
+	   LoadNewScene();
+	}
+	public void _on_save()
+	{
+	  Fader.ScenePath = "res://scene/scen/game_scen/main.tscn";
+      
+      save_playe_game?.Invoke();
+	}
+	public void _on_undo()
+	{
+       Fader.ScenePath = "res://scene/ui/meny/meny.tscn";
+	}
+
+	 private void LoadNewScene()
+    {
+        SceneTree tree = GetTree();
+        tree.ChangeSceneToFile("res://scene/scen/load_scen/fader.tscn");
+    }
   }
-}

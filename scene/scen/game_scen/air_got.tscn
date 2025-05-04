@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7f21gd7i2l2r"]
+[gd_scene load_steps=10 format=3 uid="uid://c7f21gd7i2l2r"]
 
+[ext_resource type="Script" uid="uid://d2gj4r1obnpm5" path="res://skript/scen/game_scen/AirGot.cs" id="1_1rdif"]
 [ext_resource type="Texture2D" uid="uid://5gl1hanq1ffr" path="res://sprait/charecter/atack/atack.png.png" id="1_wmhcm"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_7q0rs"]
@@ -27,6 +28,7 @@ size = Vector2(317, 22.5)
 
 [node name="air got" type="NavigationRegion2D" groups=["got"]]
 navigation_polygon = SubResource("NavigationPolygon_7q0rs")
+script = ExtResource("1_1rdif")
 
 [node name="БезНазвания7320241218230059" type="Sprite2D" parent="."]
 position = Vector2(719.5, 606.5)

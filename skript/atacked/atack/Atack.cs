@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+
 public partial class Atack : Area2D
 {
     public static int damage = 20;
@@ -59,7 +60,7 @@ public partial class Atack : Area2D
 
        // GD.Print(Direction +"   "+Speed+"   "+body+"    "+Player);
         // Проверяем, что столкнулись с врагом и что это не сам игрок
-        if (body is enemy enemy && Player != null)
+        if (body is Enemy enemy && Player != null)
         {
            
              // GD.Print(Direction +"   "+Speed+"   "+body+"    "+Player);

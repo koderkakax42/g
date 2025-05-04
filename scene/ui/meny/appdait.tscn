@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c73w1sq284kwm"]
 
-[ext_resource type="Script" path="res://skript/UI/meny/appdait.cs" id="1_jgm00"]
+[ext_resource type="Script" uid="uid://bwb26wid1rgw5" path="res://skript/UI/setting/Appdait.cs" id="1_u6a7d"]
 
 [node name="appdait" type="Control"]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_jgm00")
+script = ExtResource("1_u6a7d")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

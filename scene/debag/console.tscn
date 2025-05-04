@@ -1,11 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://cq3igt2iikm8"]
 
-[ext_resource type="Script" path="res://skript/debag/consoledebag.cs" id="1_u4hsu"]
+[ext_resource type="Script" uid="uid://38gswvxvwgxu" path="res://skript/debag/Console.cs" id="1_u48c7"]
 
 [node name="TextEdit" type="TextEdit"]
 offset_right = 539.0
 offset_bottom = 284.0
 placeholder_text = "comand stroc"
-script = ExtResource("1_u4hsu")
+script = ExtResource("1_u48c7")
 
 [connection signal="text_set" from="." to="." method="set_text"]

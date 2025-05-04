@@ -1,11 +1,13 @@
 using Godot;
+using System;
+using System.Collections.Generic;
 
 
-	public partial class deteckt : Area2D
-	{
-		public Vector2 enemyglobpos;
+public partial class Deteckt : Area2D
+{
+    		public Vector2 enemyglobpos;
     private List<Vector2> _targetMarkers = new List<Vector2>(); // Список меток
-    public List<enemy>? _markedEnemies {get;} = new List<enemy>();  // Список врагов с метками
+    public List<Enemy>? _markedEnemies {get;} = new List<Enemy>();  // Список врагов с метками
 	 
         public override void _Ready()
         {	
@@ -17,7 +19,7 @@ using Godot;
 		{
       GD.Print($"node : {node}");
     
-      if (node is enemy enemy)
+      if (node is Enemy enemy)
 		  {
         enemyglobpos = enemy.GlobalPosition;
 		  }
@@ -29,11 +31,11 @@ using Godot;
         
     }
 
-     public void MarkTarget(Vector2 vector2)
+  /*   public void MarkTarget(Vector2 vector2)
     {
         // Ищем врага в небольшом радиусе от клика мыши
          _markedEnemies.Clear();
-        var enemies = GetTree().GetNodesInGroup("enemy").OfType<enemy>().ToList();
+        var enemies = GetTree().GetNodesInGroup("enemy").OfType<Enemy>().ToList();
         foreach (var enemy  in  enemies)
         {
             if (IsInstanceValid(enemy) )
@@ -52,8 +54,7 @@ using Godot;
         }
        
         return;
-    }
+    }*/
 
 
-	}
-
+}

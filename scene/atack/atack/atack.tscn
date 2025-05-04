@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://biqsefkkddpb5"]
 
-[ext_resource type="Script" path="res://skript/atacked/atack/Atack.cs" id="1_xmpg4"]
+[ext_resource type="Script" uid="uid://esqdxrc7paue" path="res://skript/atacked/atack/Atack.cs" id="1_vrqaw"]
 [ext_resource type="Texture2D" uid="uid://5gl1hanq1ffr" path="res://sprait/charecter/atack/atack.png.png" id="2_3e172"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6f82"]
@@ -130,7 +130,7 @@ animations = [{
 position = Vector2(87, 58)
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_xmpg4")
+script = ExtResource("1_vrqaw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.25, 0.25)

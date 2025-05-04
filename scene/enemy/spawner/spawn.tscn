@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://cchtg3som5fuk"]
 
-[ext_resource type="Script" path="res://skript/enemy/spavner/spawn.cs" id="1_o3uyj"]
+[ext_resource type="Script" uid="uid://c0ubpprpehvwr" path="res://skript/enemy/spavner/Spawn.cs" id="1_x304u"]
 
 [node name="spawn" type="Node2D" groups=["save", "spawner"]]
-script = ExtResource("1_o3uyj")
+script = ExtResource("1_x304u")
 
 [node name="Timer" type="Timer" parent="."]
 

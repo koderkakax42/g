@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c77oyys7yqe41"]
 
-[ext_resource type="Script" path="res://skript/scen/load_new_scen/fader.cs" id="1_4qgx6"]
+[ext_resource type="Script" uid="uid://b88dm2lcsyotv" path="res://skript/scen/load_new_scen/Fader.cs" id="1_l0ck4"]
 
 [sub_resource type="Animation" id="Animation_k7ggk"]
 resource_name = "FadeIn"
@@ -49,13 +49,13 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qpvdq"]
 _data = {
-"FadeIn": SubResource("Animation_k7ggk"),
-"FadeOut": SubResource("Animation_jaf1h"),
-"mickroan": SubResource("Animation_o6lds")
+&"FadeIn": SubResource("Animation_k7ggk"),
+&"FadeOut": SubResource("Animation_jaf1h"),
+&"mickroan": SubResource("Animation_o6lds")
 }
 
 [node name="Fader" type="CanvasLayer"]
-script = ExtResource("1_4qgx6")
+script = ExtResource("1_l0ck4")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = -1
@@ -79,6 +79,6 @@ size_flags_vertical = 2
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../ColorRect")
 libraries = {
-"": SubResource("AnimationLibrary_qpvdq")
+&"": SubResource("AnimationLibrary_qpvdq")
 }
 autoplay = "mickroan"

@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://lbh1ej51x5br"]
 
-[ext_resource type="Script" path="res://skript/scen/game_scen/main.cs" id="1_bxrvn"]
+[ext_resource type="Script" uid="uid://c74f1qnhcguok" path="res://skript/scen/game_scen/Main.cs" id="1_uky1d"]
 [ext_resource type="PackedScene" uid="uid://c7f21gd7i2l2r" path="res://scene/scen/game_scen/air_got.tscn" id="3_6uejf"]
-[ext_resource type="PackedScene" uid="uid://djuwpel1ysljv" path="res://scene/player/plyer.tscn" id="4_y62lj"]
+[ext_resource type="PackedScene" uid="uid://djuwpel1ysljv" path="res://scene/player/player.tscn" id="4_y62lj"]
 [ext_resource type="PackedScene" uid="uid://cchtg3som5fuk" path="res://scene/enemy/spawner/spawn.tscn" id="5_22chl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8v250"]
@@ -15,7 +15,8 @@ size = Vector2(7579.69, 542.5)
 size = Vector2(7927.37, 338.704)
 
 [node name="main" type="Node2D"]
-script = ExtResource("1_bxrvn")
+position = Vector2(0, 1)
+script = ExtResource("1_uky1d")
 
 [node name="air got" parent="." instance=ExtResource("3_6uejf")]
 position = Vector2(-378, -299)

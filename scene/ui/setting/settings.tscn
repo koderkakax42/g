@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cnnecrqk4wa64"]
 
-[ext_resource type="Script" path="res://skript/UI/setting/settings.cs" id="1_yb6db"]
+[ext_resource type="Script" uid="uid://cx4mtsixnf5s0" path="res://skript/UI/setting/Settings.cs" id="1_sofm1"]
 
 [node name="settings" type="Control"]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_yb6db")
+script = ExtResource("1_sofm1")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

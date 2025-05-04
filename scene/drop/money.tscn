@@ -1,6 +1,6 @@
 [gd_scene load_steps=33 format=3 uid="uid://bkm3ataocejck"]
 
-[ext_resource type="Script" path="res://skript/drop/money.cs" id="1_bt8cn"]
+[ext_resource type="Script" uid="uid://bxauruu0pme8d" path="res://skript/drop/Money.cs" id="1_vg83k"]
 [ext_resource type="Texture2D" uid="uid://b18ls7md4i1pj" path="res://sprait/drop/money.png" id="2_pmkru"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gy15b"]
@@ -226,7 +226,7 @@ animations = [{
 }]
 
 [node name="money" type="Area2D" groups=["money"]]
-script = ExtResource("1_bt8cn")
+script = ExtResource("1_vg83k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_gy15b")

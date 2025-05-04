@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://q5to51umwgje"]
 
-[ext_resource type="Script" path="res://skript/enemy/mob/enemy.cs" id="1_l4cri"]
+[ext_resource type="Script" uid="uid://q5ebc7be676r" path="res://skript/enemy/mob/Enemy.cs" id="1_w8hdc"]
 [ext_resource type="Texture2D" uid="uid://cx24qky73skly" path="res://sprait/charecter/enemy/enemy.png.png" id="2_hns4q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jk8j1"]
@@ -170,7 +170,7 @@ radius = 42.45
 [node name="enemy" type="CharacterBody2D" groups=["enemy", "save"]]
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("1_l4cri")
+script = ExtResource("1_w8hdc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 2

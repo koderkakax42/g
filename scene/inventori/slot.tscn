@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b7syd56algtq1"]
 
-[ext_resource type="Script" path="res://skript/inventori/slot.cs" id="1_bp277"]
+[ext_resource type="Script" uid="uid://beecypfk3cts1" path="res://skript/inventori/Slot.cs" id="1_2f0s8"]
 [ext_resource type="Texture2D" uid="uid://bddy2q0ry74ki" path="res://sprait/item/a/air.png" id="2_737yc"]
 
 [node name="slot" type="PanelContainer" node_paths=PackedStringArray("texture") groups=["slot"]]
@@ -9,7 +9,7 @@ anchor_right = 0.056
 anchor_bottom = 0.099
 offset_right = -24.512
 offset_bottom = -24.152
-script = ExtResource("1_bp277")
+script = ExtResource("1_2f0s8")
 texture = NodePath("TextureRect")
 metadata/_edit_use_anchors_ = true
 

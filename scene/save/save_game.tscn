@@ -1,10 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://dmyy3umpmadih"]
 
-[ext_resource type="Script" path="res://skript/save/save_game.cs" id="1_ejmpt"]
+[ext_resource type="Script" uid="uid://b78bw82kklbqf" path="res://skript/save/SaveGame.cs" id="1_iai3l"]
 
 [node name="SAVE_GAME" type="Node2D"]
 z_index = 1
-script = ExtResource("1_ejmpt")
+script = ExtResource("1_iai3l")
 
 [node name="Button" type="Button" parent="."]
 anchors_preset = 15

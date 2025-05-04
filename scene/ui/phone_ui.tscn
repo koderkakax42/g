@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://6v7fht1kpyce"]
 
-[ext_resource type="Script" path="res://skript/UI/phone_ui.cs" id="1_fus8s"]
 [ext_resource type="Texture2D" uid="uid://b8gv2b24hphds" path="res://sprait/ui/controler/atack.png" id="1_gjvnu"]
+[ext_resource type="Script" uid="uid://kvpbh7m45o6i" path="res://skript/UI/PhoneUi.cs" id="1_hr56b"]
 [ext_resource type="Texture2D" uid="uid://c5mko61e1hg2o" path="res://sprait/ui/controler/shift.png" id="2_kfj4p"]
 [ext_resource type="Texture2D" uid="uid://ddj2haf4morr5" path="res://sprait/ui/controler/down.png" id="3_a85j1"]
 [ext_resource type="Texture2D" uid="uid://dsfpu7qam8swd" path="res://sprait/ui/controler/up.png" id="4_t8jye"]
@@ -15,7 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_fus8s")
+script = ExtResource("1_hr56b")
 
 [node name="attak" type="TouchScreenButton" parent="."]
 position = Vector2(1015, 411)

@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcapmv1en338j"]
+[gd_scene load_steps=5 format=3 uid="uid://bcapmv1en338j"]
 
+[ext_resource type="Script" uid="uid://cqluxu65i3uni" path="res://skript/UI/UiPcPlaer.cs" id="1_0fnlu"]
 [ext_resource type="PackedScene" uid="uid://b7syd56algtq1" path="res://scene/inventori/slot.tscn" id="1_8vi6w"]
-[ext_resource type="Script" path="res://skript/UI/ui_pc_player.cs" id="1_sads4"]
 [ext_resource type="PackedScene" uid="uid://dyyyxwncnymm4" path="res://scene/inventori/shest.tscn" id="3_diw3k"]
-[ext_resource type="PackedScene" uid="uid://cqpj833338364" path="res://scene/atack/derection/deteckt.tscn" id="4_mej0a"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2dydq"]
 
@@ -13,7 +12,7 @@ visibility_layer = 512
 z_index = 2
 offset_right = 1153.0
 offset_bottom = 91.0
-script = ExtResource("1_sads4")
+script = ExtResource("1_0fnlu")
 text = NodePath("PanelContainer/Label5/money/vale")
 value = NodePath("PanelContainer/Label5/xp")
 cheste = NodePath("PanelContainer/Label5/PanelContainer2")
@@ -155,9 +154,6 @@ anchor_bottom = 19.87
 offset_top = -0.00300598
 offset_right = -0.225952
 offset_bottom = -0.0100098
-
-[node name="deteckt" parent="." instance=ExtResource("4_mej0a")]
-position = Vector2(230, 155)
 
 [connection signal="pressed" from="PanelContainer/Label5/meny" to="." method="_on_meny"]
 [connection signal="pressed" from="PanelContainer/Label5/chest" to="." method="_on_chest"]

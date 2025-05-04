@@ -1,15 +1,15 @@
 [gd_scene load_steps=2 format=3 uid="uid://0ajwnilmv17b"]
 
-[ext_resource type="Script" path="res://skript/UI/meny/meny.cs" id="1_6itsd"]
+[ext_resource type="Script" uid="uid://c8sq0flg3xfja" path="res://skript/UI/meny/Meny.cs" id="1_1xket"]
 
-[node name="meny" type="Control"]
+[node name="Meny" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_6itsd")
+script = ExtResource("1_1xket")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0

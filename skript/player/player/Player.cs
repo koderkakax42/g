@@ -1,15 +1,15 @@
 using Godot;
 using System.Text;
-
-
+using System;
+using System.Collections.Generic;
 
 public partial class Player : CharacterBody2D
 {
-	public static event Action dead=delegate{};
+    public static event Action dead=delegate{};
 	public String TargetScenePath = "res://scene/scen/load_scen/fader.tscn";
   
-	[Export]ui_pc_player UI{get;set;} = null!; 
-	public  int xp =  400;
+	[Export]UiPcPlaer UI{get;set;} = null!; 
+	public  int Health =  400;
 	 public Vector2 inputDirection;
 	 public PackedScene BulletScene = null!; // Сцена пули
 	[Export] public float Speed = 900;
@@ -20,8 +20,8 @@ public partial class Player : CharacterBody2D
 	public AnimatedSprite2D _animatedSprite = null!;
 	public string money = "0";
 		   
-	public enemy enemy2;
-	[Export]deteckt? deteckt = null;
+	public Enemy enemy2;
+	[Export]Deteckt? deteckt = null;
 
 #if DEBUG
 	 private static PackedScene scene ;
@@ -31,7 +31,7 @@ public partial class Player : CharacterBody2D
 		debag= true;
 	   scene = GD.Load<PackedScene>("res://scene/debag/console.tscn");
 	   GD.Print("gd.print debag ");
-	   var i = (consoledebag)scene.Instantiate();
+	   var i = (Console)scene.Instantiate();
 	   GetParent().AddChild(i);
 	   i.GlobalPosition = GetGlobalMousePosition(); 
 	
@@ -47,18 +47,18 @@ public partial class Player : CharacterBody2D
 	}
 	private void health()
 	{
-		xp = 400;
+		Health = 400;
 	}
 	public void DamageEnemys(int damage)
 	{
-		if(damage == xp)
+		if(damage == Health)
 		{
 		  GD.Print(damage);
-		  GD.Print(xp);
+		  GD.Print(Health);
 		}
-	   xp -= damage;
+	   Health-= damage;
 
-	   UI._on_xp(xp);
+	   UI._on_xp(Health);
 
 	}
 	 private void LoadNewScene()
@@ -71,7 +71,7 @@ public partial class Player : CharacterBody2D
 		// Останавливаем текущую сцену.  Это ВАЖНО.
 		tree.ChangeSceneToFile(TargetScenePath);
 	}
-	public override void _Process(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
 	  
 
@@ -92,12 +92,12 @@ public partial class Player : CharacterBody2D
 
 
 		// Стрельба
-		if (Input.IsActionPressed("ui_atack") && _timeSinceLastFire >= 1f / FireRate)
+		if (Input.IsActionPressed("shoot") && _timeSinceLastFire >= 1f / FireRate)
 		{
 			Shoot();
 			_timeSinceLastFire = 0f;
 		}
-		 if (Input.IsActionPressed("ui_mark_shoot") && _timeSinceLastFire >= 1f / FireRate)
+		 if (Input.IsActionPressed("markshoot") && _timeSinceLastFire >= 1f / FireRate)
 		{
 			Shoot(1);
 			_timeSinceLastFire = 0f;
@@ -105,7 +105,7 @@ public partial class Player : CharacterBody2D
 
 		if (Input.IsActionPressed("mark"))
 		{
-			deteckt.MarkTarget(deteckt.enemyglobpos);
+		//	deteckt.MarkTarget(deteckt.enemyglobpos);
 			 #if DEBUG 
 			// GD.Print("debag");
 		   //  if(!debag)
@@ -116,7 +116,7 @@ public partial class Player : CharacterBody2D
 		
 	   
 
-		if(xp <= 0)
+		if(Health <= 0)
 		 {
 		   _animatedSprite.Play("dead");
 		  deads(); 
@@ -127,7 +127,7 @@ public partial class Player : CharacterBody2D
 	public void deads()
 	{
 	   dead.Invoke();
-		fader.ScenePath="res://scene/ui/meny/meny.tscn";
+		Fader.ScenePath="res://scene/ui/meny/meny.tscn";
 
 			Speed=0;
 			Velocity = inputDirection  * Speed;
@@ -158,7 +158,7 @@ public partial class Player : CharacterBody2D
 	{ 
 		if(deteckt._markedEnemies.Count > 0)
 		{
-			foreach(enemy enemy in deteckt._markedEnemies)
+			foreach(Enemy enemy in deteckt._markedEnemies)
 			{
 				 enemy2 = enemy;
 			}   
@@ -190,5 +190,5 @@ public partial class Player : CharacterBody2D
 	   UI._on_vale(money);
 	}
 
-	
+
 }

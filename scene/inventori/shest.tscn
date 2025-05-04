@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dyyyxwncnymm4"]
 
-[ext_resource type="Script" path="res://skript/inventori/shest.cs" id="1_74l1x"]
+[ext_resource type="Script" uid="uid://0xkdwxcojk41" path="res://skript/inventori/Shest.cs" id="1_nxj70"]
 [ext_resource type="PackedScene" uid="uid://b7syd56algtq1" path="res://scene/inventori/slot.tscn" id="2_sc5dk"]
 
 [node name="PanelContainer" type="PanelContainer" groups=["chest"]]
@@ -10,7 +10,7 @@ anchor_right = 0.292
 anchor_bottom = 0.519
 offset_right = -0.384033
 offset_bottom = -0.312042
-script = ExtResource("1_74l1x")
+script = ExtResource("1_nxj70")
 metadata/_edit_use_anchors_ = true
 
 [node name="GridContainer" type="GridContainer" parent="."]
