@@ -3,9 +3,10 @@
 [ext_resource type="Script" uid="uid://c1fftw70d0s3e" path="res://skript/atacked/direcsion/Deteckt.cs" id="1_h1pxk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cow82"]
-radius = 26.0
+radius = 16.0
 
 [node name="deteckt" type="Area2D"]
+z_index = 3
 script = ExtResource("1_h1pxk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

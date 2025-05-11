@@ -3,9 +3,13 @@ using System;
 
 public partial class Slot : PanelContainer
 {
-    	public string Qkod ;
+	bool slot = false;
+	public static event Action<Slot> slotchoise= delegate{};
+	[Export] Label label;
+    public string Qkod ;
 	[Export] TextureRect texture;
 	Texture2D texture2D ;
+	[Export] Area2D Area;
 	
 	public void element(int nomber)
 	{
@@ -41,9 +45,53 @@ public partial class Slot : PanelContainer
 	}
 	public override void _Process(double delta)
 	{
-	  if (Input.IsActionPressed("mark")&& GetGlobalMousePosition() == GlobalPosition)
-	  {
-			GlobalPosition = GetGlobalMousePosition();
-	  }
+		if(Input.IsActionPressed("leftPressed")&&slot)
+		{
+				  GD.Print( Name);
+			slotchoise?.Invoke(this);
+		}
+	}
+    public override void _Ready()
+    {
+		Area.AreaEntered += OnAreaEntered;
+		Area.AreaExited += OnAreaExit;
+
+		
+		var i = GetGroups();
+		if(!i.Contains("ui")&& i.Contains("slot"))
+		{
+			UiPcPlaer.time_stop += VisibleOn;
+			Shest.time_start += VisibleOff;
+		}
+     
+    }
+	 
+	 private void VisibleOn()
+	 {
+       Visible = true;
+	 }
+	 private void VisibleOff()
+	 {
+		Visible = false;
+	 }
+
+	private void OnAreaEntered(Area2D area)
+	{
+	   if(Visible)
+	   {
+		if(area is Deteckt)
+		{
+			  GD.Print( Name+" unout");
+	      slot = true;
+		}
+	   }
+	}
+	private void OnAreaExit(Area2D area)
+	{
+      if(area is Deteckt)
+		{
+			  GD.Print( Name+" out");
+		  slot = false;
+		}
 	}
 }

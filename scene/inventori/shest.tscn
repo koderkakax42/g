@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://0xkdwxcojk41" path="res://skript/inventori/Shest.cs" id="1_nxj70"]
 [ext_resource type="PackedScene" uid="uid://b7syd56algtq1" path="res://scene/inventori/slot.tscn" id="2_sc5dk"]
 
-[node name="PanelContainer" type="PanelContainer" groups=["chest"]]
+[node name="shest" type="PanelContainer" groups=["chest"]]
 z_index = 1
 anchors_preset = -1
 anchor_right = 0.292
@@ -18,78 +18,103 @@ layout_mode = 2
 columns = 5
 
 [node name="slot" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+visible = false
 layout_mode = 2
 
 [node name="slot2" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+visible = false
 layout_mode = 2
 
 [node name="slot3" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+visible = false
 layout_mode = 2
 
 [node name="slot4" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+visible = false
 layout_mode = 2
 
 [node name="slot5" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+visible = false
 layout_mode = 2
 
 [node name="slot6" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+visible = false
 layout_mode = 2
 
 [node name="slot7" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+visible = false
 layout_mode = 2
 
 [node name="slot8" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+visible = false
 layout_mode = 2
 
 [node name="slot9" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+visible = false
 layout_mode = 2
 
 [node name="slot10" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+visible = false
 layout_mode = 2
 
 [node name="slot11" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+visible = false
 layout_mode = 2
 
 [node name="slot12" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+visible = false
 layout_mode = 2
 
 [node name="slot13" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+visible = false
 layout_mode = 2
 
 [node name="slot14" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+visible = false
 layout_mode = 2
 
 [node name="slot15" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+visible = false
 layout_mode = 2
 
 [node name="slot16" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+visible = false
 layout_mode = 2
 
 [node name="slot17" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+visible = false
 layout_mode = 2
 
 [node name="slot18" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+visible = false
 layout_mode = 2
 
 [node name="slot19" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+visible = false
 layout_mode = 2
 
 [node name="slot20" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+visible = false
 layout_mode = 2
 
 [node name="slot21" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+visible = false
 layout_mode = 2
 
 [node name="slot22" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+visible = false
 layout_mode = 2
 
 [node name="slot23" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+visible = false
 layout_mode = 2
 
 [node name="slot24" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+visible = false
 layout_mode = 2
 
 [node name="slot25" parent="GridContainer" instance=ExtResource("2_sc5dk")]
+visible = false
 layout_mode = 2
 
 [node name="Control" type="Control" parent="."]
