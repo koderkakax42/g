@@ -27,6 +27,7 @@ size = Vector2(197.5, 20)
 size = Vector2(317, 22.5)
 
 [node name="air got" type="NavigationRegion2D" groups=["got"]]
+z_index = -3
 navigation_polygon = SubResource("NavigationPolygon_7q0rs")
 script = ExtResource("1_1rdif")
 

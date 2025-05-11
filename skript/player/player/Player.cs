@@ -105,13 +105,7 @@ public partial class Player : CharacterBody2D
 
 		if (Input.IsActionPressed("mark"))
 		{
-		//	deteckt.MarkTarget(deteckt.enemyglobpos);
-			 #if DEBUG 
-			// GD.Print("debag");
-		   //  if(!debag)
-			// star();
-			 #endif
-			
+		  deteckt.MarkTarget();			
 		}
 		
 	   

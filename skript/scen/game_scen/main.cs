@@ -10,11 +10,20 @@ public partial class Main : Node2D
 	}
 	public override void _Ready()
 	{
+		Node parent = GetParent();
+if (parent != null)
+{
+    // Работаем с parent
+}
+else
+{
+    GD.PrintErr("Родитель не найден!");
+}
 		UiPcPlaer.time_stop += timestop;
 		Shest.time_start += timestart;
 		SpeedSettings.time_start += timestart;
 		Player.dead += off;
-		
+			
 	}
 	private void off()
 	{
@@ -30,6 +39,7 @@ public partial class Main : Node2D
 	private void timestop()
 	{
 		Engine.TimeScale = 0;
+		
 	}
 	private void timestart()
 	{

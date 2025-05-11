@@ -7,7 +7,7 @@ public partial class Enemy : CharacterBody2D
   [Export]public int Speed = 350 ;
   public int Damage = 10 ;
 public static event Action enemydeads= delegate{}; 
-  private Node2D? target = null!;
+  private Node2D target = null!;
 public Area2D Body = null!;
  float time = 10;
 public PackedScene moneyscene{get;set;} = null!;
@@ -68,7 +68,7 @@ public void mark()
   
 			player.DamageEnemys(Damage);
 		}
-		Body.BodyEntered-=OnBodyEntered;
+		
 	
 	}     
 	public void TakeDamage(int damage)

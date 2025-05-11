@@ -1,60 +1,71 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 
 public partial class Deteckt : Area2D
 {
-    		public Vector2 enemyglobpos;
-    private List<Vector2> _targetMarkers = new List<Vector2>(); // Список меток
+
+  Enemy Enemy ;
+
     public List<Enemy>? _markedEnemies {get;} = new List<Enemy>();  // Список врагов с метками
+ 
 	 
         public override void _Ready()
         {	
-		  BodyEntered += OnBodyEntered;
-
+		       BodyEntered += OnBodyEntered;
+          
         }
-     
-     private  void OnBodyEntered(Node node)
+    
+
+
+      private  void OnBodyEntered(Node node)
 		{
-      GD.Print($"node : {node}");
+      //GD.Print($"node : {node}");
     
       if (node is Enemy enemy)
 		  {
-        enemyglobpos = enemy.GlobalPosition;
+       // enemyglobpos = enemy.GlobalPosition;
+       Enemy = enemy;
+       GD.Print(Enemy);
 		  }
     
 		}
     public override void _PhysicsProcess(double delta)
     {
 		GlobalPosition = new Vector2(GetGlobalMousePosition().X+15 ,GetGlobalMousePosition().Y+15);
-        
     }
 
-  /*   public void MarkTarget(Vector2 vector2)
+    public override void _Process(double delta)
+    { 
+    
+    }
+
+
+     public void MarkTarget()
     {
         // Ищем врага в небольшом радиусе от клика мыши
          _markedEnemies.Clear();
-        var enemies = GetTree().GetNodesInGroup("enemy").OfType<Enemy>().ToList();
-        foreach (var enemy  in  enemies)
-        {
-            if (IsInstanceValid(enemy) )
+    
+            if (Enemy != null) 
             {
                 // Добавляем врага в список помеченных, если он еще не там
-                if (!_markedEnemies.Contains(enemy)&& vector2.DistanceTo(enemy.GlobalPosition) <= 50 )
+                if (!_markedEnemies.Contains(Enemy))
                 {
-                    _markedEnemies.Add(enemy);
+                    _markedEnemies.Add(Enemy);
                      
-                    enemy.mark();
+                    Enemy.mark();
 
                    return;
                 }
                  // Нашли врага, больше не ищем
             }
-        }
+        
        
         return;
-    }*/
+    }
+    
 
 
 }
