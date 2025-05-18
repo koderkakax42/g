@@ -46,14 +46,14 @@ public partial class Shest : PanelContainer
 		if(slot1 == null)
 		{
           slot1 = slot;
-		  slot1.GlobalPosition = new Vector2( slot1.GlobalPosition.X, slot1.GlobalPosition.Y-20 );
+		  slot1.GlobalPosition = new Vector2( slot1.GlobalPosition.X, slot1.GlobalPosition.Y-30 );
 		  GD.Print("shest 1");
 		  return;
 		}
 		else
 		{
 		
-				slot.GlobalPosition = new Vector2( slot.GlobalPosition.X , slot.GlobalPosition.Y+20 );
+				slot.GlobalPosition = new Vector2( slot.GlobalPosition.X , slot.GlobalPosition.Y+30 );
 				  GD.Print("shest 2");
 		}
 
@@ -77,8 +77,8 @@ public partial class Shest : PanelContainer
 			slot1.element(slotcode.ToInt());
 
 
-			slot1.GlobalPosition = new Vector2( slot1.GlobalPosition.X , slot1.GlobalPosition.Y+20 );
-			slot.GlobalPosition = new Vector2( slot.GlobalPosition.X , slot.GlobalPosition.Y-20 );
+			slot1.GlobalPosition = new Vector2( slot1.GlobalPosition.X , slot1.GlobalPosition.Y+30);
+			slot.GlobalPosition = new Vector2( slot.GlobalPosition.X , slot.GlobalPosition.Y-30);
 
 			slot1 = null;
 		}

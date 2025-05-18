@@ -6,7 +6,7 @@ public partial class UiPcPlaer : PanelContainer
 {
     public static event Action time_stop = delegate{} ;
 	public static event Action save = delegate{};
-
+[Export] public Slot[] slotarei = new Slot[5];
 	public static int nomber_open_chest = 0;
 	private int chest_nomber=0;
 	 public PackedScene chest {get;set;}

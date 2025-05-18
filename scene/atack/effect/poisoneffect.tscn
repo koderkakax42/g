@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6tenpu00t43v"]
+
+[ext_resource type="Script" uid="uid://cnh8m6f7pbfp2" path="res://skript/atacked/atack/PoisonEffect.cs" id="1_n5vvb"]
+[ext_resource type="Texture2D" uid="uid://dyl03ta6qb3w8" path="res://sprait/item/p/poison.png" id="2_wised"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fu5ce"]
+radius = 21.0238
+
+[node name="poisoneffect" type="Area2D"]
+position = Vector2(500, 250)
+script = ExtResource("1_n5vvb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fu5ce")
+
+[node name="Poison" type="Sprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_wised")
