@@ -3,6 +3,8 @@ using System;
 
 public partial class Enemy : CharacterBody2D
 {
+	Godot.Timer timetolive;
+	int poisontime = 0;
       [Export] public int Health = 100;  
   [Export]public int Speed = 350 ;
   public int Damage = 10 ;
@@ -51,13 +53,42 @@ public void mark()
 	 AddChild(air);
 	 air.GlobalPosition = GlobalPosition;
 }
-  
+
+	public void effect()
+	{
+		timetolive = new Godot.Timer();
+        AddChild(timetolive);
+        timetolive.WaitTime = 1;
+		timetolive.Timeout += poison;
+        timetolive.Start();
+    }
+
+	private void poison()
+	{
+		Health-=5;
+		if(Health<=0)
+		{
+			Body.BodyEntered -= OnBodyEntered;
+			spawnmoney();
+			enemydeads?.Invoke();
+		QueueFree();
+		 }
+		poisontime++;
+		if (poisontime >= 4)
+		{
+			poisontime = 0;
+			GD.Print("poison enemy");
+			timetolive.Stop();
+			return;
+		}
+	}
+
   private void _QueueFree()
-  {
-	air.QueueFree();
-	GD.Print("time stop");
-	
-  }
+	{
+		air.QueueFree();
+		GD.Print("time stop");
+
+	}
 	
    private void OnBodyEntered(Node2D body)
 	{
@@ -76,6 +107,7 @@ public void mark()
 		Health -= damage;
 		if(Health<=0)
 		{
+			Body.BodyEntered -= OnBodyEntered;
 			spawnmoney();
 			enemydeads?.Invoke();
 		QueueFree();

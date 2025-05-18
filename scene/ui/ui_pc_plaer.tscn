@@ -6,13 +6,14 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_2dydq"]
 
-[node name="ui_pc_plaer" type="PanelContainer" node_paths=PackedStringArray("text", "value", "cheste")]
+[node name="ui_pc_plaer" type="PanelContainer" node_paths=PackedStringArray("slotarei", "text", "value", "cheste")]
 light_mask = 512
 visibility_layer = 512
 z_index = 2
 offset_right = 1153.0
 offset_bottom = 91.0
 script = ExtResource("1_0fnlu")
+slotarei = [NodePath("PanelContainer/GridContainer/slot26"), NodePath("PanelContainer/GridContainer/slot27"), NodePath("PanelContainer/GridContainer/slot28"), NodePath("PanelContainer/GridContainer/slot29"), NodePath("PanelContainer/GridContainer/slot30")]
 text = NodePath("PanelContainer/Label5/money/vale")
 value = NodePath("PanelContainer/Label5/xp")
 cheste = NodePath("PanelContainer/Label5/PanelContainer2")
