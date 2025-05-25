@@ -7,22 +7,22 @@ using System.Linq;
 public partial class Deteckt : Area2D
 {
 
-  Enemy Enemy ;
+  Enemy Enemy;
 
-    public List<Enemy>? _markedEnemies {get;} = new List<Enemy>();  // Список врагов с метками
+  public List<Enemy>? _markedEnemies { get; } = new List<Enemy>();  // Список врагов с метками
 
 
   public override void _Ready()
   {
     BodyEntered += OnBodyEntered;
-  
+
   }
-        
-
- 
 
 
-      private void OnBodyEntered(Node node)
+
+
+
+  private void OnBodyEntered(Node node)
   {
     //GD.Print($"node : {node}");
 
@@ -34,40 +34,40 @@ public partial class Deteckt : Area2D
     }
 
   }
-    public override void _PhysicsProcess(double delta)
+  public override void _PhysicsProcess(double delta)
+  {
+    GlobalPosition = new Vector2(GetGlobalMousePosition().X + 22, GetGlobalMousePosition().Y + 22);
+  }
+
+  public override void _Process(double delta)
+  {
+
+  }
+
+
+  public void MarkTarget()
+  {
+    // Ищем врага в небольшом радиусе от клика мыши
+    _markedEnemies.Clear();
+
+    if (Enemy != null)
     {
-		GlobalPosition = new Vector2(GetGlobalMousePosition().X+22 ,GetGlobalMousePosition().Y+22);
-    }
+      // Добавляем врага в список помеченных, если он еще не там
+      if (!_markedEnemies.Contains(Enemy))
+      {
+        _markedEnemies.Add(Enemy);
 
-    public override void _Process(double delta)
-    { 
-    
-    }
+        Enemy.mark();
 
-
-     public void MarkTarget()
-    {
-        // Ищем врага в небольшом радиусе от клика мыши
-         _markedEnemies.Clear();
-    
-            if (Enemy != null) 
-            {
-                // Добавляем врага в список помеченных, если он еще не там
-                if (!_markedEnemies.Contains(Enemy))
-                {
-                    _markedEnemies.Add(Enemy);
-                     
-                    Enemy.mark();
-
-                   return;
-                }
-                 // Нашли врага, больше не ищем
-            }
-        
-       
         return;
+      }
+      // Нашли врага, больше не ищем
     }
-    
+
+
+    return;
+  }
+
 
 
 }

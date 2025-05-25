@@ -25,7 +25,7 @@ position = Vector2(-8336, -1755)
 
 [node name="spawn" parent="." instance=ExtResource("5_22chl")]
 position = Vector2(-4800, 1372)
-rotation = 1.79763
+rotation = 1.5657
 
 [node name="air got2" parent="." instance=ExtResource("3_6uejf")]
 position = Vector2(-5743, 417)

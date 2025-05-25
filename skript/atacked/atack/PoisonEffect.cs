@@ -3,18 +3,19 @@ using System;
 
 public partial class PoisonEffect : Area2D
 {
+    float Speed = 150;
     public Vector2 direction;
     public Atack atack;
     public override void _PhysicsProcess(double delta)
     {
         if (atack != null)
         {
-         GlobalPosition += direction * +150 * (float)delta;          
+            GlobalPosition += direction * Speed * (float)delta;
         }
     }
     public override void _Ready()
     {
-       
+
         base._Ready();
 
         AreaEntered += OnAreaEntered;
@@ -23,7 +24,7 @@ public partial class PoisonEffect : Area2D
         AddChild(time);
         time.WaitTime = 2;
         time.OneShot = true;
-        time.Timeout += dead ;
+        time.Timeout += dead;
         time.Start();
 
     }
@@ -39,7 +40,7 @@ public partial class PoisonEffect : Area2D
 
     public void Directionset()
     {
-        direction = GlobalPosition - atack.GlobalPosition+ new Vector2(1,1);
+        direction = atack.Direction * -1;
     }
 
     private void dead()
