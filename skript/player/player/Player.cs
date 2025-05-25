@@ -22,7 +22,6 @@ public partial class Player : CharacterBody2D
 	public string money = "0";
 	public Enemy enemy2;
 	[Export] Deteckt? deteckt = null;
-
 #if DEBUG
 	private static PackedScene scene;
 	bool debag = false;
@@ -188,6 +187,7 @@ public partial class Player : CharacterBody2D
 
 	private void atackelement(Atack atack)
 	{
+
 		for (int i = 0; i < UI.slotarei.Count();)
 		{
 			//GD.Print(i);
@@ -196,8 +196,11 @@ public partial class Player : CharacterBody2D
 			atack.elementatack(elementslot);
 
 			Atack.areaelementnomber[i] = elementslot;
-			i++;	
+			i++;
+
+
 		}
+
 	}
 
 }

@@ -43,7 +43,7 @@ gdscript/warnings/incompatible_ternary=0
 window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_height"
 window/per_pixel_transparency/allowed=true
-display_server/driver.windows="windows"
+window/vsync/vsync_mode=2
 mouse_cursor/custom_image="uid://by3pi8a40ngxt"
 mouse_cursor/tooltip_position_offset=Vector2(0, 0)
 
@@ -53,12 +53,18 @@ project/assembly_name="metanfeet"
 
 [editor]
 
+movie_writer/fps=30
 script/templates_search_path="res://"
 version_control/autoload_on_startup=true
 
+[filesystem]
+
+import/fbx2gltf/enabled=false
+import/blender/enabled=false
+
 [gui]
 
-theme/default_font_subpixel_positioning=0
+theme/default_font_subpixel_positioning=2
 
 [importer_defaults]
 
@@ -98,6 +104,10 @@ pointing/emulate_touch_from_mouse=true
 rendering/root_node_auto_translate=false
 rendering/text_driver="ICU / HarfBuzz / Graphite (Built-in)"
 
+[memory]
+
+limits/message_queue/max_size_mb=64
+
 [physics]
 
 2d/run_on_separate_thread=true
@@ -108,6 +118,6 @@ rendering/text_driver="ICU / HarfBuzz / Graphite (Built-in)"
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-shader_compiler/shader_cache/strip_debug=true
+lights_and_shadows/directional_shadow/16_bits=false
+lights_and_shadows/tighter_shadow_caster_culling=false
 anti_aliasing/quality/use_debanding=true
-2d/snap/snap_2d_transforms_to_pixel=true

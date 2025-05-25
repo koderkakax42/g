@@ -14,7 +14,7 @@ public partial class Shest : PanelContainer
 	  foreach(Slot slote3  in  GetTree().GetNodesInGroup("slot"))
 	  {
 		slote3.Qkod = "0" + slote3.Name;
-		GD.Print(slote3.Qkod);
+	
 	  }
 		Enemy.enemydeads += slots;
 		Slot.slotchoise += ChengeSlot;
@@ -47,25 +47,25 @@ public partial class Shest : PanelContainer
 		{
           slot1 = slot;
 		  slot1.GlobalPosition = new Vector2( slot1.GlobalPosition.X, slot1.GlobalPosition.Y-30 );
-		  GD.Print("shest 1");
+		
 		  return;
 		}
 		else
 		{
 		
 				slot.GlobalPosition = new Vector2( slot.GlobalPosition.X , slot.GlobalPosition.Y+30 );
-				  GD.Print("shest 2");
+			
 		}
 
 		if (slot1 == slot)
 		{
 			//slot.GlobalPosition = new Vector2( slot.GlobalPosition.X , slot.GlobalPosition.Y+20 );
-				  GD.Print("shest 3.1");
+				 
 				  slot1 = null;
 		}
 		else
 		{
-				  GD.Print("shest 3");
+				
 
 			string slotcode = slot.Qkod.Remove(1);
 			string slot1code = slot1.Qkod.Remove(1);

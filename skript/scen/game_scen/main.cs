@@ -4,7 +4,7 @@ using System;
 public partial class Main : Node2D
 {
 	bool time;
-	
+
 
 	public override void _PhysicsProcess(double delta)
 	{
@@ -26,7 +26,7 @@ public partial class Main : Node2D
 		Shest.time_start += timestart;
 		SpeedSettings.time_start += timestart;
 		Player.dead += off;
-		
+
 	}
 	private void off()
 	{
@@ -35,7 +35,7 @@ public partial class Main : Node2D
 		Shest.time_start -= timestart;
 		SpeedSettings.time_start -= timestart;
 		Player.dead -= off;
-		
+
 	}
 
 	private void timestop()
@@ -47,7 +47,4 @@ public partial class Main : Node2D
 	{
 		Engine.TimeScale = 1;
 	}
-	
-  
-  
 }
