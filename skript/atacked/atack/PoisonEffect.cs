@@ -1,22 +1,21 @@
 using Godot;
 using System;
 
-public partial class PoisonEffect : Area2D
+public partial class PoisonEffect : Atack
 {
-    float Speed = 150;
+    float Speedp = 150;
     public Vector2 direction;
     public Atack atack;
-    public override void _PhysicsProcess(double delta)
+    
+        public override void _PhysicsProcess(double delta)
     {
         if (atack != null)
         {
-            GlobalPosition += direction * Speed * (float)delta;
+            GlobalPosition += direction * Speedp * (float)delta;
         }
     }
     public override void _Ready()
     {
-
-        base._Ready();
 
         AreaEntered += OnAreaEntered;
 

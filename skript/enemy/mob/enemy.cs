@@ -65,14 +65,16 @@ public void mark()
 
 	private void poison()
 	{
-		Health-=5;
-		if(Health<=0)
+		Health -= 5;
+		if (Health <= 0)
 		{
-			Body.BodyEntered -= OnBodyEntered;
 			spawnmoney();
 			enemydeads?.Invoke();
-		QueueFree();
-		 }
+			if (IsInstanceValid(this))
+			{
+				QueueFree();
+			}
+		}
 		poisontime++;
 		if (poisontime >= 4)
 		{
@@ -101,18 +103,20 @@ public void mark()
 		}
 		
 	
-	}     
+	}
 	public void TakeDamage(int damage)
 	{
 		Health -= damage;
-		if(Health<=0)
+		if (Health <= 0)
 		{
-			Body.BodyEntered -= OnBodyEntered;
 			spawnmoney();
 			enemydeads?.Invoke();
-		QueueFree();
-		 }
-		  
+			if (IsInstanceValid(this))
+			{
+				QueueFree();
+			}
+		}
+
 	}
 	   
 	public override void _PhysicsProcess(double delta)

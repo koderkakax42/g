@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Threading;
 
 public partial class Slot : PanelContainer
 {
@@ -10,7 +11,7 @@ public partial class Slot : PanelContainer
 	[Export] TextureRect texture;
 	Texture2D texture2D;
 	[Export] Area2D Area;
-
+	float timer;
 	public void element(int nomber)
 	{
 		switch (nomber)
@@ -45,11 +46,14 @@ public partial class Slot : PanelContainer
 	}
 	public override void _Process(double delta)
 	{
-		if (Input.IsActionPressed("leftPressed") && slot)
+		if (Input.IsActionPressed("leftPressed") && slot&&timer>=0.2f)
 		{
+			slot = false;
 			GD.Print(Name);
+			timer = 0;
 			slotchoise?.Invoke(this);
 		}
+		timer += (float)delta;
 	}
 	public override void _Ready()
 	{
@@ -79,9 +83,10 @@ public partial class Slot : PanelContainer
 	{
 		if (Visible)
 		{
+			
 			if (area is Deteckt)
 			{
-				
+
 				slot = true;
 			}
 		}
