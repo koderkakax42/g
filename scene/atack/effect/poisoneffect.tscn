@@ -6,9 +6,11 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_fu5ce"]
 radius = 21.0238
 
-[node name="poisoneffect" type="Area2D"]
+[node name="poisoneffect" type="Area2D" node_paths=PackedStringArray("collision")]
 position = Vector2(500, 250)
 script = ExtResource("1_n5vvb")
+sceneeffect = null
+collision = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_fu5ce")

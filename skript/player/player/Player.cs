@@ -8,7 +8,7 @@ public partial class Player : CharacterBody2D
 {
 	public static event Action dead = delegate { };
 	public String TargetScenePath = "res://scene/scen/load_scen/fader.tscn";
-
+	public  event Action startbullit = delegate { };
 	[Export] UiPcPlaer UI { get; set; } = null!;
 	public int Health = 400;
 	public Vector2 inputDirection;
@@ -174,7 +174,6 @@ public partial class Player : CharacterBody2D
 
 	public void GetInput()
 	{
-
 		inputDirection = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 		Velocity = inputDirection * Speed;
 	}
@@ -190,17 +189,12 @@ public partial class Player : CharacterBody2D
 
 		for (int i = 0; i < UI.slotarei.Count();)
 		{
-			//GD.Print(i);
-			int elementslot = UI.slotarei[i].Qkod.Remove(1).ToInt();
-
-			atack.elementatack(elementslot);
-
-			Atack.areaelementnomber[i] = elementslot;
+			Atack.areaelementnomber[i]  = UI.slotarei[i].Qkod.Remove(1).ToInt();
 			i++;
-
-
 		}
 
+		atack.elementarreislot = UI.slotarei;
+		atack.elementatack(0,atack);
 	}
 
 }
