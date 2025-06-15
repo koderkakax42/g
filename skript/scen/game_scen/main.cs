@@ -40,7 +40,7 @@ public partial class Main : Node2D
 
 	private void timestop()
 	{
-		Engine.TimeScale = 0;
+		Engine.TimeScale = 0.00001;
 
 	}
 	private void timestart()

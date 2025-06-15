@@ -10,7 +10,7 @@ public partial class Player : CharacterBody2D
 	public String TargetScenePath = "res://scene/scen/load_scen/fader.tscn";
 	public  event Action startbullit = delegate { };
 	[Export] UiPcPlaer UI { get; set; } = null!;
-	public int Health = 400;
+	public int Health = 100;
 	public Vector2 inputDirection;
 	public PackedScene BulletScene = null!; // Сцена пули
 	[Export] public float Speed = 900;
@@ -43,22 +43,17 @@ public partial class Player : CharacterBody2D
 
 		if (UI == null)
 			GD.Print("null UI ");
+
+		UI.value.MaxValue = Health;
 	}
 	private void health()
 	{
-		Health = 400;
+		Health = 100;
 	}
 	public void DamageEnemys(int damage)
 	{
-		if (damage == Health)
-		{
-			GD.Print(damage);
-			GD.Print(Health);
-		}
 		Health -= damage;
-
 		UI._on_xp(Health);
-
 	}
 	private void LoadNewScene()
 	{
@@ -98,7 +93,7 @@ public partial class Player : CharacterBody2D
 		}
 		if (Input.IsActionPressed("markshoot") && _timeSinceLastFire >= 1f / FireRate)
 		{
-			Shoot(1);
+			Shoot(0);
 			_timeSinceLastFire = 0f;
 		}
 
@@ -148,15 +143,31 @@ public partial class Player : CharacterBody2D
 		bullet.Speed = BulletSpeed;
 		bullet.Player = this; //  Добавляем ссылку на игрока, чтобы пуля знала, кто ее выпустил
 	}
-	private void Shoot(int? @int)
+	private void Shoot(int? nomberreturn)
 	{
 		if (deteckt._markedEnemies.Count > 0)
 		{
-			foreach (Enemy enemy in deteckt._markedEnemies)
+			if (deteckt._markedEnemies[0] is Enemy enemy)
 			{
-				enemy2 = enemy;
-			}
+				if (IsInstanceValid(enemy))
+				{
+					enemy2 = enemy;
+				}
+				else
+				{
+					deteckt._markedEnemies.Remove(enemy);
 
+					return;
+
+				}
+			}
+			else
+			{
+				deteckt._markedEnemies.RemoveAt(0);
+
+				return;
+
+			}
 			var bullet = (Atack)BulletScene.Instantiate();
 			GetParent().AddChild(bullet);
 			bullet.GlobalPosition = GlobalPosition;
@@ -187,7 +198,7 @@ public partial class Player : CharacterBody2D
 	private void atackelement(Atack atack)
 	{
 
-		for (int i = 0; i < UI.slotarei.Count();)
+		for (int i = 0; i < Atack.areaelementnomber.Count();)
 		{
 			Atack.areaelementnomber[i]  = UI.slotarei[i].Qkod.Remove(1).ToInt();
 			i++;

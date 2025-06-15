@@ -11,7 +11,7 @@ public partial class UiPcPlaer : PanelContainer
 	private int chest_nomber = 0;
 	public PackedScene chest { get; set; }
 	[Export] Label text { get; set; }
-	[Export] private ProgressBar value { get; set; }
+	[Export] public ProgressBar value { get; set; }
 	[Export] Player player;
 
 	Spawn spawn = new Spawn();
@@ -34,24 +34,14 @@ public partial class UiPcPlaer : PanelContainer
 		GetWindow().Connect("size_changed", new Callable(this, nameof(OnWindowSizeChanged)));
 
 	}
-	public void _on_xp(int healtch)
+	public void _on_xp(int health)
 	{
-		value.Value = healtch;
+		value.Value = health;
 	}
 
 	public void _on_vale(string money)
 	{
 		text.Text = money;
-
-
-#if DEBUG
-		/*if(Atack.damage != int.MaxValue)
-		{
-			var i = (God)godmode.Instantiate();
-			GetParent().AddChild(i);
-	 		i.GlobalPosition = player.GlobalPosition;
-		}*/
-#endif
 	}
 	private void _on_chest()
 	{

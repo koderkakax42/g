@@ -1,8 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://biqsefkkddpb5"]
+[gd_scene load_steps=25 format=3 uid="uid://biqsefkkddpb5"]
 
 [ext_resource type="Script" uid="uid://esqdxrc7paue" path="res://skript/atacked/atack/Atack.cs" id="1_vrqaw"]
 [ext_resource type="Texture2D" uid="uid://5gl1hanq1ffr" path="res://sprait/charecter/atack/atack.png.png" id="2_3e172"]
-[ext_resource type="PackedScene" uid="uid://c6tenpu00t43v" path="res://scene/atack/effect/poisoneffect.tscn" id="2_783rd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6f82"]
 size = Vector2(62.5, 20.5)
@@ -185,7 +184,6 @@ position = Vector2(87, 58)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_vrqaw")
-sceneeffect = ExtResource("2_783rd")
 collision = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

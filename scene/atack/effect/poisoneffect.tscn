@@ -9,12 +9,11 @@ radius = 21.0238
 [node name="poisoneffect" type="Area2D" node_paths=PackedStringArray("collision")]
 position = Vector2(500, 250)
 script = ExtResource("1_n5vvb")
-sceneeffect = null
 collision = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_fu5ce")
 
-[node name="Poison" type="Sprite2D" parent="."]
+[node name="Poison" type="Sprite2D" parent="CollisionShape2D"]
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_wised")

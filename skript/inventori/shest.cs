@@ -16,9 +16,16 @@ public partial class Shest : PanelContainer
 		slote3.Qkod = "0" + slote3.Name;
 	
 	  }
+	  	Player.dead += offfolover;
 		Enemy.enemydeads += slots;
 		Slot.slotchoise += ChengeSlot;
 		//slotchoise+=ChengeSlot;
+	}
+	private void offfolover()
+	{
+		Player.dead -= offfolover;
+		Enemy.enemydeads -= slots;
+		Slot.slotchoise -= ChengeSlot; 
 	}
 
 	private void slots()
