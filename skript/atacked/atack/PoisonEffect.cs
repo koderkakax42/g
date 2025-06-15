@@ -4,19 +4,18 @@ using System;
 public partial class PoisonEffect : Atack
 {
     float Speedp = 150;
-    public Vector2 direction;
     public Atack atack;
-    
-        public override void _PhysicsProcess(double delta)
+
+    public override void _PhysicsProcess(double delta)
     {
         if (atack != null)
         {
-            GlobalPosition += direction * Speedp * (float)delta;
+            GlobalPosition += Direction * Speedp * (float)delta;
         }
     }
     public override void _Ready()
     {
-
+        atackdiablo = true;
         AreaEntered += OnAreaEntered;
 
         var time = new Godot.Timer();
@@ -25,7 +24,7 @@ public partial class PoisonEffect : Atack
         time.OneShot = true;
         time.Timeout += dead;
         time.Start();
-
+        sceneeffect = GD.Load<PackedScene>("res://scene/atack/effect/poisoneffect.tscn");
     }
     private void OnAreaEntered(Area2D area)
     {
@@ -37,9 +36,10 @@ public partial class PoisonEffect : Atack
         }
     }
 
-    public void Directionset()
+    public void Directionset(int invertor)
     {
-        direction = atack.Direction * -1;
+        Direction = atack.Direction * -1;
+        Direction = new Vector2(Direction.X * invertor, Direction.Y);
     }
 
     private void dead()
@@ -47,4 +47,5 @@ public partial class PoisonEffect : Atack
         QueueFree();
         // atack.poisonEffects.RemoveAt(0);
     }
+    
 }

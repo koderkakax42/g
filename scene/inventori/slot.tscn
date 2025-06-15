@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bddy2q0ry74ki" path="res://sprait/item/a/air.png" id="2_737yc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2f0s8"]
-size = Vector2(39.375, 38.875)
+size = Vector2(47.8438, 45.7188)
 
 [node name="slot" type="PanelContainer" node_paths=PackedStringArray("label", "texture", "Area") groups=["slot"]]
 anchors_preset = -1
@@ -32,5 +32,5 @@ offset_bottom = 63.0
 [node name="AreaSlot" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaSlot"]
-position = Vector2(32, 33)
+position = Vector2(32, 32)
 shape = SubResource("RectangleShape2D_2f0s8")

@@ -138,7 +138,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"dead",
-"speed": 3.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -180,8 +180,9 @@ shape = SubResource("RectangleShape2D_jk8j1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.182434, 0.167114)
 sprite_frames = SubResource("SpriteFrames_tjpvq")
-animation = &"attak"
-frame_progress = 0.308719
+animation = &"dead"
+frame = 5
+frame_progress = 0.684962
 
 [node name="hitbox" type="Area2D" parent="."]
 

@@ -6,13 +6,16 @@ using System.Linq;
 
 public partial class Atack : Area2D
 {
-  float poisontimespavn = 1;
-  int invertor = 1;
+  static List<Enemy> enemyformagnet = new List<Enemy>();
+  public Area2D magnit = new Area2D();
+  public CollisionShape2D radiusmagnits = new CollisionShape2D();
+  public bool atackdiablo = false;
+  public int invertor = 1;
   byte atacdelete = 0;
   bool atactwulve = false;
   Vector2 startglobalposition;
   bool neironactiveyion = false;
-  [Export] PackedScene sceneeffect;
+  public PackedScene sceneeffect;
   AnimatedSprite2D animated;
   public static int damage = 20;
   public Vector2 Direction { get; set; }
@@ -26,7 +29,8 @@ public partial class Atack : Area2D
 
   public override void _Ready()
   {
-
+    magnit.AreaEntered += onmagnet;
+    magnit.AreaExited += offmagnet;
     BodyEntered += OnBodyEntered;
     // Создаем и настраиваем таймер
     live_bullet();
@@ -34,8 +38,6 @@ public partial class Atack : Area2D
 
     animated = GetNode<AnimatedSprite2D>("CollisionShape2D/AnimatedSprite2D");
   }
-
-
 
   private void live_bullet()
   {
@@ -45,51 +47,15 @@ public partial class Atack : Area2D
     timetolive.OneShot = true;
     timetolive.Timeout += dead;
     timetolive.Start();
-
-
-
   }
   private void dead()
   {
-    if (atactwulve && atacdelete <= 2)
+    if (magnit != null)
     {
-      atacdelete++;
-
-
-      for (int i = 0; i < 2; i++)
-      {
-        PackedScene y = GD.Load<PackedScene>("res://scene/atack/atack/atack.tscn"); ;
-        Atack atack = (Atack)y.Instantiate();
-        GetParent().AddChild(atack);
-        atack.atacdelete = atacdelete;
-        atack.GlobalPosition = new Vector2(GlobalPosition.X + 20 * i, GlobalPosition.Y + 20 * i);
-        atack.Player = Player;
-        atack.SetDirection(Player.GlobalPosition * invertor);
-        if (invertor >= 1)
-        {
-          atack.invertor = -1;
-          invertor = -1;
-        }
-        else
-        {
-          invertor = 1;
-          atack.invertor = 1;
-        }
-        atack.elementarreislot = elementarreislot;
-        elementatack(0, atack);
-
-      }
-
+      
     }
-    else
-    {
-      atacdelete = 0;
-    }
-
-    BodyEntered -= OnBodyEntered;
     QueueFree();
   }
-
 
   public override void _PhysicsProcess(double delta)
   {
@@ -128,11 +94,9 @@ public partial class Atack : Area2D
 
   }
 
-
-
   public void SetDirection(Vector2 targetPosition)
   {
-    Direction = ((targetPosition - GlobalPosition) * invertor).Normalized();
+    Direction = (targetPosition - GlobalPosition).Normalized();
     Rotation = Mathf.Atan2(Direction.Y, Direction.X); // Поворачиваем пулю в направлении движения
   }
   public void SetDirection()
@@ -140,7 +104,6 @@ public partial class Atack : Area2D
     Direction = ((GetGlobalMousePosition() - GlobalPosition) * invertor).Normalized();
     Rotation = Mathf.Atan2(Direction.Y, Direction.X); // Поворачиваем пулю в направлении движения
   }
-
 
   private void OnBodyEntered(Node2D body)
   {
@@ -156,28 +119,21 @@ public partial class Atack : Area2D
       // GD.Print(Direction +"   "+Speed+"   "+body+"    "+Player);
       enemy.TakeDamage(damage);
 
-      dead();
+      CallDeferred("dead");
     }
   }
 
   public void elementatack(int nomber, Atack atack)
   {
-    GD.Print(nomber);
+    //GD.Print(nomber + " atack");
+
     switch (areaelementnomber[nomber])
     {
       case 0:
-
-        if (nomber <= areaelementnomber.Count())
-        {
-          elementatack(nomber + 1, atack);
-        }
+        air(nomber, atack);
         break;
       case 1:
-
-        if (nomber <= areaelementnomber.Count())
-        {
-          elementatack(nomber + 1, atack);
-        }
+        mars(nomber, atack);
         break;
       case 2:
         neiron(nomber, atack);
@@ -194,38 +150,27 @@ public partial class Atack : Area2D
       default:
         break;
     }
-
-
   }
+
   private void neiron(int nomber, Atack atack)
   {
     neironactiveyion = true;
     startglobalposition = Player.GlobalPosition;
 
-    if (nomber <= areaelementnomber.Count())
+    if (nomber < areaelementnomber.Count())
     {
       elementatack(nomber + 1, atack);
+      return;
     }
   }
   private void timepoison(int nomber, Atack atack)
   {
-    poisontimespavn = poisontimespavn * 0.5f;
     var time = new Godot.Timer();
     AddChild(time);
-    if (poisontimespavn > 0)
-    {
-      time.WaitTime = poisontimespavn;
-    }
-    else
-    {
-      time.WaitTime = 0.5;
-    }
+    time.WaitTime = 0.5;
     time.OneShot = false;
     time.Timeout += () => spawnpoison(nomber, atack);
     time.Start();
-
-
-
   }
 
   private void spawnpoison(int nomber, Atack atack)
@@ -235,13 +180,15 @@ public partial class Atack : Area2D
       PoisonEffect scen = (PoisonEffect)sceneeffect.Instantiate();
       GetParent().AddChild(scen);
       scen.GlobalPosition = atack.GlobalPosition;
-
+      scen.GlobalPosition += Direction;
       scen.atack = atack;
-      scen.Directionset();
+      scen.Directionset(invertor);
+      invertor = invertor * -1;
 
-      if (nomber <= areaelementnomber.Count())
+      if (nomber < areaelementnomber.Count())
       {
-        elementatack(nomber + 1, scen);
+        scen.elementatack(nomber + 1, scen);
+        return;
       }
     }
     else
@@ -255,19 +202,94 @@ public partial class Atack : Area2D
   {
     collision.Scale = new Vector2(collision.Scale.X * 1.5f, collision.Scale.Y * 1.5f);
 
-    if (nomber <= areaelementnomber.Count())
+    if (nomber < areaelementnomber.Count())
     {
       elementatack(nomber + 1, atack);
+      return;
     }
   }
 
   private void terror(int nomber, Atack atack)
   {
-    atactwulve = true;
+    PackedScene y;
+    if (atackdiablo)
+    {
+      y = GD.Load<PackedScene>("res://scene/atack/effect/poisoneffect.tscn"); ;
+    }
+    else
+    {
+      y = GD.Load<PackedScene>("res://scene/atack/atack/atack.tscn"); ;
+    }
+    Atack datack = (Atack)y.Instantiate();
+    GetParent().AddChild(datack);
+    datack.atacdelete = atacdelete;
+    datack.GlobalPosition = GlobalPosition;
+    datack.Player = Player;
+    datack.SetDirection((GlobalPosition + new Vector2(40, 60)) * invertor);
+    if (invertor >= 1)
+    {
+      datack.invertor = -1;
+      invertor = -1;
+    }
+    else
+    {
+      invertor = 1;
+      datack.invertor = 1;
+    }
 
-    if (nomber <= areaelementnomber.Count())
+    if (nomber < areaelementnomber.Count())
+    {
+      datack.elementatack(nomber + 1, datack);
+      return;
+    }
+  }
+  private void air(int nomber, Atack atack)
+  {
+    return;
+  }
+  private void mars(int nomber, Atack atack)
+  {
+    CircleShape2D settingradius = new CircleShape2D();
+    settingradius.Radius = 100;
+    atack.AddChild(magnit);
+    magnit.GlobalPosition = atack.GlobalPosition;
+    magnit.AddChild(radiusmagnits);
+    radiusmagnits.Shape = settingradius;
+    radiusmagnits.GlobalPosition = atack.GlobalPosition;
+
+    controlmagnetic(magnit, radiusmagnits);
+
+    if (nomber < areaelementnomber.Count())
     {
       elementatack(nomber + 1, atack);
     }
   }
+
+  private void controlmagnetic(Area2D magnitic, CollisionShape2D collisionformagnitic)
+  {
+    for (int u = 0; u < enemyformagnet.Count(); u++)
+    {
+      enemyformagnet[u].GlobalPosition = GlobalPosition;
+    }
+
+
+
+  }
+  private void onmagnet(Area2D area)
+  {
+    Node node = area.GetParent();
+    if (node is Enemy enemy)
+    {
+      enemyformagnet.Add(enemy);
+    }
+  }
+  private void offmagnet(Area2D area)
+  {
+    Node node = area.GetParent();
+    if (node is Enemy enemy)
+    {
+      enemyformagnet.Remove(enemy);
+    }
+  }
+
 }

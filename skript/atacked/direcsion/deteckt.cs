@@ -9,7 +9,7 @@ public partial class Deteckt : Area2D
 
   Enemy Enemy;
 
-  public List<Enemy>? _markedEnemies { get; } = new List<Enemy>();  // Список врагов с метками
+  public List<Enemy> _markedEnemies { get; } = new List<Enemy>();  // Список врагов с метками
 
 
   public override void _Ready()
@@ -47,9 +47,6 @@ public partial class Deteckt : Area2D
 
   public void MarkTarget()
   {
-    // Ищем врага в небольшом радиусе от клика мыши
-    _markedEnemies.Clear();
-
     if (Enemy != null)
     {
       // Добавляем врага в список помеченных, если он еще не там
