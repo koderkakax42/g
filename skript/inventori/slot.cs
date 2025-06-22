@@ -72,10 +72,12 @@ public partial class Slot : PanelContainer
 
 	private void VisibleOn()
 	{
+		if(IsInstanceValid(this))
 		Visible = true;
 	}
 	private void VisibleOff()
 	{
+		if(IsInstanceValid(this))
 		Visible = false;
 	}
 

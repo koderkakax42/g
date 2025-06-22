@@ -6,7 +6,8 @@ using System.Linq;
 
 public partial class Atack : Area2D
 {
-  static List<Enemy> enemyformagnet = new List<Enemy>();
+  float magnittaimer = 0;
+   List<Enemy> enemyformagnet = new List<Enemy>();
   public Area2D magnit = new Area2D();
   public CollisionShape2D radiusmagnits = new CollisionShape2D();
   public bool atackdiablo = false;
@@ -90,6 +91,12 @@ public partial class Atack : Area2D
         break;
       default:
         break;
+    }
+    magnittaimer += 0.005f;
+    if (magnittaimer >= 0.1 && enemyformagnet.Count() != null && enemyformagnet.Count() > 0)
+    {
+      magnittaimer = 0;
+      controlmagnetic(magnit, radiusmagnits);
     }
 
   }
@@ -269,11 +276,10 @@ public partial class Atack : Area2D
   {
     for (int u = 0; u < enemyformagnet.Count(); u++)
     {
-      enemyformagnet[u].GlobalPosition = GlobalPosition;
+      Vector2 enemyderection;
+      enemyderection = (GlobalPosition - enemyformagnet[u].GlobalPosition ).Normalized();
+      enemyformagnet[u].GlobalPosition += enemyderection* (Speed - enemyformagnet[u].Speed)/2 ;
     }
-
-
-
   }
   private void onmagnet(Area2D area)
   {

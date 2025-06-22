@@ -13,7 +13,7 @@ public partial class UiPcPlaer : PanelContainer
 	[Export] Label text { get; set; }
 	[Export] public ProgressBar value { get; set; }
 	[Export] Player player;
-
+	SaveGame Save = new SaveGame();
 	Spawn spawn = new Spawn();
 	PackedScene meny;
 	[Export] public Shest cheste = new Shest();
@@ -46,25 +46,15 @@ public partial class UiPcPlaer : PanelContainer
 	private void _on_chest()
 	{
 
-		switch (chest_nomber)
+		if (cheste.Visible != true&&nomber_open_chest == 0)
 		{
-			case 1:
-				if (cheste.Visible != true)
-				{
-					cheste.Visible = true;
-					nomber_open_chest = 1;
-					time_stop?.Invoke();
-				}
-				break;
-			default:
-				chest_nomber = 1;
-				_on_chest();
-				break;
+			cheste.Visible = true;
+			nomber_open_chest = 1;
+			time_stop?.Invoke();
 		}
+
+
 	}
-
-
-
 
 
 	private void OnWindowSizeChanged()
@@ -74,10 +64,13 @@ public partial class UiPcPlaer : PanelContainer
 
 	private void saveplayer()
 	{
-		SpeedSettings.save -= saveplayer;
 		if (SaveGame.save != null)
 		{
 			SaveGame.save.Clear();
+		}
+		if (!IsInstanceValid(this))
+		{
+			return;
 		}
 		foreach (Player player in GetTree().GetNodesInGroup("Player"))
 		{
@@ -113,7 +106,6 @@ public partial class UiPcPlaer : PanelContainer
 
 			}
 		}
-		save?.Invoke();
 		GD.Print(7);
 
 	}
@@ -128,7 +120,9 @@ public partial class UiPcPlaer : PanelContainer
 
 
 		saveplayer();
+	save?.Invoke();
 
+		Save.Save_data_Game();
 
 
 		GD.Print(" save is truy . ");
@@ -137,11 +131,11 @@ public partial class UiPcPlaer : PanelContainer
 	{
 		if (nomber_open_chest == 0)
 		{
-			time_stop?.Invoke();
 			if (time_stop == null)
 			{
 				GD.Print("null time stop");
 			}
+			time_stop?.Invoke();
 
 
 			var i = (SpeedSettings)meny.Instantiate();

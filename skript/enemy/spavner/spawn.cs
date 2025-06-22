@@ -26,7 +26,7 @@ public partial class Spawn : Node2D
 		_timer += (float)delta;
 		if (_enemyCount == 0)
 		{
-			MaxEnemies = 1;
+			MaxEnemies = 300;
 			SpawnEnemy();
 		}
 

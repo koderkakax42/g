@@ -6,30 +6,41 @@ using System.IO;
 
 public partial class Fader : CanvasLayer
 {
-          private const string SAVE_PATH = "user://save.json";
-     public static String ScenePath {get;set;}
+    private const string SAVE_PATH = "user://save.json";
+    public static String ScenePath { get; set; }
 
-   
+    public static bool Load = false;
     private AnimationPlayer _animationPlayer;
 
 
-public static void chec_save()
-{
-    try
-    { 
-     string absolutrath =  ProjectSettings.GlobalizePath(SAVE_PATH);
-
-         if(File.Exists(absolutrath))
-         {
-        ScenePath= "res://scene/save/save_game.tscn";
-         }
-
-    }
-    catch(Exception ex)
+    public static void chec_save()
     {
-       GD.Print($"{ex.Message} fader.");
+        if (Load)
+        {
+            GD.Print("load");
+            Load = false;
+            return;
+        }
+        try
+        {
+            GD.Print("save poisc");
+            string absolutpath = ProjectSettings.GlobalizePath(SAVE_PATH);
+
+            if (File.Exists(absolutpath))
+            {
+                ScenePath = "res://scene/save/save_game.tscn";
+            }
+            else
+            {
+                GD.Print(absolutpath);
+            }
+
+        }
+        catch (Exception ex)
+        {
+            GD.Print($"{ex.Message} fader.");
+        }
     }
-}
     public override void _Ready()
     {
 
@@ -43,18 +54,20 @@ public static void chec_save()
 
         _animationPlayer.AnimationFinished += OnAnimationFinished;
         _animationPlayer.Play("FadeIn");
-   
-         GetWindow().MinSize = new Vector2I(480,280 );
-        GetWindow().MaxSize = new Vector2I(1920,960);
+
+        GetWindow().MinSize = new Vector2I(480, 280);
+        GetWindow().MaxSize = new Vector2I(1920, 960);
         // Подключаемся к сигналу size_changed
         GetWindow().Connect("size_changed", new Callable(this, nameof(OnWindowSizeChanged)));
+
+
     }
 
     private void OnWindowSizeChanged()
     {
         Vector2 newSize = GetWindow().Size;
-        
-		Scale = new Vector2(newSize.X , newSize.Y );
+
+        Scale = new Vector2(newSize.X, newSize.Y);
     }
 
 
@@ -64,8 +77,8 @@ public static void chec_save()
 
         if (animName.ToString().Equals("FadeIn"))
         {
-         //   chec_save();
-             _animationPlayer.Play("FadeOut");
+
+            _animationPlayer.Play("FadeOut");
 
         }
         else if (animName.ToString().Equals("FadeOut"))
@@ -83,8 +96,6 @@ public static void chec_save()
     {
         SceneTree tree = GetTree();
         tree.ChangeSceneToFile(ScenePath);
+        Load = true;
     }
-
-    
-
 }
