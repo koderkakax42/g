@@ -3,6 +3,7 @@ using System;
 
 public partial class SpeedSettings : Button
 {
+	Player Player = new Player();
     public static event Action save;
 	public static event Action time_start;
 	public override void _Ready()
@@ -23,6 +24,7 @@ public partial class SpeedSettings : Button
 
   private void LoadNewScene()
 	{
+		Player.Health = -13;
 		SceneTree tree = GetTree();
 		tree.ChangeSceneToFile("res://scene/ui/meny/meny.tscn");
 	}

@@ -16,8 +16,9 @@ public partial class Meny : Control
             return; // Важно: выйти из функции, если путь не задан
         }
        Fader.ScenePath = "res://scene/scen/game_scen/main.tscn";
-       LoadNewScene();
        Fader.chec_save();
+       Fader.Load = false;
+       LoadNewScene();
     }
 
 
