@@ -7,23 +7,22 @@ public partial class Shest : PanelContainer
 {
 	Slot slot1;
 
-	int i = 0;
+
 	public static event Action time_start;
 	public override void _Ready()
 	{
 		foreach (Slot slote3 in GetTree().GetNodesInGroup("slot"))
 		{
 			slote3.Qkod = "0" + slote3.Name;
-
 		}
-		Player.dead += offfolover;
+		Player.dead += offolover;
 		Enemy.enemydeads += slots;
 		Slot.slotchoise += ChengeSlot;
 		//slotchoise+=ChengeSlot;
 	}
-	private void offfolover()
+	private void offolover()
 	{
-		Player.dead -= offfolover;
+		Player.dead -= offolover;
 		Enemy.enemydeads -= slots;
 		Slot.slotchoise -= ChengeSlot;
 	}
@@ -35,19 +34,19 @@ public partial class Shest : PanelContainer
 			return;
 		}
 		foreach (Slot slote in GetTree().GetNodesInGroup("slot"))
+		{
+			Random random = new Random();
+			int nomber = 0;
+			nomber = random.Next(0, 6);
+			var y = slote.GetGroups();
+			if (!y.Contains("ui") && y.Contains("slot"))
 			{
-				Random random = new Random();
-				int nomber = 0;
-				nomber = random.Next(0, 6);
-				var y = slote.GetGroups();
-				if (!y.Contains("ui") && y.Contains("slot"))
-				{
-					slote.Qkod = nomber.ToString() + slote.Name;
-					slote.element(nomber);
-					//GD.Print(slote.Qkod + "  " + i++);
-				}
+				slote.Qkod = nomber.ToString() + slote.Name;
+				slote.element(nomber);
+				//GD.Print(slote.Qkod + "  " + i++);
 			}
-		i = 0;
+		}
+	
 
 	}
 
@@ -77,23 +76,23 @@ public partial class Shest : PanelContainer
 		else
 		{
 
-if (IsInstanceValid(slot)&&IsInstanceValid(slot1))
-{
-		string slotcode = slot.Qkod.Remove(1);
-			string slot1code = slot1.Qkod.Remove(1);
-
-			slot.Qkod = slot1code + slot.Name;
-			slot1.Qkod = slotcode + slot1.Name;
-
-			slot.element(slot1code.ToInt());
-			slot1.element(slotcode.ToInt());
+			if (IsInstanceValid(slot) && IsInstanceValid(slot1))
+			{
+				string slotcode = slot.Qkod.Remove(1);
 
 
-			slot1.GlobalPosition = new Vector2(slot1.GlobalPosition.X, slot1.GlobalPosition.Y + 30);
-			slot.GlobalPosition = new Vector2(slot.GlobalPosition.X, slot.GlobalPosition.Y - 30);
+				slot.Qkod = slot1.Qkod;
+				slot1.Qkod = slotcode + slot1.Name;
 
-			slot1 = null;
-		}
+				slot.element(Convert.ToInt32(slot1.Qkod.Remove(1)));
+				slot1.element(slotcode.ToInt());
+
+
+				slot1.GlobalPosition = new Vector2(slot1.GlobalPosition.X, slot1.GlobalPosition.Y + 30);
+				slot.GlobalPosition = new Vector2(slot.GlobalPosition.X, slot.GlobalPosition.Y - 30);
+
+				slot1 = null;
+			}
 		}
 	}
 

@@ -105,7 +105,7 @@ anchor_bottom = -0.304
 offset_right = -0.482971
 offset_bottom = -0.00799942
 max_value = 400.0
-value = 3.0
+value = 400.0
 metadata/_edit_use_anchors_ = true
 
 [node name="money" type="Label" parent="PanelContainer/Label5"]

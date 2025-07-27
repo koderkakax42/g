@@ -4,7 +4,7 @@ using System.Threading;
 
 public partial class Slot : PanelContainer
 {
-	bool slot = false;
+	bool? slot = false;
 	public static event Action<Slot> slotchoise = delegate { };
 	[Export] Label label;
 	public string Qkod;
@@ -46,7 +46,7 @@ public partial class Slot : PanelContainer
 	}
 	public override void _Process(double delta)
 	{
-		if (Input.IsActionPressed("leftPressed") && slot&&timer>=0.2f)
+		if (Input.IsActionPressed("leftPressed") && (bool)slot&&timer>=0.05f)
 		{
 			slot = false;
 			GD.Print(Name);

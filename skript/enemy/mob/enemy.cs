@@ -19,15 +19,18 @@ public partial class Enemy : CharacterBody2D
 	Sprite2D air;
 	private AnimatedSprite2D _animatedSprite = null!;
 
-	public string EnemyId { get; set; } = Guid.NewGuid().ToString("N");
+	public string EnemyId { get; set; } = Guid.NewGuid().ToString();
 
-	public void LoadData()
+	public void LoadData(float X, float Y, float health, string id,Node2D player)
 	{
-
+		GlobalPosition = new Vector2(X, Y);
+		Health = (int)health;
+		EnemyId = id;
+		target =player;
 	}
 	public override void _Ready()
 	{
-		EnemyId.Substring(0, 5);
+		EnemyId = EnemyId.Remove(5);
 		moneyscene = GD.Load<PackedScene>("res://scene/drop/money.tscn");
 
 		Body = GetNode<Area2D>("hitbox");
@@ -96,6 +99,7 @@ public partial class Enemy : CharacterBody2D
 		{
 			//GD.Print(Damage);
 			player.DamageEnemys(Damage);
+			TakeDamage(10);
 		}
 
 
@@ -145,5 +149,7 @@ public partial class Enemy : CharacterBody2D
 
 		MoveAndSlide();
 	}
+	
+
 
 }

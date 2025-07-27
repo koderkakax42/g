@@ -5,14 +5,14 @@ using System.Collections.Generic;
 public partial class UiPcPlaer : PanelContainer
 {
 	public static event Action time_stop = delegate { };
-	public static event Action save = delegate { };
+
 	[Export] public Slot[] slotarei = new Slot[5];
 	public static int nomber_open_chest = 0;
 	private int chest_nomber = 0;
 	public PackedScene chest { get; set; }
 	[Export] Label text { get; set; }
 	[Export] public ProgressBar value { get; set; }
-	[Export] Player player;
+	public Player player;
 	SaveGame Save = new SaveGame();
 	Spawn spawn = new Spawn();
 	PackedScene meny;
@@ -46,7 +46,7 @@ public partial class UiPcPlaer : PanelContainer
 	private void _on_chest()
 	{
 
-		if (cheste.Visible != true&&nomber_open_chest == 0)
+		if (cheste.Visible != true && nomber_open_chest == 0)
 		{
 			cheste.Visible = true;
 			nomber_open_chest = 1;
@@ -84,7 +84,7 @@ public partial class UiPcPlaer : PanelContainer
 				SaveGame.save.TryAdd("player positon x", player.GlobalPosition.X);
 				SaveGame.save.TryAdd("player position y", player.GlobalPosition.Y);
 				SaveGame.save.TryAdd("player health", player.Health);
-				SaveGame.save.TryAdd("player money ", player.money.ToFloat());
+				SaveGame.save.TryAdd("player money ", player.ValueMoney);
 				GD.Print(4);
 				saveenemy();
 			}
@@ -102,28 +102,19 @@ public partial class UiPcPlaer : PanelContainer
 
 				SaveGame.save.TryAdd(enemy.EnemyId + "enemy X position", enemy.GlobalPosition.X);
 				SaveGame.save.TryAdd(enemy.EnemyId + "enemy Y position", enemy.GlobalPosition.Y);
-				SaveGame.save.TryAdd(enemy.EnemyId + "health enemy", enemy.Health);
+				SaveGame.save.TryAdd(enemy.EnemyId + "enemy health one", enemy.Health);
 
 			}
 		}
 		GD.Print(7);
 
+		Save.Save_data_Game();
+
 	}
 
 	private void _on_button()
 	{
-
-		if (save == null)
-		{
-			GD.Print("null save ");
-		}
-
-
 		saveplayer();
-	save?.Invoke();
-
-		Save.Save_data_Game();
-
 
 		GD.Print(" save is truy . ");
 	}
@@ -144,4 +135,10 @@ public partial class UiPcPlaer : PanelContainer
 			nomber_open_chest = 1;
 		}
 	}
+	
+    public override void _PhysicsProcess(double delta)
+	{
+		GlobalPosition = new Vector2(player.GlobalPosition.X - 575, player.GlobalPosition.Y - 330);
+	}
+
 }
