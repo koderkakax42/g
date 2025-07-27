@@ -18,10 +18,6 @@ public partial class Deteckt : Area2D
 
   }
 
-
-
-
-
   private void OnBodyEntered(Node node)
   {
     //GD.Print($"node : {node}");

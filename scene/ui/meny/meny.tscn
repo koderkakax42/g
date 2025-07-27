@@ -3,18 +3,24 @@
 [ext_resource type="Script" uid="uid://c8sq0flg3xfja" path="res://skript/UI/meny/Meny.cs" id="1_1xket"]
 
 [node name="Meny" type="Control"]
+clip_contents = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 5.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1xket")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 1370.0
-offset_bottom = 776.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.184
+anchor_bottom = 1.205
+offset_right = 0.111938
+offset_bottom = -0.0200195
 color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="."]
@@ -32,11 +38,16 @@ autowrap_mode = 2
 justification_flags = 235
 
 [node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 646.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 655.0
 offset_top = 270.0
-offset_right = 794.0
-offset_bottom = 320.0
+offset_right = -354.0
+offset_bottom = -324.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 25
 text = "старт"
 

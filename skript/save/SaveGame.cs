@@ -24,6 +24,7 @@ public partial class SaveGame : Node2D
 
         try
         {
+            GD.Print(absolutrath);
             GD.Print("save");
             // Сериализуем данные в JSON (с отступами для читаемости)
             string json = JsonSerializer.Serialize(save, new JsonSerializerOptions { WriteIndented = true });
@@ -40,13 +41,13 @@ public partial class SaveGame : Node2D
 
     public void delsave()
     {
-        string json = JsonSerializer.Serialize(new JsonSerializerOptions { WriteIndented = true });
         // Записываем в файл
-        File.WriteAllText(absolutrath, json);
+        File.WriteAllText(absolutrath, null);
 
     }
     public void LoadGame()
     {
+        
         if (!File.Exists(absolutrath))
         {
             return;
@@ -76,7 +77,7 @@ public partial class SaveGame : Node2D
     {
         string json = JsonSerializer.Serialize(save, new JsonSerializerOptions { WriteIndented = true });
         Player.dead += delsave;
-        UiPcPlaer.save += Save_data_Game;
+
     }
 
     public override void _Process(double delta)
@@ -90,8 +91,9 @@ public partial class SaveGame : Node2D
     }
     public void _on_save()
     {
+        LoadGame();
         save_playe_game?.Invoke();
-
+        Fader.load = true;
         LoadNewScene("res://scene/scen/game_scen/main.tscn");
     }
     public void _on_undo()

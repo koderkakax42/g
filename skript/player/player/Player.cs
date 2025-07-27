@@ -8,42 +8,31 @@ public partial class Player : CharacterBody2D
 {
 	public static event Action dead = delegate { };
 	public String TargetScenePath = "res://scene/scen/load_scen/fader.tscn";
-	public  event Action startbullit = delegate { };
-	[Export] UiPcPlaer UI { get; set; } = null!;
+	UiPcPlaer UI { get; set; } = null!;
 	public int Health = 100;
 	public Vector2 inputDirection;
 	public PackedScene BulletScene = null!; // Сцена пули
 	[Export] public float Speed = 900;
 	[Export] public float FireRate = 2f; // Выстрелов в секунду
 	[Export] public float BulletSpeed = 400f;
-	private int ValueMoney = 0;
+	public int ValueMoney { private set; get; } = 0;
 	private float _timeSinceLastFire = 0f;
 	public AnimatedSprite2D _animatedSprite = null!;
-	public string money = "0";
 	public Enemy enemy2;
-	[Export] Deteckt? deteckt = null;
-#if DEBUG
-	private static PackedScene scene;
-	bool debag = false;
-	public void star()
-	{
-		debag = true;
-		scene = GD.Load<PackedScene>("res://scene/debag/console.tscn");
-		GD.Print("gd.print debag ");
-		var i = (Console)scene.Instantiate();
-		GetParent().AddChild(i);
-		i.GlobalPosition = GetGlobalMousePosition();
+	[Export] Deteckt deteckt = null;
 
-	}
-#endif
 	public override void _Ready()
 	{
 		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		BulletScene = GD.Load<PackedScene>("res://scene/atack/atack/atack.tscn");
-
-		if (UI == null)
-			GD.Print("null UI ");
-
+		BulletScene = GD.Load<PackedScene>("res://scene/atack/atack/atack.tscn");		
+		CallDeferred("i");
+	}
+	private void i()
+	{
+		PackedScene scene = GD.Load<PackedScene>("res://scene/ui/ui_pc_plaer.tscn");
+		UI = (UiPcPlaer)scene.Instantiate();
+		GetParent().AddChild(UI);
+		UI.player = this;
 		UI.value.MaxValue = Health;
 	}
 	private void health()
@@ -78,7 +67,10 @@ public partial class Player : CharacterBody2D
 		}
 		else
 		{
-			_animatedSprite.Pause();
+			if (Health >= 1 && _animatedSprite != null)
+			{
+				_animatedSprite.Pause();
+			}
 		}
 
 
@@ -187,12 +179,12 @@ public partial class Player : CharacterBody2D
 	{
 		inputDirection = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 		Velocity = inputDirection * Speed;
+		Rotation = Mathf.Atan2(inputDirection.Y, inputDirection.X);
 	}
 	public void moneyvalue()
 	{
 		ValueMoney++;
-		money = ValueMoney.ToString();
-		UI._on_vale(money);
+		UI._on_vale(ValueMoney.ToString());
 	}
 
 	private void atackelement(Atack atack)
@@ -200,12 +192,19 @@ public partial class Player : CharacterBody2D
 
 		for (int i = 0; i < Atack.areaelementnomber.Count();)
 		{
-			Atack.areaelementnomber[i]  = UI.slotarei[i].Qkod.Remove(1).ToInt();
+			Atack.areaelementnomber[i] = UI.slotarei[i].Qkod.Remove(1).ToInt();
 			i++;
 		}
 
 		atack.elementarreislot = UI.slotarei;
-		atack.elementatack(0,atack);
+		atack.elementatack(0, atack);
 	}
 
+	public void LoadDate(float X, float Y, float health, float Money)
+	{
+		GlobalPosition = new Vector2(X, Y);
+		Health = (int)health;
+		ValueMoney = (int)Money;
+		UI._on_vale(Money.ToString());
+	}
 }

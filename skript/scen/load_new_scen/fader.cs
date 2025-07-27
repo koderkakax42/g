@@ -9,26 +9,32 @@ public partial class Fader : CanvasLayer
     private const string SAVE_PATH = "user://save.json";
     public static String ScenePath { get; set; }
 
+    public static bool load = false;
     public static bool Load = false;
     private AnimationPlayer _animationPlayer;
 
 
     public static void chec_save()
     {
-        if (Load)
-        {
-            GD.Print("load");
-            Load = false;
-            return;
-        }
+
         try
         {
             GD.Print("save poisc");
             string absolutpath = ProjectSettings.GlobalizePath(SAVE_PATH);
-
             if (File.Exists(absolutpath))
             {
-                ScenePath = "res://scene/save/save_game.tscn";
+
+                string json = File.ReadAllText(absolutpath);
+
+                if (string.IsNullOrWhiteSpace(json))
+                {
+                    GD.Print("fader 2");
+                    return;
+                }
+                else
+                {
+                    ScenePath = "res://scene/save/save_game.tscn";
+                }
             }
             else
             {
@@ -85,9 +91,11 @@ public partial class Fader : CanvasLayer
         {
             //Отписываемся от сигнала
             _animationPlayer.AnimationFinished -= OnAnimationFinished;
-            //Как только FadeOut закончился, загружаем новую сцену
+            //Как только FadeOut закончился, загружаем новую сце
 
             LoadNewScene();
+
+
         }
     }
 
@@ -96,6 +104,12 @@ public partial class Fader : CanvasLayer
     {
         SceneTree tree = GetTree();
         tree.ChangeSceneToFile(ScenePath);
-        Load = true;
+
+        if (load)
+        {         
+            Main.load();
+            load = false;
+        }
     }
+
 }

@@ -6,7 +6,6 @@ using System;
 public partial class Meny : Control
 {
         public String TargetScenePath = "res://scene/scen/load_scen/fader.tscn"; // Путь к сцене, которую нужно загрузить
-    
 
     public void _on_button_pressed()
     {
@@ -17,18 +16,19 @@ public partial class Meny : Control
         }
        Fader.ScenePath = "res://scene/scen/game_scen/main.tscn";
        Fader.chec_save();
-       Fader.Load = false;
        LoadNewScene();
     }
 
 
-     private void LoadNewScene()
+    private void LoadNewScene()
     {
         // Получаем SceneTree
         SceneTree tree = GetTree();
-        
+
         // Останавливаем текущую сцену.  Это ВАЖНО.
+              Fader.Load = false;
         tree.ChangeSceneToFile(TargetScenePath);
+        
     }
     public override void _Ready()
     {
