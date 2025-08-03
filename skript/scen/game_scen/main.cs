@@ -3,6 +3,9 @@ using System;
 
 public partial class Main : Node2D
 {
+	static Node2D node;
+	static bool r = false;
+
 	static bool saveload = false;
 	float i = 0;
 	float X = 0;
@@ -15,29 +18,30 @@ public partial class Main : Node2D
 		if (saveload)
 		{
 			i += (float)delta;
-			GD.Print(i);
+			//GD.Print(i);
 			if (i >= 1)
 			{
 				saveload = false;
 				LoadDate();
 			}
 		}
+
+		if (r)
+		{
+			i += (float)delta;
+			GD.Print(i);
+			if (i >= 1)
+			{
+				r = false;
+				ei(node);
+			}
+		}
+
 	}
 	public override void _Ready()
 	{
-		//sceneeffect = GD.Load<PackedScene>("res://scene/atack/atack/poisoneffect.tscn");
 
 
-
-		Node parent = GetParent();
-		if (parent != null)
-		{
-			// Работаем с parent
-		}
-		else
-		{
-			GD.PrintErr("Родитель не найден!");
-		}
 		UiPcPlaer.time_stop += timestop;
 		Shest.time_start += timestart;
 		SpeedSettings.time_start += timestart;
@@ -67,7 +71,7 @@ public partial class Main : Node2D
 		System.Console.WriteLine("main loaddate ");
 		foreach (Player player in GetTree().GetNodesInGroup("Player"))
 		{
-			GD.Print("11");
+			//	GD.Print("11");
 			player.QueueFree();
 		}
 		foreach (Spawn spawn in GetTree().GetNodesInGroup("spawner"))
@@ -76,7 +80,7 @@ public partial class Main : Node2D
 		}
 		foreach (Enemy enemy in GetTree().GetNodesInGroup("enemy"))
 		{
-			GD.Print("22");
+			//GD.Print("22");
 			enemy.QueueFree();
 		}
 
@@ -87,14 +91,14 @@ public partial class Main : Node2D
 				loadplayer(person.Key, person.Value.GetSingle());
 			}
 
-			if (person.Key.Length == 21 && person.Key.Substring(5,5) == "enemy")
+			if (person.Key.Length == 21 && person.Key.Substring(5, 5) == "enemy")
 			{
 				loadenemy(person.Key, person.Value.GetSingle());
 			}
 			else
-			{	
-				if(person.Key.Length >= 16 )
-				GD.Print(person.Key + "  " + person.Key.Length+ "  " + person.Key.Substring(5, 5));
+			{
+				if (person.Key.Length >= 16)
+					GD.Print(person.Key + "  " + person.Key.Length + "  " + person.Key.Substring(5, 5));
 			}
 		}
 		foreach (Spawn spawn in GetTree().GetNodesInGroup("spawner"))
@@ -123,15 +127,15 @@ public partial class Main : Node2D
 				break;
 			case "money ":
 				PackedScene scene = GD.Load<PackedScene>("res://scene/player/player.tscn");
-				 player = (Player)scene.Instantiate();
+				player = (Player)scene.Instantiate();
 				AddChild(player);
 				player.LoadDate(X, Y, health, t);
-				GD.Print("66");
+				//GD.Print("66");
 				break;
 			default:
 				break;
 		}
-		GD.Print("33");
+		//GD.Print("33");
 	}
 
 	private void loadenemy(string s, float t)
@@ -150,12 +154,44 @@ public partial class Main : Node2D
 				scene = GD.Load<PackedScene>("res://scene/enemy/enemy/enemy.tscn");
 				var enemy = (Enemy)scene.Instantiate();
 				AddChild(enemy);
-				enemy.LoadData(X, Y, health, s.Remove(5),player);
+				enemy.LoadData(X, Y, health, s.Remove(5), player);
 				break;
 			default:
 				break;
 		}
-		GD.Print(44);
+		//GD.Print(44);
+	}
+
+	public static void Dange(Node2D blocke)
+	{
+		r = true;
+		node = blocke;
+		System.Console.WriteLine(45);
+	}
+	private void ei(Node2D ii)
+	{
+		StaticBody2D u = GetNode<StaticBody2D>("StaticBody2D");
+		u.AddChild(ii);
+		//System.Console.WriteLine(56);
+
+		foreach (Spawn spawn in GetTree().GetNodesInGroup("spawner"))
+		{
+			spawn.QueueFree();
+		}
+		foreach (Enemy enemy in GetTree().GetNodesInGroup("enemy"))
+		{
+			enemy.QueueFree();
+		}
+		bossSpavn();
+	}
+
+	private void bossSpavn()
+	{
+		PackedScene scene = GD.Load<PackedScene>("res://scene/enemy/enemy/boss.tscn");
+		Enemy enemy = (Enemy)scene.Instantiate();
+		enemy.bossism();
+		enemy.GlobalPosition = new Vector2((float)-6498.0, (float)-421.0);
+		AddChild(enemy);
 	}
 
 }

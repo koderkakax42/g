@@ -5,18 +5,13 @@ using System;
 
 public partial class Meny : Control
 {
-        public String TargetScenePath = "res://scene/scen/load_scen/fader.tscn"; // Путь к сцене, которую нужно загрузить
+    // Путь к сцене, которую нужно загрузить
 
     public void _on_button_pressed()
     {
-        if (TargetScenePath == null)
-        {
-            GD.PrintErr("TargetScenePath is not assigned!");
-            return; // Важно: выйти из функции, если путь не задан
-        }
-       Fader.ScenePath = "res://scene/scen/game_scen/main.tscn";
-       Fader.chec_save();
-       LoadNewScene();
+        Fader.ScenePath = "res://scene/scen/game_scen/main.tscn";
+        Fader.chec_save();
+        LoadNewScene();
     }
 
 
@@ -26,15 +21,15 @@ public partial class Meny : Control
         SceneTree tree = GetTree();
 
         // Останавливаем текущую сцену.  Это ВАЖНО.
-              Fader.Load = false;
-        tree.ChangeSceneToFile(TargetScenePath);
-        
+       
+        tree.ChangeSceneToFile("res://scene/scen/load_scen/fader.tscn");
+
     }
     public override void _Ready()
     {
-       
-         GetWindow().MinSize = new Vector2I(480,280 );
-        GetWindow().MaxSize = new Vector2I(1920,960);
+
+        GetWindow().MinSize = new Vector2I(480, 280);
+        GetWindow().MaxSize = new Vector2I(1920, 960);
         // Подключаемся к сигналу size_changed
         GetWindow().Connect("size_changed", new Callable(this, nameof(OnWindowSizeChanged)));
     }
@@ -42,7 +37,13 @@ public partial class Meny : Control
     private void OnWindowSizeChanged()
     {
         Vector2 newSize = GetWindow().Size;
-        
-	//	windows.Scale = new Vector2(newSize.X , newSize.Y );
+
+        //	windows.Scale = new Vector2(newSize.X , newSize.Y );
+    }
+
+    private void _apgreid_button()
+    {
+        Fader.ScenePath = "res://scene/ui/meny/appdait.tscn";
+        LoadNewScene();
     }
 }

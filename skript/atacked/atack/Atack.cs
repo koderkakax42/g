@@ -6,6 +6,7 @@ using System.Linq;
 
 public partial class Atack : Area2D
 {
+  public Enemy Enemy; 
   float magnittaimer = 0;
    List<Enemy> enemyformagnet = new List<Enemy>();
   public Area2D magnit = new Area2D();
@@ -18,15 +19,14 @@ public partial class Atack : Area2D
   bool neironactiveyion = false;
   public PackedScene sceneeffect;
   AnimatedSprite2D animated;
-  public static int damage = 20;
+  public  int damage = 20;
   public Vector2 Direction { get; set; }
   public float Speed = 900;
-  public Player Player { get; set; } = new Player();
+  public Player Player;
   public float time_bul = 7f;
   [Export] public CollisionShape2D collision;
   public static int[] areaelementnomber = new int[5];
   // public List<PoisonEffect> poisonEffects = new List<PoisonEffect>(3);
-  public Slot[] elementarreislot;
 
   public override void _Ready()
   {
@@ -93,7 +93,7 @@ public partial class Atack : Area2D
         break;
     }
     magnittaimer += 0.005f;
-    if (magnittaimer >= 0.1 && enemyformagnet.Count() != null && enemyformagnet.Count() > 0)
+    if (magnittaimer >= 0.1 && enemyformagnet.Count() > -1 && enemyformagnet.Count() > 0)
     {
       magnittaimer = 0;
       controlmagnetic(magnit, radiusmagnits);
@@ -114,9 +114,22 @@ public partial class Atack : Area2D
 
   private void OnBodyEntered(Node2D body)
   {
+    GD.Print(body.Name  );
+    GD.Print( Enemy != null  );
+    GD.Print(Player != null );
 
-    // GD.Print(Direction +"   "+Speed+"   "+body+"    "+Player);
-    // Проверяем, что столкнулись с врагом и что это не сам игрок
+    if (body is Player player && Enemy != null)
+    {
+      if (areaelementnomber[0] == 3)
+      {
+        player.effect();
+      }
+      // GD.Print(Direction +"   "+Speed+"   "+body+"    "+Player);
+      player.DamageEnemys(damage);
+
+      CallDeferred("dead");
+    }
+
     if (body is Enemy enemy && Player != null)
     {
       if (areaelementnomber[0] == 3)
@@ -128,6 +141,7 @@ public partial class Atack : Area2D
 
       CallDeferred("dead");
     }
+
   }
 
   public void elementatack(int nomber, Atack atack)

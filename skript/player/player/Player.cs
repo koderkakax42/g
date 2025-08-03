@@ -20,11 +20,12 @@ public partial class Player : CharacterBody2D
 	public AnimatedSprite2D _animatedSprite = null!;
 	public Enemy enemy2;
 	[Export] Deteckt deteckt = null;
-
+	Godot.Timer timetolive;
+		int poisontime = 0;
 	public override void _Ready()
 	{
 		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		BulletScene = GD.Load<PackedScene>("res://scene/atack/atack/atack.tscn");		
+		BulletScene = GD.Load<PackedScene>("res://scene/atack/atack/atack.tscn");
 		CallDeferred("i");
 	}
 	private void i()
@@ -195,8 +196,6 @@ public partial class Player : CharacterBody2D
 			Atack.areaelementnomber[i] = UI.slotarei[i].Qkod.Remove(1).ToInt();
 			i++;
 		}
-
-		atack.elementarreislot = UI.slotarei;
 		atack.elementatack(0, atack);
 	}
 
@@ -206,5 +205,30 @@ public partial class Player : CharacterBody2D
 		Health = (int)health;
 		ValueMoney = (int)Money;
 		UI._on_vale(Money.ToString());
+	}
+	public void effect()
+	{
+		timetolive = new Godot.Timer();
+		AddChild(timetolive);
+		timetolive.WaitTime = 1;
+		timetolive.Timeout += poison;
+		timetolive.Start();
+	}
+
+	private void poison()
+	{
+		Health -= 5;
+		if (Health <= 0)
+		{
+			CallDeferred("dead");
+		}
+		poisontime++;
+		if (poisontime >= 4)
+		{
+			poisontime = 0;
+			GD.Print("poison enemy");
+			timetolive.Stop();
+			return;
+		}
 	}
 }
