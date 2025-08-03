@@ -10,7 +10,7 @@ public partial class Fader : CanvasLayer
     public static String ScenePath { get; set; }
 
     public static bool load = false;
-    public static bool Load = false;
+   
     private AnimationPlayer _animationPlayer;
 
 
@@ -47,7 +47,8 @@ public partial class Fader : CanvasLayer
             GD.Print($"{ex.Message} fader.");
         }
     }
-    public override void _Ready()
+
+      public override void _Ready()
     {
 
         _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
@@ -99,6 +100,10 @@ public partial class Fader : CanvasLayer
         }
     }
 
+    public static void d(Node2D node)
+    {
+        Main.Dange(node);
+    }
 
     private void LoadNewScene()
     {
@@ -106,7 +111,7 @@ public partial class Fader : CanvasLayer
         tree.ChangeSceneToFile(ScenePath);
 
         if (load)
-        {         
+        {
             Main.load();
             load = false;
         }

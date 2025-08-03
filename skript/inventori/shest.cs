@@ -76,15 +76,16 @@ public partial class Shest : PanelContainer
 		else
 		{
 
-			if (IsInstanceValid(slot) && IsInstanceValid(slot1))
+			if (IsInstanceValid(slot1) && IsInstanceValid(slot))
 			{
 				string slotcode = slot.Qkod.Remove(1);
+				string slotcode1 = slot1.Qkod.Remove(1);
 
 
-				slot.Qkod = slot1.Qkod;
+				slot.Qkod = slotcode1 + slot1.Name;
 				slot1.Qkod = slotcode + slot1.Name;
 
-				slot.element(Convert.ToInt32(slot1.Qkod.Remove(1)));
+				slot.element(slotcode1.ToInt());
 				slot1.element(slotcode.ToInt());
 
 

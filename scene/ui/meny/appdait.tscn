@@ -65,3 +65,25 @@ offset_right = 996.0
 offset_bottom = 252.0
 theme_override_font_sizes/font_size = 50
 text = "+ 1 arrow"
+
+[node name="Button6" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.546
+anchor_top = 0.5
+anchor_right = 0.866988
+anchor_bottom = 0.898169
+offset_left = 0.00799561
+offset_top = -54.0
+offset_right = 0.229492
+offset_bottom = -0.0131836
+theme_override_font_sizes/font_size = 57
+text = "назад"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Button2" to="." method="_on_hp"]
+[connection signal="pressed" from="Button" to="." method="_on_atack"]
+[connection signal="pressed" from="Button3" to="." method="_on_speed"]
+[connection signal="pressed" from="Button4" to="." method="_on_strong"]
+[connection signal="pressed" from="Button5" to="." method="_one_atack"]
+[connection signal="pressed" from="Button6" to="." method="_on_beck"]
