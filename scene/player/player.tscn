@@ -368,6 +368,8 @@ size = Vector2(66, 59)
 
 [node name="player" type="CharacterBody2D" node_paths=PackedStringArray("deteckt") groups=["Player", "save"]]
 position = Vector2(686, 383)
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_ajqqa")
 deteckt = NodePath("deteckt")
 
@@ -376,6 +378,8 @@ rotation = 6.28319
 skew = 1.56905
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 3
+visibility_layer = 3
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_rq4h4")
 

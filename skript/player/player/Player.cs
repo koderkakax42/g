@@ -226,7 +226,6 @@ public partial class Player : CharacterBody2D
 		if (poisontime >= 4)
 		{
 			poisontime = 0;
-			GD.Print("poison enemy");
 			timetolive.Stop();
 			return;
 		}

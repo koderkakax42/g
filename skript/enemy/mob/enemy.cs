@@ -4,7 +4,6 @@ using System.Linq;
 
 public partial class Enemy : CharacterBody2D
 {
-	bool boss = false;
 	Vector2 direction;
 	Godot.Timer timetolive;
 	int poisontime = 0;
@@ -12,7 +11,7 @@ public partial class Enemy : CharacterBody2D
 	[Export] public int Speed = 350;
 	public int Damage = 10;
 	public static event Action enemydeads = delegate { };
-	private Node2D target = null!;
+	public Node2D target {  set; get; } = null!;
 	public Area2D Body = null!;
 	float time = 10;
 	public PackedScene moneyscene { get; set; } = null!;
@@ -22,10 +21,8 @@ public partial class Enemy : CharacterBody2D
 	private AnimatedSprite2D _animatedSprite = null!;
 	bool atack = true;
 	float attaimer;
-	public PackedScene BulletScene = null!;
 	public string EnemyId { get; set; } = Guid.NewGuid().ToString();
-	AnimationTree animation = new AnimationTree();
-	AnimationNodeStateMachinePlayback _stateMachine;
+
 
 	public void LoadData(float X, float Y, float health, string id, Node2D player)
 	{
@@ -47,14 +44,8 @@ public partial class Enemy : CharacterBody2D
 
 		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 
-		BulletScene = GD.Load<PackedScene>("res://scene/atack/atack/atack.tscn");
-		if (boss)
-		{
-			animation = GetNode<AnimationTree>("AnimationTree");
-			animation.Active = true;
-			_stateMachine = (AnimationNodeStateMachinePlayback)animation.Get("parameters/playback");
-			_stateMachine.Start("Start");
-		}
+		
+		
 	}
 	private void spawnmoney()
 	{
@@ -91,17 +82,9 @@ public partial class Enemy : CharacterBody2D
 		if (poisontime >= 4)
 		{
 			poisontime = 0;
-			GD.Print("poison enemy");
 			timetolive.Stop();
 			return;
 		}
-	}
-
-	private void _QueueFree()
-	{
-		air.QueueFree();
-		GD.Print("time stop");
-
 	}
 
 	private void OnBodyEntered(Node2D body)
@@ -118,7 +101,7 @@ public partial class Enemy : CharacterBody2D
 
 
 	}
-	public void TakeDamage(int damage)
+	public virtual void TakeDamage(int damage)
 	{
 		Health -= damage;
 
@@ -132,50 +115,7 @@ public partial class Enemy : CharacterBody2D
 			timetolive.Start();
 		}
 
-		if (boss)
-		{
-			bullshit();
-		}
-	}
-
-
-	private void bullshit()
-	{
-		var bullet = (Atack)BulletScene.Instantiate();
-		GetParent().AddChild(bullet);
-		Atack.areaelementnomber = effectAtack();
-		bullet.elementatack(0, bullet);
-		bullet.damage = 50;
-		bullet.GlobalPosition = GlobalPosition;
-		bullet.SetDirection(target.GlobalPosition);
-		bullet.Enemy = this;
-
-		_stateMachine.Travel("atack");
-		Speed = 0;
-
-		timetolive = new Godot.Timer();
-		AddChild(timetolive);
-		timetolive.WaitTime = 2;
-		timetolive.OneShot = true;
-		timetolive.Timeout += startrun;
-		timetolive.Start();
-	}
-
-	private void startrun()
-	{
-		Speed = 800;
-	}
-
-	private int[] effectAtack()
-	{
-		int[] nomber = new int[5];
-		Random random = new Random();
-		for (int i = 0; i < Atack.areaelementnomber.Count();)
-		{
-			nomber[i] = random.Next(0, 6);
-			i++;
-		}
-		return nomber;
+		
 	}
 
 	private void dead()
@@ -208,26 +148,15 @@ public partial class Enemy : CharacterBody2D
 
 		Velocity = direction * Speed;
 
-		if (target != null && !boss)
+		if (target != null)
 			_animatedSprite.Play("run");
 		else
 		{
-			if (!boss)
-			{
-				_animatedSprite.Stop();
-			}
+
+			_animatedSprite.Stop();
+
 		}
 
 		MoveAndSlide();
 	}
-
-	public void bossism()
-	{
-		Health = 1000;
-		Damage = 100;
-		Speed = 800;
-		boss = true;
-	}
-
-
 }

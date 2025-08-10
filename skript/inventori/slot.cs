@@ -49,7 +49,6 @@ public partial class Slot : PanelContainer
 		if (Input.IsActionPressed("leftPressed") && (bool)slot&&timer>=0.05f)
 		{
 			slot = false;
-			GD.Print(Name);
 			timer = 0;
 			slotchoise?.Invoke(this);
 		}

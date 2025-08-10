@@ -74,18 +74,18 @@ public partial class UiPcPlaer : PanelContainer
 		}
 		foreach (Player player in GetTree().GetNodesInGroup("Player"))
 		{
-			GD.Print(1);
+	
 
 			if (IsInstanceValid(player))
 			{
-				GD.Print(5);
+			
 				SaveGame.save = new Dictionary<string, float>();
 
 				SaveGame.save.TryAdd("player positon x", player.GlobalPosition.X);
 				SaveGame.save.TryAdd("player position y", player.GlobalPosition.Y);
 				SaveGame.save.TryAdd("player health", player.Health);
 				SaveGame.save.TryAdd("player money ", player.ValueMoney);
-				GD.Print(4);
+	
 				saveenemy();
 			}
 		}
@@ -95,10 +95,10 @@ public partial class UiPcPlaer : PanelContainer
 	{
 		foreach (Enemy enemy in GetTree().GetNodesInGroup("enemy"))
 		{
-			GD.Print(3);
+			
 			if (IsInstanceValid(enemy))
 			{
-				GD.Print(4);
+				
 
 				SaveGame.save.TryAdd(enemy.EnemyId + "enemy X position", enemy.GlobalPosition.X);
 				SaveGame.save.TryAdd(enemy.EnemyId + "enemy Y position", enemy.GlobalPosition.Y);
@@ -106,7 +106,7 @@ public partial class UiPcPlaer : PanelContainer
 
 			}
 		}
-		GD.Print(7);
+		
 
 		Save.Save_data_Game();
 
@@ -115,8 +115,6 @@ public partial class UiPcPlaer : PanelContainer
 	private void _on_button()
 	{
 		saveplayer();
-
-		GD.Print(" save is truy . ");
 	}
 	private void _on_meny()
 	{

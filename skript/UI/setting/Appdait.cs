@@ -39,18 +39,21 @@ public partial class Appdait : Control
 
     private void _on_hp()
     {
+         Boss.progress = "health";
         Fader.ScenePath = "res://scene/scen/game_scen/main.tscn";
         Fader.d(collision);
         LoadNewScene();
     }
     private void _on_atack()
     {
+        Boss.progress = "atack";
         Fader.d(collision);
         Fader.ScenePath = "res://scene/scen/game_scen/main.tscn";
         LoadNewScene();
     }
     private void _on_strong()
     {
+         Boss.progress = "demage";
         Fader.d(collision);
         Fader.ScenePath = "res://scene/scen/game_scen/main.tscn";
         LoadNewScene();
@@ -62,12 +65,14 @@ public partial class Appdait : Control
     }
     private void _on_speed()
     {
+         Boss.progress = "speed";
         Fader.d(collision);
         Fader.ScenePath = "res://scene/scen/game_scen/main.tscn";
         LoadNewScene();
     }
     private void _one_atack()
     {
+         Boss.progress = "dupe";
         Fader.d(collision);
         Fader.ScenePath = "res://scene/scen/game_scen/main.tscn";
         LoadNewScene();
