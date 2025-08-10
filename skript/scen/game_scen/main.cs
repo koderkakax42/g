@@ -110,7 +110,6 @@ public partial class Main : Node2D
 	public static void load()
 	{
 		saveload = true;
-		System.Console.WriteLine("main load");
 	}
 	private void loadplayer(string s, float t)
 	{
@@ -166,7 +165,7 @@ public partial class Main : Node2D
 	{
 		r = true;
 		node = blocke;
-		System.Console.WriteLine(45);
+		
 	}
 	private void ei(Node2D ii)
 	{
@@ -188,10 +187,9 @@ public partial class Main : Node2D
 	private void bossSpavn()
 	{
 		PackedScene scene = GD.Load<PackedScene>("res://scene/enemy/enemy/boss.tscn");
-		Enemy enemy = (Enemy)scene.Instantiate();
-		enemy.bossism();
-		enemy.GlobalPosition = new Vector2((float)-6498.0, (float)-421.0);
-		AddChild(enemy);
+		Boss boss = (Boss)scene.Instantiate();
+		boss.GlobalPosition = new Vector2((float)-6498.0, (float)-421.0);
+		AddChild(boss);
 	}
 
 }

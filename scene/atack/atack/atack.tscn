@@ -187,6 +187,8 @@ script = ExtResource("1_vrqaw")
 collision = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 2
+visibility_layer = 2
 position = Vector2(-0.25, 0.25)
 shape = SubResource("RectangleShape2D_c6f82")
 

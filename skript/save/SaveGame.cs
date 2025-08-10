@@ -14,10 +14,12 @@ public partial class SaveGame : Node2D
     public static event Action new_game = delegate { };
     public static event Action save_playe_game = delegate { };
     // Called when the node enters the scene tree for the first time.
+    private const string PROGRESSSAVE_PATH = "user://progresssave.json";
 
     private const string SAVE_PATH = "user://save.json";
     private static string absolutrath = ProjectSettings.GlobalizePath(SAVE_PATH);
 
+private static string absolutrathprogress = ProjectSettings.GlobalizePath(PROGRESSSAVE_PATH);
 
     public void Save_data_Game()
     {
@@ -47,7 +49,7 @@ public partial class SaveGame : Node2D
     }
     public void LoadGame()
     {
-        
+
         if (!File.Exists(absolutrath))
         {
             return;
@@ -106,5 +108,23 @@ public partial class SaveGame : Node2D
         Fader.ScenePath = path;
         SceneTree tree = GetTree();
         tree.ChangeSceneToFile("res://scene/scen/load_scen/fader.tscn");
+    }
+
+    public static void saveprogres(string i)
+    {
+          try
+        {
+            GD.Print("uihgfgkfdhgu");
+            // Сериализуем данные в JSON (с отступами для читаемости)
+            string json = JsonSerializer.Serialize(i, new JsonSerializerOptions { WriteIndented = true });
+            // Записываем в файл
+            File.WriteAllText(absolutrathprogress, json);
+
+        }
+        catch (Exception ex)
+        {
+            GD.Print($"Ошибка сохранения: {ex.Message}");
+        }
+
     }
 }

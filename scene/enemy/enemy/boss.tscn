@@ -1,12 +1,12 @@
-[gd_scene load_steps=26 format=3 uid="uid://ck5f56my6ybud"]
+[gd_scene load_steps=27 format=3 uid="uid://ck5f56my6ybud"]
 
 [ext_resource type="PackedScene" uid="uid://q5to51umwgje" path="res://scene/enemy/enemy/enemy.tscn" id="1_aad6x"]
+[ext_resource type="Script" uid="uid://dca01owjaknp1" path="res://skript/enemy/mob/Boss.cs" id="2_2cbu3"]
 [ext_resource type="Texture2D" uid="uid://cx24qky73skly" path="res://sprait/charecter/enemy/enemy.png.png" id="2_nmsdf"]
 
 [sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_2cbu3"]
 bone_index = 0
 bone2d_node = NodePath("Bone2D")
-target_nodepath = NodePath("Bone2D/Bone2D/Bone2D")
 
 [sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_bwpkn"]
 bone_index = 1
@@ -288,7 +288,7 @@ _data = {
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ia5db"]
-animation = &"atack"
+animation = &"RESET"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_naykb"]
 animation = &"run"
@@ -322,9 +322,10 @@ switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3ywej"]
+states/End/position = Vector2(900, 97.3335)
 states/Start/position = Vector2(182.667, 98.6667)
 states/atack/node = SubResource("AnimationNodeAnimation_ia5db")
-states/atack/position = Vector2(500, 99.3333)
+states/atack/position = Vector2(500, 99.3334)
 states/run/node = SubResource("AnimationNodeAnimation_ncpru")
 states/run/position = Vector2(308, 46)
 "states/run 2/node" = SubResource("AnimationNodeAnimation_naykb")
@@ -332,6 +333,7 @@ states/run/position = Vector2(308, 46)
 transitions = ["Start", "run", SubResource("AnimationNodeStateMachineTransition_friru"), "run", "run 2", SubResource("AnimationNodeStateMachineTransition_jgdcy"), "run 2", "run", SubResource("AnimationNodeStateMachineTransition_rc23c"), "run 2", "atack", SubResource("AnimationNodeStateMachineTransition_o2lc8"), "run", "atack", SubResource("AnimationNodeStateMachineTransition_0sjcg"), "run", "End", SubResource("AnimationNodeStateMachineTransition_0sp1f"), "atack", "End", SubResource("AnimationNodeStateMachineTransition_2w82d"), "run 2", "End", SubResource("AnimationNodeStateMachineTransition_0tgmr"), "atack", "run", SubResource("AnimationNodeStateMachineTransition_nmsdf")]
 
 [node name="boss" instance=ExtResource("1_aad6x")]
+script = ExtResource("2_2cbu3")
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
 offset_left = -72.0
@@ -369,29 +371,30 @@ bones = ["Bone2D", PackedFloat32Array(1, 1, 0.5, 0, 0, 0, 0, 0.5), "Bone2D/Bone2
 [node name="Bone2D" type="Bone2D" parent="Skeleton2D" index="1"]
 position = Vector2(107, -62)
 rotation = 1.5708
-scale = Vector2(4.99999, 4.99999)
+scale = Vector2(5, 5)
 rest = Transform2D(-2.18557e-07, 5, -5, -2.18557e-07, 107, -62)
 
 [node name="Bone2D" type="Bone2D" parent="Skeleton2D/Bone2D" index="0"]
 position = Vector2(13, -0.600002)
 rotation = 0.00617111
-scale = Vector2(0.999858, 0.999858)
+scale = Vector2(0.999846, 0.999846)
 rest = Transform2D(1, 0, 0, 1, 13, -0.600002)
 
 [node name="Bone2D" type="Bone2D" parent="Skeleton2D/Bone2D/Bone2D" index="0"]
 position = Vector2(13, 14)
-scale = Vector2(0.499936, 0.499936)
+scale = Vector2(0.499927, 0.499927)
 rest = Transform2D(0.25, 0.433013, -0.433013, 0.25, 11.6, 9)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
 
 [node name="Area2D" type="Area2D" parent="Skeleton2D/Bone2D/Bone2D/Bone2D" index="0"]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/Bone2D/Bone2D/Bone2D/Area2D" index="0"]
 position = Vector2(8.43538, -0.210514)
 shape = SubResource("CircleShape2D_cqnoq")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="Skeleton2D/Bone2D/Bone2D" index="1"]
-visible = false
 position = Vector2(11.6, 9)
 rotation = 1.0472
 scale = Vector2(0.5, 0.5)

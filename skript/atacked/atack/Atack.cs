@@ -6,9 +6,10 @@ using System.Linq;
 
 public partial class Atack : Area2D
 {
-  public Enemy Enemy; 
+  CircleShape2D settingradius = new CircleShape2D();
+  public Enemy Enemy;
   float magnittaimer = 0;
-   List<Enemy> enemyformagnet = new List<Enemy>();
+  List<Enemy> enemyformagnet = new List<Enemy>();
   public Area2D magnit = new Area2D();
   public CollisionShape2D radiusmagnits = new CollisionShape2D();
   public bool atackdiablo = false;
@@ -19,7 +20,7 @@ public partial class Atack : Area2D
   bool neironactiveyion = false;
   public PackedScene sceneeffect;
   AnimatedSprite2D animated;
-  public  int damage = 20;
+  public int damage = 20;
   public Vector2 Direction { get; set; }
   public float Speed = 900;
   public Player Player;
@@ -27,9 +28,9 @@ public partial class Atack : Area2D
   [Export] public CollisionShape2D collision;
   public static int[] areaelementnomber = new int[5];
   // public List<PoisonEffect> poisonEffects = new List<PoisonEffect>(3);
-
   public override void _Ready()
   {
+    settingradius.Radius = 0;
     magnit.AreaEntered += onmagnet;
     magnit.AreaExited += offmagnet;
     BodyEntered += OnBodyEntered;
@@ -39,7 +40,6 @@ public partial class Atack : Area2D
 
     animated = GetNode<AnimatedSprite2D>("CollisionShape2D/AnimatedSprite2D");
   }
-
   private void live_bullet()
   {
     Godot.Timer timetolive = new Godot.Timer();
@@ -51,23 +51,25 @@ public partial class Atack : Area2D
   }
   private void dead()
   {
-    if (magnit != null)
-    {
-      
-    }
     QueueFree();
   }
-
   public override void _PhysicsProcess(double delta)
   {
     if (neironactiveyion)
     {
-      Direction = (GlobalPosition - Player.GlobalPosition).Normalized();
+      if (Player != null)
+      {
+        Direction = (GlobalPosition - Player.GlobalPosition).Normalized();
+      }
+      if (Enemy != null)
+      {
+        Direction = (GlobalPosition - Enemy.GlobalPosition).Normalized();
+      }
+
       Rotation = (float)Math.Atan2(Direction.Y, Direction.X);
     }
+
     GlobalPosition += Direction * Speed * (float)delta;
-
-
 
     switch (areaelementnomber[0])
     {
@@ -96,11 +98,10 @@ public partial class Atack : Area2D
     if (magnittaimer >= 0.1 && enemyformagnet.Count() > -1 && enemyformagnet.Count() > 0)
     {
       magnittaimer = 0;
-      controlmagnetic(magnit, radiusmagnits);
+      controlmagnetic();
     }
 
   }
-
   public void SetDirection(Vector2 targetPosition)
   {
     Direction = (targetPosition - GlobalPosition).Normalized();
@@ -111,15 +112,13 @@ public partial class Atack : Area2D
     Direction = ((GetGlobalMousePosition() - GlobalPosition) * invertor).Normalized();
     Rotation = Mathf.Atan2(Direction.Y, Direction.X); // Поворачиваем пулю в направлении движения
   }
-
   private void OnBodyEntered(Node2D body)
   {
-    GD.Print(body.Name  );
-    GD.Print( Enemy != null  );
-    GD.Print(Player != null );
 
     if (body is Player player && Enemy != null)
     {
+
+
       if (areaelementnomber[0] == 3)
       {
         player.effect();
@@ -132,6 +131,8 @@ public partial class Atack : Area2D
 
     if (body is Enemy enemy && Player != null)
     {
+
+
       if (areaelementnomber[0] == 3)
       {
         enemy.effect();
@@ -143,40 +144,46 @@ public partial class Atack : Area2D
     }
 
   }
-
   public void elementatack(int nomber, Atack atack)
   {
-    //GD.Print(nomber + " atack");
+    
 
-    switch (areaelementnomber[nomber])
-    {
-      case 0:
-        air(nomber, atack);
-        break;
-      case 1:
-        mars(nomber, atack);
-        break;
-      case 2:
-        neiron(nomber, atack);
-        break;
-      case 3:
-        timepoison(nomber, atack);
-        break;
-      case 4:
-        Sun(nomber, atack);
-        break;
-      case 5:
-        terror(nomber, atack);
-        break;
-      default:
-        break;
-    }
+    if (nomber >= 0 && nomber < areaelementnomber.Length)
+      switch (areaelementnomber[nomber])
+      {
+        case 0:
+          air();
+          break;
+        case 1:
+          mars(nomber, atack);
+          break;
+        case 2:
+          neiron(nomber, atack);
+          break;
+        case 3:
+          timepoison(nomber, atack);
+          break;
+        case 4:
+          Sun(nomber, atack);
+          break;
+        case 5:
+          terror(nomber, atack);
+          break;
+        default:
+          break;
+      }
   }
-
   private void neiron(int nomber, Atack atack)
   {
     neironactiveyion = true;
-    startglobalposition = Player.GlobalPosition;
+    if (Player != null)
+    {
+      startglobalposition = Player.GlobalPosition;
+    }
+    if (Enemy != null)
+    {
+      startglobalposition = Enemy.GlobalPosition;
+    }
 
     if (nomber < areaelementnomber.Count())
     {
@@ -193,7 +200,6 @@ public partial class Atack : Area2D
     time.Timeout += () => spawnpoison(nomber, atack);
     time.Start();
   }
-
   private void spawnpoison(int nomber, Atack atack)
   {
     if (sceneeffect != null)
@@ -205,6 +211,7 @@ public partial class Atack : Area2D
       scen.atack = atack;
       scen.Directionset(invertor);
       invertor = invertor * -1;
+
 
       if (nomber < areaelementnomber.Count())
       {
@@ -218,7 +225,6 @@ public partial class Atack : Area2D
     }
     // poisonEffects.Add(scen);
   }
-
   private void Sun(int nomber, Atack atack)
   {
     collision.Scale = new Vector2(collision.Scale.X * 1.5f, collision.Scale.Y * 1.5f);
@@ -229,7 +235,6 @@ public partial class Atack : Area2D
       return;
     }
   }
-
   private void terror(int nomber, Atack atack)
   {
     PackedScene y;
@@ -264,35 +269,51 @@ public partial class Atack : Area2D
       return;
     }
   }
-  private void air(int nomber, Atack atack)
+  private void air()
   {
     return;
   }
   private void mars(int nomber, Atack atack)
   {
-    CircleShape2D settingradius = new CircleShape2D();
-    settingradius.Radius = 100;
-    atack.AddChild(magnit);
-    magnit.GlobalPosition = atack.GlobalPosition;
-    magnit.AddChild(radiusmagnits);
-    radiusmagnits.Shape = settingradius;
-    radiusmagnits.GlobalPosition = atack.GlobalPosition;
+    if (settingradius.Radius <= 0)
+    {
+      settingradius.Radius = 100;
+      atack.AddChild(magnit);
+      magnit.GlobalPosition = atack.GlobalPosition;
+      magnit.AddChild(radiusmagnits);
+      radiusmagnits.Shape = settingradius;
+      radiusmagnits.GlobalPosition = atack.GlobalPosition;
 
-    controlmagnetic(magnit, radiusmagnits);
-
+      Godot.Timer timetolive = new Godot.Timer();
+      atack.GetParent().AddChild(timetolive);
+      timetolive.WaitTime = 0.1;
+      timetolive.OneShot = false;
+      timetolive.Timeout += controlmagnetic;
+      timetolive.Start();
+    }
+    else
+    {
+      CallDeferred("yyy");
+    }
     if (nomber < areaelementnomber.Count())
     {
       elementatack(nomber + 1, atack);
     }
   }
 
-  private void controlmagnetic(Area2D magnitic, CollisionShape2D collisionformagnitic)
+  private void yyy()
+  {
+    settingradius.Radius = settingradius.Radius * (float)1.2;
+    radiusmagnits.Shape = settingradius;
+  }
+  private void controlmagnetic()
   {
     for (int u = 0; u < enemyformagnet.Count(); u++)
     {
       Vector2 enemyderection;
-      enemyderection = (GlobalPosition - enemyformagnet[u].GlobalPosition ).Normalized();
-      enemyformagnet[u].GlobalPosition += enemyderection* (Speed - enemyformagnet[u].Speed)/2 ;
+      enemyderection = (GlobalPosition - enemyformagnet[u].GlobalPosition).Normalized();
+      enemyformagnet[u].GlobalPosition += enemyderection * (Speed - enemyformagnet[u].Speed) / 2;
+      enemyformagnet[u].TakeDamage(10);
     }
   }
   private void onmagnet(Area2D area)
@@ -311,5 +332,4 @@ public partial class Atack : Area2D
       enemyformagnet.Remove(enemy);
     }
   }
-
 }
