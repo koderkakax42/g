@@ -19,7 +19,7 @@ public partial class SaveGame : Node2D
     private const string SAVE_PATH = "user://save.json";
     private static string absolutrath = ProjectSettings.GlobalizePath(SAVE_PATH);
 
-private static string absolutrathprogress = ProjectSettings.GlobalizePath(PROGRESSSAVE_PATH);
+    private static string absolutrathprogress = ProjectSettings.GlobalizePath(PROGRESSSAVE_PATH);
 
     public void Save_data_Game()
     {
@@ -75,6 +75,7 @@ private static string absolutrathprogress = ProjectSettings.GlobalizePath(PROGRE
         }
     }
 
+
     public override void _Ready()
     {
         string json = JsonSerializer.Serialize(save, new JsonSerializerOptions { WriteIndented = true });
@@ -112,19 +113,69 @@ private static string absolutrathprogress = ProjectSettings.GlobalizePath(PROGRE
 
     public static void saveprogres(string i)
     {
-          try
+        
+        if (!File.Exists(absolutrathprogress))
         {
-            GD.Print("uihgfgkfdhgu");
-            // Сериализуем данные в JSON (с отступами для читаемости)
-            string json = JsonSerializer.Serialize(i, new JsonSerializerOptions { WriteIndented = true });
-            // Записываем в файл
-            File.WriteAllText(absolutrathprogress, json);
-
-        }
-        catch (Exception ex)
-        {
-            GD.Print($"Ошибка сохранения: {ex.Message}");
+            GD.Print("rryr");
+            return;
         }
 
+        string json = File.ReadAllText(absolutrathprogress);
+        GD.Print(json);
+
+        if (string.IsNullOrWhiteSpace(json))
+        {
+            GD.Print("isnull");
+            try
+            {
+                string u = i + ": 1";
+                json = JsonSerializer.Serialize(u, new JsonSerializerOptions { WriteIndented = true });
+
+                File.WriteAllText(absolutrathprogress, json);
+                GD.Print("1" + json);
+            }
+            catch (Exception ex)
+            {
+                GD.Print($"Ошибка сохранения: {ex.Message}");
+            }
+        }
+        else
+        {
+            GD.Print("2");
+            try
+            {
+
+                Dictionary<string, JsonElement> failjson = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(json);
+
+                Dictionary<string, int> t = new Dictionary<string, int>();
+
+                foreach (var person in failjson)
+                {
+                    if (person.Key == i)
+                    {
+                        t.Add(person.Key, 1 + person.Value.GetInt32());
+                        continue;
+                    }
+                    t.Add(person.Key, person.Value.GetInt32());
+
+                }
+                foreach (var person in t)
+                {
+                    GD.Print(person.Key + "  " + person.Value);
+                }
+
+                json = null;
+
+                json = JsonSerializer.Serialize(t, new JsonSerializerOptions { WriteIndented = true });
+
+                File.WriteAllText(absolutrathprogress, json);
+                GD.Print("2" + json);
+
+            }
+            catch (Exception ex)
+            {
+                GD.Print($"Ошибка сохранения: {ex.Message}");
+            }
+        }
     }
 }

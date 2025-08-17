@@ -26,8 +26,8 @@ public partial class Boss : Enemy
         BulletScene = GD.Load<PackedScene>("res://scene/atack/atack/atack.tscn");
 
 
-        Health = 10;
-        Damage = 100;
+        Health = 1000;
+        Damage = 40;
         Speed = 800;
         helth.MaxValue = Health;
         helth.Value = Health;
@@ -35,11 +35,16 @@ public partial class Boss : Enemy
 
     public override void TakeDamage(int damage)
     {
-        bullshit();
+#if DEBUG
+        CallDeferred("playerwin");
+        return;
+#endif
+
+        CallDeferred("bullshit");
         helth.Value = Health;
         if (Health <= 0)
         {
-            playerwin();
+            CallDeferred("playerwin");
         }
     }
     private void playerwin()
@@ -50,7 +55,7 @@ public partial class Boss : Enemy
         Fader.ScenePath = "res://scene/ui/meny/meny.tscn";
         tree.ChangeSceneToFile("res://scene/scen/load_scen/fader.tscn");
 	}
-    
+
     private void bullshit()
     {
         var bullet = (Atack)BulletScene.Instantiate();
@@ -65,12 +70,14 @@ public partial class Boss : Enemy
         _stateMachine.Travel("atack");
         Speed = 0;
 
+
         timetolive = new Godot.Timer();
         AddChild(timetolive);
         timetolive.WaitTime = 2;
         timetolive.OneShot = true;
         timetolive.Timeout += startrun;
         timetolive.Start();
+
     }
 
     private void OnBodyEntered(Node2D body)

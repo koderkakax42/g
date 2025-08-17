@@ -170,7 +170,7 @@ public partial class Main : Node2D
 	private void ei(Node2D ii)
 	{
 		StaticBody2D u = GetNode<StaticBody2D>("StaticBody2D");
-		u.AddChild(ii);
+		u.CallDeferred("AddChild",ii);
 		//System.Console.WriteLine(56);
 
 		foreach (Spawn spawn in GetTree().GetNodesInGroup("spawner"))
