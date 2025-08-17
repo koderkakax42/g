@@ -250,7 +250,7 @@ public partial class Atack : Area2D
     GetParent().AddChild(datack);
     datack.atacdelete = atacdelete;
     datack.GlobalPosition = GlobalPosition;
-    datack.Player = Player;
+    datack.Player = atack.Player;
     datack.SetDirection((GlobalPosition + new Vector2(40, 60)) * invertor);
     if (invertor >= 1)
     {
